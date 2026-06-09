@@ -1,0 +1,9 @@
+{
+  "name": "danaquinleyprojects",
+  "private": true,
+  "type": "module",
+  "description": "Personal site + project hub",
+  "scripts": {
+    "build": "node build.js"
+  }
+}

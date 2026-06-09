@@ -1,0 +1,3 @@
+# SPA fallback for cocktail-bar — any unmatched path under /cocktail-bar/*
+# should serve the app's index.html so React Router can handle the route.
+/cocktail-bar/*  /cocktail-bar/index.html  200

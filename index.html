@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dana Quinley</title>
+  <meta name="description" content="A small corner of the internet for Dana's random projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --page:    #FAF7F2;
+      --ink:     #1C1C1A;
+      --ink-mid: #5A5A56;
+      --ink-dim: #9A9A94;
+      --card:    #F0EBE1;
+      --rust:    #C95A28;
+      --rust-bg: #FBF0EA;
+      --border:  rgba(28,28,26,0.10);
+      --radius:  14px;
+    }
+
+    html { font-size: 16px; }
+    body {
+      background: var(--page);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 56px 32px 0;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .sig {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(48px, 8vw, 76px);
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+
+    .sig .dot { color: var(--rust); }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      padding-bottom: 6px;
+    }
+
+    nav a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-mid);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.15s;
+    }
+
+    nav a:hover { color: var(--rust); }
+
+    .rule {
+      max-width: 860px;
+      margin: 20px auto 0;
+      padding: 0 32px;
+    }
+    .rule hr {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-head {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 32px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+    .section-count {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--rust);
+      background: var(--rust-bg);
+      border-radius: 20px;
+      padding: 2px 8px;
+    }
+
+    .grid {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(28,28,26,0.10);
+      border-color: rgba(28,28,26,0.18);
+    }
+
+    .card-thumb {
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.04);
+    }
+
+    .card-body {
+      padding: 18px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.55;
+      flex: 1;
+      margin-top: 2px;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 14px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--rust);
+      letter-spacing: 0.02em;
+      transition: gap 0.15s;
+    }
+
+    .card:hover .card-link { gap: 8px; }
+
+    .card-placeholder {
+      background: transparent;
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius);
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--ink-dim);
+    }
+
+    .card-placeholder .plus {
+      font-size: 28px;
+      line-height: 1;
+      color: var(--border);
+    }
+
+    .card-placeholder span {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 32px;
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-sig {
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink-dim);
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: var(--ink-dim);
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 36px 20px 0; flex-direction: column; gap: 12px; }
+      .rule { padding: 0 20px; }
+      .section-head { padding: 24px 20px 16px; }
+      .grid { padding: 0 20px 60px; grid-template-columns: 1fr; }
+      footer { padding: 20px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="sig">Dana Quinley<span class="dot">.</span></div>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="https://github.com/danaquinley0223/danaquinleyprojects" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="rule"><hr></div>
+
+  <div class="section-head">
+    <span class="section-label">Projects</span>
+    <span class="section-count">2</span>
+  </div>
+
+  <main class="grid" id="projects">
+
+    <a class="card" href="cancun-2026/">
+      <div class="card-thumb" style="background: linear-gradient(135deg, #1C2B35 0%, #1A7A6E 100%);">
+        🌴
+      </div>
+      <div class="card-body">
+        <div class="card-eyebrow">Travel · June 2026</div>
+        <div class="card-title">Cancún Trip 2.0 Hub</div>
+        <div class="card-desc">Itinerary, flights, packing lists, resort map, and park tips for a week at Xcaret Arte with the squad.</div>
+        <div class="card-link">Open hub <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="card" href="cocktail-bar/">
+      <div class="card-thumb" style="background: linear-gradient(135deg, #2A1A1F 0%, #C95A28 100%);">
+        🍸
+      </div>
+      <div class="card-body">
+        <div class="card-eyebrow">Web App · React</div>
+        <div class="card-title">Your Bar Cabinet</div>
+        <div class="card-desc">Tell it what bottles you have, see what cocktails you can make. IBA classics plus thousands of recipes from TheCocktailDB.</div>
+        <div class="card-link">Open bar <span>→</span></div>
+      </div>
+    </a>
+
+    <div class="card-placeholder">
+      <div class="plus">+</div>
+      <span>next project</span>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-sig">dq.</div>
+    <div class="footer-note">made with curiosity</div>
+  </footer>
+
+</body>
+</html>

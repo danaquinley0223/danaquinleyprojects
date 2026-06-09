@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cancún Trip 2.0 Hub</title>
+<style>
+  :root {
+    --sand: #F5EFE0;
+    --teal: #1A7A6E;
+    --teal-light: #E3F5F2;
+    --teal-mid: #2BA898;
+    --coral: #E8623A;
+    --coral-light: #FDF0EB;
+    --night: #1C2B35;
+    --night-mid: #2E4050;
+    --text: #1C2B35;
+    --text-muted: #5A7080;
+    --white: #FFFFFF;
+    --border: rgba(28,43,53,0.12);
+    --radius: 12px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Georgia', serif; background: var(--sand); color: var(--text); min-height: 100vh; }
+
+  /* back link */
+  .back-bar { background: var(--night); padding: 10px 20px; }
+  .back-link { font-family: 'Courier New', monospace; font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; letter-spacing: 0.5px; transition: color 0.15s; }
+  .back-link:hover { color: rgba(255,255,255,0.85); }
+
+  .hero { background: var(--night); padding: 24px 24px 20px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(26,122,110,0.08) 20px, rgba(26,122,110,0.08) 40px); }
+  .hero-eyebrow { font-family:'Courier New',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--teal-mid); margin-bottom:8px; position:relative; }
+  .hero-title { font-size:30px; font-weight:400; color:var(--white); line-height:1.2; margin-bottom:4px; position:relative; }
+  .hero-title em { color:var(--teal-mid); font-style:italic; }
+  .hero-sub { font-family:'Courier New',monospace; font-size:12px; color:rgba(255,255,255,0.5); letter-spacing:1px; position:relative; margin-bottom:16px; }
+  .countdown-strip { position:relative; display:flex; justify-content:center; gap:10px; margin-bottom:10px; }
+  .cd-block { background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:10px 14px; min-width:58px; text-align:center; }
+  .cd-num { font-family:'Courier New',monospace; font-size:28px; font-weight:700; color:var(--white); line-height:1; }
+  .cd-label { font-family:'Courier New',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-top:4px; }
+  .cd-msg { position:relative; font-family:'Courier New',monospace; font-size:11px; color:rgba(255,255,255,0.45); margin-bottom:14px; }
+  .app-banner { position:relative; display:flex; align-items:center; gap:12px; background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:10px; padding:10px 14px; margin:0 0 14px; cursor:pointer; text-decoration:none; transition:background 0.15s; }
+  .app-banner:hover { background:rgba(255,255,255,0.12); }
+  .app-icon { width:36px; height:36px; border-radius:8px; background:var(--teal); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+  .app-text { flex:1; text-align:left; }
+  .app-title { font-family:'Courier New',monospace; font-size:12px; font-weight:700; color:var(--white); }
+  .app-sub { font-family:'Courier New',monospace; font-size:10px; color:rgba(255,255,255,0.45); margin-top:2px; }
+  .app-arrow { font-size:16px; color:rgba(255,255,255,0.4); }
+  .hero-dates { display:inline-flex; gap:6px; align-items:center; background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:20px; padding:6px 16px; font-family:'Courier New',monospace; font-size:12px; color:rgba(255,255,255,0.7); position:relative; }
+
+  .nav { background:var(--white); border-bottom:0.5px solid var(--border); display:flex; overflow-x:auto; scrollbar-width:none; position:sticky; top:0; z-index:100; }
+  .nav::-webkit-scrollbar { display:none; }
+  .nav-btn { flex-shrink:0; padding:12px 13px; background:none; border:none; font-family:'Courier New',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--text-muted); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.15s; white-space:nowrap; }
+  .nav-btn:hover { color:var(--teal); }
+  .nav-btn.active { color:var(--teal); border-bottom-color:var(--teal); }
+
+  .view { display:none; padding:20px 16px 40px; max-width:720px; margin:0 auto; }
+  .view.active { display:block; }
+  .view-title { font-size:20px; font-weight:400; margin-bottom:6px; margin-top:4px; }
+  .view-sub { font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); margin-bottom:20px; letter-spacing:0.5px; }
+
+  .weather-bar { background:var(--night); border-radius:var(--radius); padding:16px; }
+  .weather-title { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--teal-mid); margin-bottom:12px; }
+  .weather-main { display:flex; align-items:center; gap:16px; margin-bottom:14px; }
+  .weather-big { font-size:44px; line-height:1; }
+  .weather-temp { font-family:'Courier New',monospace; font-size:26px; font-weight:700; color:var(--white); }
+  .weather-desc { font-family:'Courier New',monospace; font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
+  .weather-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
+  .weather-cell { background:rgba(255,255,255,0.06); border-radius:8px; padding:8px; text-align:center; }
+  .weather-cell-icon { font-size:16px; margin-bottom:4px; }
+  .weather-cell-val { font-family:'Courier New',monospace; font-size:13px; font-weight:700; color:var(--white); }
+  .weather-cell-lbl { font-family:'Courier New',monospace; font-size:9px; color:rgba(255,255,255,0.4); margin-top:2px; letter-spacing:1px; text-transform:uppercase; }
+  .weather-note { font-family:'Courier New',monospace; font-size:11px; color:rgba(255,255,255,0.4); margin-top:12px; line-height:1.5; border-top:0.5px solid rgba(255,255,255,0.08); padding-top:10px; }
+
+  .day-card { background:var(--white); border-radius:var(--radius); border:0.5px solid var(--border); margin-bottom:16px; overflow:hidden; }
+  .day-header { display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer; user-select:none; }
+  .day-header:hover { background:rgba(26,122,110,0.03); }
+  .day-num { width:44px; height:44px; border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; font-family:'Courier New',monospace; }
+  .day-num .dn { font-size:18px; font-weight:700; line-height:1; }
+  .day-num .dm { font-size:9px; letter-spacing:1px; text-transform:uppercase; line-height:1.4; }
+  .day-meta { flex:1; }
+  .day-name { font-size:15px; font-weight:600; margin-bottom:2px; }
+  .day-preview { font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); }
+  .day-chevron { font-size:18px; color:var(--text-muted); transition:transform 0.2s; }
+  .day-card.open .day-chevron { transform:rotate(180deg); }
+  .day-body { display:none; border-top:0.5px solid var(--border); }
+  .day-card.open .day-body { display:block; }
+  .event-list { padding:8px 0; }
+  .event { display:flex; align-items:flex-start; gap:10px; padding:10px 16px; border-bottom:0.5px solid rgba(28,43,53,0.06); }
+  .event:last-child { border-bottom:none; }
+  .event-time { font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); min-width:80px; padding-top:2px; }
+  .event-icon { font-size:18px; flex-shrink:0; padding-top:1px; }
+  .event-info { flex:1; }
+  .event-name { font-size:14px; font-weight:600; margin-bottom:2px; }
+  .event-note { font-size:12px; color:var(--text-muted); line-height:1.4; }
+  .tag { display:inline-block; font-family:'Courier New',monospace; font-size:10px; padding:2px 7px; border-radius:4px; margin-top:4px; }
+  .tag-park { background:var(--teal-light); color:var(--teal); }
+  .tag-dinner { background:var(--coral-light); color:var(--coral); }
+  .tag-night { background:rgba(28,43,53,0.08); color:var(--night-mid); }
+  .tag-optional { background:#FFF8E1; color:#8B6914; }
+
+  .res-item { display:flex; align-items:flex-start; gap:12px; padding:14px 16px; border-bottom:0.5px solid rgba(28,43,53,0.06); cursor:pointer; user-select:none; }
+  .res-item:last-child { border-bottom:none; }
+  .res-item:hover { background:rgba(26,122,110,0.02); }
+  .res-check-box { width:22px; height:22px; border-radius:6px; border:1.5px solid var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:12px; margin-top:1px; }
+  .res-item.confirmed .res-check-box { background:var(--teal); border-color:var(--teal); color:white; }
+  .res-info { flex:1; }
+  .res-name { font-size:14px; font-weight:600; margin-bottom:2px; }
+  .res-item.confirmed .res-name { color:var(--teal); }
+  .res-meta { font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); line-height:1.5; }
+  .res-urgency { display:inline-block; font-family:'Courier New',monospace; font-size:10px; padding:2px 7px; border-radius:4px; margin-top:4px; }
+  .urgent { background:#FCEBEB; color:#A32D2D; }
+  .soon { background:#FFF8E1; color:#8B6914; }
+  .confirmed-badge { background:var(--teal-light); color:var(--teal); }
+  .res-summary { display:flex; gap:10px; padding:14px 16px 12px; border-bottom:0.5px solid var(--border); }
+  .res-stat { flex:1; text-align:center; }
+  .res-stat-num { font-family:'Courier New',monospace; font-size:22px; font-weight:700; }
+  .res-stat-lbl { font-family:'Courier New',monospace; font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; }
+
+  .section-label { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--teal); padding:12px 16px 4px; font-weight:700; }
+  .bring-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; padding:8px 16px 10px; }
+  .bring-item { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text); cursor:pointer; padding:6px 8px; border-radius:8px; border:0.5px solid var(--border); background:var(--sand); transition:all 0.15s; user-select:none; position:relative; }
+  .bring-item.checked { background:var(--teal-light); border-color:rgba(26,122,110,0.25); color:var(--teal); text-decoration:line-through; opacity:0.7; }
+  .bring-item.custom-item { border-style:dashed; }
+  .bring-check { width:16px; height:16px; border-radius:4px; border:1.5px solid var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:10px; }
+  .bring-item.checked .bring-check { background:var(--teal); border-color:var(--teal); color:white; }
+  .remove-btn { position:absolute; right:6px; top:50%; transform:translateY(-50%); background:none; border:none; font-size:14px; color:rgba(28,43,53,0.25); cursor:pointer; padding:2px 4px; line-height:1; display:none; }
+  .bring-item.custom-item:hover .remove-btn { display:block; }
+  .remove-btn:hover { color:var(--coral); }
+  .progress-bar { background:rgba(26,122,110,0.15); border-radius:4px; height:4px; margin:8px 16px 0; overflow:hidden; }
+  .progress-fill { height:100%; background:var(--teal-mid); border-radius:4px; transition:width 0.3s; }
+  .count-badge { font-family:'Courier New',monospace; font-size:10px; padding:2px 8px; background:var(--teal-light); color:var(--teal); border-radius:10px; margin-left:6px; }
+  .add-item-row { display:flex; gap:8px; padding:10px 16px 14px; border-top:0.5px solid var(--border); margin-top:6px; }
+  .add-item-row input { flex:1; padding:7px 10px; border-radius:8px; border:0.5px solid var(--border); background:var(--sand); font-family:'Georgia',serif; font-size:13px; color:var(--text); outline:none; }
+  .add-item-row input:focus { border-color:var(--teal-mid); }
+  .add-item-row input::placeholder { color:var(--text-muted); }
+  .add-btn { padding:7px 14px; background:var(--teal); border:none; border-radius:8px; color:white; font-family:'Courier New',monospace; font-size:11px; cursor:pointer; white-space:nowrap; }
+  .add-btn:hover { opacity:0.85; }
+
+  .fx-bar { background:var(--night); border-radius:var(--radius); padding:14px 16px; margin-bottom:16px; display:flex; align-items:center; gap:14px; }
+  .fx-icon { font-size:22px; flex-shrink:0; }
+  .fx-main { flex:1; }
+  .fx-rate { font-family:'Courier New',monospace; font-size:18px; font-weight:700; color:var(--white); }
+  .fx-sub { font-family:'Courier New',monospace; font-size:10px; color:rgba(255,255,255,0.4); margin-top:3px; }
+  .fx-pills { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .fx-pill { background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.12); border-radius:8px; padding:6px 12px; font-family:'Courier New',monospace; font-size:12px; color:rgba(255,255,255,0.75); }
+  .fx-pill span { color:var(--teal-mid); font-weight:700; }
+
+  .tip-card { background:var(--white); border-radius:var(--radius); border:0.5px solid var(--border); margin-bottom:12px; overflow:hidden; }
+  .tip-header { display:flex; align-items:center; gap:10px; padding:14px 16px; background:var(--night); color:white; }
+  .tip-header-icon { font-size:20px; }
+  .tip-header-name { font-size:14px; font-weight:600; }
+  .tip-header-sub { font-size:11px; color:rgba(255,255,255,0.55); font-family:'Courier New',monospace; }
+  .tip-body { padding:14px 16px; }
+  .tip-row { display:flex; gap:10px; padding:8px 0; border-bottom:0.5px solid rgba(28,43,53,0.06); font-size:13px; line-height:1.5; }
+  .tip-row:last-child { border-bottom:none; }
+  .tip-bullet { color:var(--teal-mid); font-size:16px; flex-shrink:0; margin-top:1px; }
+
+  .flight-card { background:var(--white); border-radius:var(--radius); border:0.5px solid var(--border); margin-bottom:16px; overflow:hidden; }
+  .flight-header { background:var(--night); padding:14px 16px; display:flex; align-items:center; justify-content:space-between; }
+  .flight-direction { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--teal-mid); }
+  .flight-date { font-family:'Courier New',monospace; font-size:11px; color:rgba(255,255,255,0.5); }
+  .flight-route { display:flex; align-items:center; padding:16px 16px 12px; }
+  .flight-city { flex:1; }
+  .flight-city-code { font-size:26px; font-weight:700; color:var(--text); letter-spacing:-1px; font-family:'Courier New',monospace; }
+  .flight-city-name { font-size:11px; color:var(--text-muted); font-family:'Courier New',monospace; margin-top:2px; }
+  .flight-city-time { font-size:18px; font-weight:600; color:var(--text); margin-top:4px; }
+  .flight-middle { flex:1; text-align:center; }
+  .flight-arrow { font-size:20px; color:var(--teal-mid); }
+  .flight-stop-badge { display:inline-block; font-family:'Courier New',monospace; font-size:10px; background:#FFF8E1; color:#8B6914; border-radius:4px; padding:2px 6px; margin-top:4px; }
+  .flight-city.right { text-align:right; }
+  .flight-legs { border-top:0.5px solid var(--border); }
+  .flight-leg { padding:10px 16px; border-bottom:0.5px solid rgba(28,43,53,0.06); }
+  .flight-leg:last-child { border-bottom:none; }
+  .flight-leg-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .flight-leg-route { font-family:'Courier New',monospace; font-size:11px; font-weight:700; color:var(--text); }
+  .flight-leg-num { font-family:'Courier New',monospace; font-size:10px; color:var(--text-muted); }
+  .seats-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .seat-pill { background:var(--sand); border-radius:8px; border:0.5px solid var(--border); padding:6px 10px; display:flex; align-items:center; gap:8px; }
+  .seat-avatar { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; font-family:'Courier New',monospace; }
+  .av-dana { background:#E3F5F2; color:#1A7A6E; }
+  .av-leia { background:#FDF0EB; color:#E8623A; }
+  .av-diana { background:#E6F1FB; color:#185FA5; }
+  .av-miguel { background:#FAEEDA; color:#854F0B; }
+  .seat-name { font-size:11px; font-weight:600; color:var(--text); }
+  .seat-num { font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); }
+
+  .map-outer { background:var(--white); border-radius:var(--radius); border:0.5px solid var(--border); overflow:hidden; margin-bottom:16px; }
+  .map-svg { width:100%; display:block; }
+  .map-legend { padding:12px 16px; border-top:0.5px solid var(--border); display:flex; flex-wrap:wrap; gap:10px; }
+  .legend-item { display:flex; align-items:center; gap:6px; font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); }
+  .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+
+  .info-strip { background:var(--teal); border-radius:var(--radius); padding:14px 16px; margin-bottom:16px; display:flex; gap:12px; align-items:flex-start; }
+  .info-strip-text { font-size:13px; color:rgba(255,255,255,0.9); line-height:1.5; }
+  .info-strip-text strong { color:white; }
+</style>
+</head>
+<body>
+
+<div class="back-bar">
+  <a class="back-link" href="../index.html">← back to danaquinley.com</a>
+</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">Xcaret Arte · Cancún, Mexico</div>
+  <div class="hero-title">Cancún <em>Trip 2.0</em> Hub</div>
+  <div class="hero-sub">8 days · 7 nights · Full Squad (Minus Kevin 😑)</div>
+  <div class="countdown-strip" id="countdown-strip"></div>
+  <div class="cd-msg" id="cd-msg"></div>
+  <a class="app-banner" href="https://apps.apple.com/us/app/hoteles-xcaret/id1474819420" target="_blank">
+    <div class="app-icon">🏨</div>
+    <div class="app-text">
+      <div class="app-title">Hoteles Xcaret — Official App</div>
+      <div class="app-sub">Download on the App Store · reservations, maps, schedules</div>
+    </div>
+    <div class="app-arrow">↗</div>
+  </a>
+  <div class="hero-dates">✈ Jun 19 &nbsp;—&nbsp; Jun 26, 2026</div>
+</div>
+
+<div class="nav">
+  <button class="nav-btn active" onclick="switchView('itinerary',this)">Itinerary</button>
+  <button class="nav-btn" onclick="switchView('reservations',this)">Reservations</button>
+  <button class="nav-btn" onclick="switchView('flights',this)">Flights</button>
+  <button class="nav-btn" onclick="switchView('map',this)">Map</button>
+  <button class="nav-btn" onclick="switchView('packing',this)">Packing</button>
+  <button class="nav-btn" onclick="switchView('tips',this)">Park Tips</button>
+  <button class="nav-btn" onclick="switchView('resort',this)">Resort</button>
+</div>
+
+<div class="view active" id="view-itinerary">
+  <div style="padding-top:12px"></div>
+  <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
+    <div class="weather-bar">
+      <div class="weather-title">☀ Cancún weather · Late June</div>
+      <div class="weather-main">
+        <div class="weather-big">🌤</div>
+        <div><div class="weather-temp">88°F / 31°C</div><div class="weather-desc">Hot, humid, mostly sunny with brief afternoon showers</div></div>
+      </div>
+      <div class="weather-grid">
+        <div class="weather-cell"><div class="weather-cell-icon">🌡</div><div class="weather-cell-val">88°F</div><div class="weather-cell-lbl">High</div></div>
+        <div class="weather-cell"><div class="weather-cell-icon">💧</div><div class="weather-cell-val">78°F</div><div class="weather-cell-lbl">Sea temp</div></div>
+        <div class="weather-cell"><div class="weather-cell-icon">🌧</div><div class="weather-cell-val">~4pm</div><div class="weather-cell-lbl">Rain window</div></div>
+        <div class="weather-cell"><div class="weather-cell-icon">☀</div><div class="weather-cell-val">UV 11</div><div class="weather-cell-lbl">Extreme</div></div>
+      </div>
+      <div class="weather-note">Late June is early rainy season — showers are typically short (20–30 min) in the late afternoon. Mornings are almost always clear. UV is extreme; reapply reef-safe sunscreen every 90 min.</div>
+    </div>
+  </div>
+  <div id="days-container"></div>
+</div>
+
+<div class="view" id="view-reservations">
+  <div style="padding-top:8px"></div>
+  <div class="view-title">Reservations</div>
+  <div class="view-sub">Tap to mark confirmed — saved per device</div>
+  <div class="day-card" style="margin-bottom:16px">
+    <div class="res-summary">
+      <div class="res-stat"><div class="res-stat-num" id="res-confirmed-num" style="color:var(--teal)">0</div><div class="res-stat-lbl">Confirmed</div></div>
+      <div class="res-stat"><div class="res-stat-num" id="res-pending-num" style="color:var(--coral)">0</div><div class="res-stat-lbl">Still needed</div></div>
+    </div>
+    <div id="res-list"></div>
+  </div>
+  <div style="background:var(--teal-light);border-radius:var(--radius);padding:12px 16px;font-size:13px;color:var(--teal);line-height:1.6;">
+    💡 Make Tah-Xido and Encanta reservations the moment you check in Friday afternoon.
+  </div>
+</div>
+
+<div class="view" id="view-flights">
+  <div style="padding-top:8px"></div>
+  <div class="view-title">Flights</div>
+  <div class="view-sub">Southwest · SMF ↔ CUN via DEN</div>
+  <div class="flight-card">
+    <div class="flight-header"><div><div class="flight-direction">✈ Outbound</div><div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Sacramento → Cancún</div></div><div class="flight-date">Fri, Jun 19 · 7h 30m</div></div>
+    <div class="flight-route"><div class="flight-city"><div class="flight-city-code">SMF</div><div class="flight-city-name">Sacramento, CA</div><div class="flight-city-time">5:55 AM</div></div><div class="flight-middle"><div class="flight-arrow">→</div><div class="flight-stop-badge">1 stop · DEN</div></div><div class="flight-city right"><div class="flight-city-code">CUN</div><div class="flight-city-name">Cancún, Mexico</div><div class="flight-city-time">3:25 PM</div></div></div>
+    <div class="flight-legs">
+      <div class="flight-leg"><div class="flight-leg-header"><div class="flight-leg-route">SMF → DEN</div><div class="flight-leg-num">WN3773 · Boeing 737 MAX8</div></div><div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">19F · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">19E · Middle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">Row 18</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">Row 18</div></div></div></div></div>
+      <div class="flight-leg"><div class="flight-leg-header"><div class="flight-leg-route">DEN → CUN</div><div class="flight-leg-num">WN131 · Boeing 737 MAX8</div></div><div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">24E · Middle</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">24D · Aisle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">Row 23</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">Row 23</div></div></div></div></div>
+    </div>
+  </div>
+  <div class="flight-card">
+    <div class="flight-header"><div><div class="flight-direction">✈ Return</div><div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Cancún → Sacramento</div></div><div class="flight-date">Fri, Jun 26 · 8h 25m</div></div>
+    <div class="flight-route"><div class="flight-city"><div class="flight-city-code">CUN</div><div class="flight-city-name">Cancún, Mexico</div><div class="flight-city-time">3:25 PM</div></div><div class="flight-middle"><div class="flight-arrow">→</div><div class="flight-stop-badge">1 stop · DEN</div></div><div class="flight-city right"><div class="flight-city-code">SMF</div><div class="flight-city-name">Sacramento, CA</div><div class="flight-city-time">9:50 PM</div></div></div>
+    <div class="flight-legs">
+      <div class="flight-leg"><div class="flight-leg-header"><div class="flight-leg-route">CUN → DEN</div><div class="flight-leg-num">WN1018 · Boeing 737 MAX8</div></div><div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">21A · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">21B · Middle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">19F · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">19E · Middle</div></div></div></div></div>
+      <div class="flight-leg"><div class="flight-leg-header"><div class="flight-leg-route">DEN → SMF</div><div class="flight-leg-num">WN136 · Boeing 737-700</div></div><div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">14B · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">14C · Aisle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">9C · Aisle</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">9B · Middle</div></div></div></div></div>
+    </div>
+  </div>
+  <div style="background:var(--coral-light);border-radius:var(--radius);border:0.5px solid rgba(232,98,58,0.2);padding:12px 16px;font-size:13px;color:var(--coral);font-family:'Courier New',monospace;line-height:1.6;">⚠ Check-in opens 24 hrs before — set reminders for Thu Jun 18 at 5:55am and Thu Jun 25 at 3:25pm.</div>
+</div>
+
+<div class="view" id="view-map">
+  <div style="padding-top:8px"></div>
+  <div class="view-title">Resort map</div>
+  <div class="view-sub">Xcaret Arte — key locations</div>
+  <div class="map-outer">
+    <svg class="map-svg" viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg" style="background:#C8E6D4;">
+      <rect x="0" y="0" width="680" height="100" fill="#7EC8C8" opacity="0.6"/>
+      <text x="340" y="38" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" fill="#1A7A6E" opacity="0.7" letter-spacing="3">C A R I B B E A N   S E A</text>
+      <ellipse cx="340" cy="105" rx="310" ry="28" fill="#F5DFA0" opacity="0.9"/>
+      <text x="340" y="108" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="#8B6914">BEACH</text>
+      <rect x="30" y="115" width="620" height="390" rx="8" fill="#D6EDD6" opacity="0.6"/>
+      <rect x="260" y="130" width="160" height="80" rx="10" fill="#7EC8C8" opacity="0.8"/>
+      <text x="340" y="167" text-anchor="middle" font-family="'Courier New',monospace" font-size="11" fill="#085041" font-weight="700">POOLS</text>
+      <text x="340" y="182" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="#0F6E56">&amp; Swim-up Bar</text>
+      <rect x="290" y="228" width="100" height="54" rx="6" fill="#2E4050"/>
+      <text x="340" y="251" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="white" font-weight="700">LOBBY</text>
+      <text x="340" y="267" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.6)">Check-in</text>
+      <rect x="480" y="130" width="110" height="52" rx="6" fill="#1C2B35"/>
+      <text x="535" y="152" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="#2BA898" font-weight="700">EL DESEO</text>
+      <text x="535" y="167" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.5)">Speakeasy / Club</text>
+      <rect x="80" y="130" width="130" height="52" rx="6" fill="#E8623A" opacity="0.9"/>
+      <text x="145" y="152" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="white" font-weight="700">MERCADO</text>
+      <text x="145" y="167" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.8)">San Juan · Buffet</text>
+      <rect x="80" y="228" width="110" height="52" rx="6" fill="#1A7A6E"/>
+      <text x="135" y="250" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="white" font-weight="700">TAH-XIDO</text>
+      <text x="135" y="265" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.7)">Teppanyaki</text>
+      <rect x="490" y="228" width="100" height="52" rx="6" fill="#533AB7" opacity="0.9"/>
+      <text x="540" y="250" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="white" font-weight="700">ENCANTA</text>
+      <text x="540" y="265" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.7)">Fine Dining</text>
+      <rect x="80" y="320" width="110" height="52" rx="6" fill="#BA7517" opacity="0.9"/>
+      <text x="135" y="342" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="white" font-weight="700">CANTINA</text>
+      <text x="135" y="357" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.8)">Mexican · Bar</text>
+      <rect x="490" y="320" width="100" height="52" rx="6" fill="#E8623A" opacity="0.8"/>
+      <text x="540" y="342" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="white" font-weight="700">CAYUCO</text>
+      <text x="540" y="357" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.8)">Buffet</text>
+      <rect x="280" y="320" width="120" height="52" rx="6" fill="#993556" opacity="0.9"/>
+      <text x="340" y="342" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="white" font-weight="700">ARENAL</text>
+      <text x="340" y="357" text-anchor="middle" font-family="'Courier New',monospace" font-size="9" fill="rgba(255,255,255,0.7)">Thu Dinner</text>
+      <ellipse cx="200" cy="430" rx="80" ry="40" fill="#8BC46A" opacity="0.5"/>
+      <text x="200" y="433" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="#27500A">Gardens</text>
+      <ellipse cx="480" cy="430" rx="80" ry="40" fill="#8BC46A" opacity="0.5"/>
+      <text x="480" y="433" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="#27500A">Gardens</text>
+      <line x1="210" y1="156" x2="260" y2="170" stroke="rgba(28,43,53,0.15)" stroke-width="2" stroke-dasharray="4,3"/>
+      <line x1="420" y1="170" x2="480" y2="156" stroke="rgba(28,43,53,0.15)" stroke-width="2" stroke-dasharray="4,3"/>
+      <line x1="190" y1="228" x2="290" y2="254" stroke="rgba(28,43,53,0.15)" stroke-width="2" stroke-dasharray="4,3"/>
+      <line x1="390" y1="254" x2="490" y2="254" stroke="rgba(28,43,53,0.15)" stroke-width="2" stroke-dasharray="4,3"/>
+      <line x1="340" y1="282" x2="340" y2="320" stroke="rgba(28,43,53,0.15)" stroke-width="2" stroke-dasharray="4,3"/>
+      <line x1="190" y1="346" x2="280" y2="346" stroke="rgba(28,43,53,0.15)" stroke-width="2" stroke-dasharray="4,3"/>
+      <line x1="400" y1="346" x2="490" y2="346" stroke="rgba(28,43,53,0.15)" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="642" y="490" text-anchor="middle" font-family="'Courier New',monospace" font-size="10" fill="rgba(28,43,53,0.4)">↑ N</text>
+    </svg>
+    <div class="map-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#1C2B35"></div>Nightlife</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#E8623A"></div>Buffet</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#1A7A6E"></div>Specialty dining</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#533AB7"></div>Fine dining</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#7EC8C8"></div>Pools / water</div>
+    </div>
+  </div>
+  <div style="background:var(--coral-light);border-radius:var(--radius);border:0.5px solid rgba(232,98,58,0.2);padding:12px 16px;font-size:13px;color:var(--coral);line-height:1.6;font-family:'Courier New',monospace;">⚠ Schematic layout — not to scale. Allow extra walking time between venues.</div>
+</div>
+
+<div class="view" id="view-packing">
+  <div style="padding-top:8px"></div>
+  <div class="view-title">What to bring</div>
+  <div class="view-sub">Tap to check off · add your own items below each section</div>
+  <div id="packing-container"></div>
+</div>
+
+<div class="view" id="view-tips">
+  <div style="padding-top:8px"></div>
+  <div class="view-title">Park tips</div>
+  <div class="view-sub">Heads-up for each park & experience</div>
+  <div id="tips-container"></div>
+</div>
+
+<div class="view" id="view-resort">
+  <div style="padding-top:8px"></div>
+  <div class="view-title">Xcaret Arte</div>
+  <div class="view-sub">Resort quick reference</div>
+  <div id="resort-container"></div>
+</div>
+
+<script>
+const TRIP_START=new Date('2026-06-19T05:55:00');
+const FX_RATE=17.44;
+
+function buildCountdown(){
+  const now=new Date(),diff=TRIP_START-now;
+  const strip=document.getElementById('countdown-strip'),msg=document.getElementById('cd-msg');
+  if(diff<=0){strip.innerHTML='<div class="cd-block"><div class="cd-num" style="font-size:20px">🌴</div><div class="cd-label">Enjoy!</div></div>';msg.textContent="you're there — have the best time";return;}
+  const days=Math.floor(diff/86400000),hrs=Math.floor((diff%86400000)/3600000),mins=Math.floor((diff%3600000)/60000),secs=Math.floor((diff%60000)/1000);
+  strip.innerHTML=`<div class="cd-block"><div class="cd-num" id="cd-d">${days}</div><div class="cd-label">Days</div></div><div class="cd-block"><div class="cd-num" id="cd-h">${String(hrs).padStart(2,'0')}</div><div class="cd-label">Hrs</div></div><div class="cd-block"><div class="cd-num" id="cd-m">${String(mins).padStart(2,'0')}</div><div class="cd-label">Min</div></div><div class="cd-block"><div class="cd-num" id="cd-s">${String(secs).padStart(2,'0')}</div><div class="cd-label">Sec</div></div>`;
+  msg.textContent=days===1?'one more sleep!':days<5?'almost time to pack...':'until wheels up from Sacramento';
+  setTimeout(()=>{setInterval(()=>{const n=new Date(),d2=TRIP_START-n;if(d2<=0)return;const ds=Math.floor(d2/86400000),hs=Math.floor((d2%86400000)/3600000),ms=Math.floor((d2%3600000)/60000),ss=Math.floor((d2%60000)/1000);const de=document.getElementById('cd-d'),he=document.getElementById('cd-h'),me=document.getElementById('cd-m'),se=document.getElementById('cd-s');if(de)de.textContent=ds;if(he)he.textContent=String(hs).padStart(2,'0');if(me)me.textContent=String(ms).padStart(2,'0');if(se)se.textContent=String(ss).padStart(2,'0');},1000);},100);
+}
+
+const DAYS=[
+  {date:'Jun 19',dayName:'Friday',label:'Arrival Day',color:'#E3F5F2',textColor:'#1A7A6E',events:[{time:'3–5pm',icon:'✈️',name:'Arrive to Cancún',note:'Walk around hotel, check in, grab lunch or coffee',tag:null},{time:'6–11pm',icon:'🍽️',name:'Dinner @ Buffet',note:'Options: Mercado San Juan, Cayuco, or Cantina',tag:'dinner'},{time:'8pm–4am',icon:'🎶',name:'El Deseo Speakeasy / Club',note:'First night out — pace yourselves 😉',tag:'night'}]},
+  {date:'Jun 20',dayName:'Saturday',label:'Xoximilco Night',color:'#FDF0EB',textColor:'#E8623A',events:[{time:'9am',icon:'📋',name:'Presentation (90 min)',note:null,tag:null},{time:'Morning',icon:'🏊',name:'Hang out @ hotel',note:'Pool, beach, relax',tag:null},{time:'6pm–12:30am',icon:'🎉',name:'Xoximilco Experience',note:'Dinner + drinks on colorful trajineras — dress festive!',tag:'park'}]},
+  {date:'Jun 21',dayName:'Sunday',label:'Brunch + Xplor Fuego',color:'#E3F5F2',textColor:'#1A7A6E',events:[{time:'10am–4pm',icon:'🥂',name:'Sunday Brunch @ San Juan Mercado',note:'Long brunch, take your time',tag:'dinner'},{time:'Afternoon',icon:'🏨',name:'Hang out @ hotel',note:null,tag:null},{time:'5:30–10:30pm',icon:'🔥',name:'Xplor Fuego',note:'Night version — zip lines, rafts & ATVs after dark',tag:'park'},{time:'~7pm',icon:'🍖',name:'Dinner @ Troglodita Buffet',note:'Included with Xplor Fuego ticket',tag:'dinner'}]},
+  {date:'Jun 22',dayName:'Monday',label:'Xenotes + Tah-Xido',color:'#E6F1FB',textColor:'#185FA5',events:[{time:'8:40am–5:30pm',icon:'🌿',name:'Xenotes Park Tour',note:'Includes snack + jungle picnic. No alcohol.',tag:'park'},{time:'~7–8pm',icon:'🍣',name:'Dinner @ Tah-Xido',note:'Confirm reservation at check-in',tag:'dinner'}]},
+  {date:'Jun 23',dayName:'Tuesday',label:'Xplor or Xcaret + Encanta',color:'#FDF0EB',textColor:'#E8623A',events:[{time:'8:30am–5pm',icon:'🎡',name:'Xplor or Xcaret (if energy allows)',note:'Xplor: unlimited buffet + drinks. Xcaret: 1 meal, no alcohol.',tag:'optional'},{time:'~7–8pm',icon:'🍽️',name:'Dinner @ Encanta',note:'8-course meal — dress up a bit',tag:'dinner'}]},
+  {date:'Jun 24',dayName:'Wednesday',label:'Xel-Há + El Deseo',color:'#E3F5F2',textColor:'#1A7A6E',events:[{time:'9am–5:30pm',icon:'🌊',name:'Xel-Há Park',note:'All-inclusive snorkel park — full day in the water',tag:'park'},{time:'8pm',icon:'🥩',name:'Dinner @ Tah-Xido (Teppanyaki)',note:'Book ASAP — fills up fast',tag:'dinner'},{time:'8pm–4am',icon:'🎶',name:'El Deseo Speakeasy / Club',note:null,tag:'night'}]},
+  {date:'Jun 25',dayName:'Thursday',label:'Chill Day + Last Night Out',color:'#F1EFE8',textColor:'#5A7080',events:[{time:'All day',icon:'😎',name:'Chill day @ hotel',note:'Final pool day — recharge before the night',tag:null},{time:'7:30pm',icon:'🍷',name:'Dinner @ Arenal',note:null,tag:'dinner'},{time:'8pm–4am',icon:'🎶',name:'El Deseo Speakeasy / Club',note:'Last night — make it count',tag:'night'}]},
+  {date:'Jun 26',dayName:'Friday',label:'Departure',color:'#1C2B35',textColor:'#FFFFFF',events:[{time:'By 12pm',icon:'🧳',name:'Check out of hotel',note:"Pack the night before — you'll be tired!",tag:null},{time:'3:25pm',icon:'✈️',name:'Flight home (WN1018)',note:'Allow 2+ hrs to airport',tag:null}]},
+];
+
+function buildDays(){
+  const container=document.getElementById('days-container'),tagMap={park:'Park',dinner:'Dinner',night:'Late night',optional:'Optional'};
+  DAYS.forEach((day,i)=>{
+    const card=document.createElement('div');card.className='day-card';card.id='day-'+i;
+    const tags=[...new Set(day.events.map(e=>e.tag).filter(Boolean))];
+    card.innerHTML=`<div class="day-header" onclick="toggleDay(${i})"><div class="day-num" style="background:${day.color};color:${day.textColor}"><span class="dn">${day.date.split(' ')[1]}</span><span class="dm">${day.date.split(' ')[0]}</span></div><div class="day-meta"><div class="day-name">${day.dayName} — ${day.label}</div><div class="day-preview">${tags.map(t=>tagMap[t]).join(' · ')||'Departure day'}</div></div><div class="day-chevron">⌄</div></div><div class="day-body"><div class="event-list">${day.events.map(ev=>`<div class="event"><div class="event-time">${ev.time}</div><div class="event-icon">${ev.icon}</div><div class="event-info"><div class="event-name">${ev.name}</div>${ev.note?`<div class="event-note">${ev.note}</div>`:''}${ev.tag?`<span class="tag tag-${ev.tag}">${tagMap[ev.tag]}</span>`:''}</div></div>`).join('')}</div></div>`;
+    container.appendChild(card);
+  });
+  const now=new Date(),start=new Date('2026-06-19');
+  let idx=0;if(now>=start)idx=Math.min(Math.floor((now-start)/86400000),DAYS.length-1);
+  toggleDay(idx);
+}
+function toggleDay(i){document.getElementById('day-'+i).classList.toggle('open');}
+
+const RESERVATIONS=[
+  {id:'tahxido-mon',name:'Tah-Xido',date:'Mon Jun 22',time:'~7–8pm',note:'Asian fusion — book at check-in Fri',urgency:'urgent'},
+  {id:'encanta',name:'Encanta (8-course)',date:'Tue Jun 23',time:'~7–8pm',note:'Fine dining — book at check-in Fri',urgency:'urgent'},
+  {id:'tahxido-wed',name:'Tah-Xido (Teppanyaki)',date:'Wed Jun 24',time:'8pm',note:'Teppanyaki fills up fast — priority book',urgency:'urgent'},
+  {id:'arenal',name:'Arenal',date:'Thu Jun 25',time:'7:30pm',note:'Book day-of or day before',urgency:'soon'},
+];
+function buildReservations(){
+  const saved=JSON.parse(localStorage.getItem('cancun-res')||'{}'),list=document.getElementById('res-list');list.innerHTML='';let confirmed=0;
+  RESERVATIONS.forEach(r=>{const isConf=!!saved[r.id];if(isConf)confirmed++;const div=document.createElement('div');div.className='res-item'+(isConf?' confirmed':'');div.id='res-'+r.id;div.onclick=()=>toggleRes(r.id);const bClass=isConf?'confirmed-badge':r.urgency==='urgent'?'urgent':'soon',bText=isConf?'✓ confirmed':r.urgency==='urgent'?'⚡ book at check-in':'📅 book ahead';div.innerHTML=`<div class="res-check-box">${isConf?'✓':''}</div><div class="res-info"><div class="res-name">${r.name}</div><div class="res-meta">${r.date} · ${r.time}<br>${r.note}</div><span class="res-urgency ${bClass}">${bText}</span></div>`;list.appendChild(div);});
+  document.getElementById('res-confirmed-num').textContent=confirmed;document.getElementById('res-pending-num').textContent=RESERVATIONS.length-confirmed;
+}
+function toggleRes(id){const saved=JSON.parse(localStorage.getItem('cancun-res')||'{}');saved[id]=!saved[id];if(!saved[id])delete saved[id];localStorage.setItem('cancun-res',JSON.stringify(saved));buildReservations();}
+
+const BASE_PACKING={
+  'Every day (resort)':['Sunscreen (reef-safe!)','Sunglasses','Hat / cap','Reusable water bottle','Room key / wristband','Phone + charger','Light layers for AC','Cash (pesos or USD — $1 ≈ 17.44 MXN)'],
+  'Park days':['Water shoes','GoPro + mounts','Waterproof phone case','Quick-dry clothes','Extra swimsuit','Dry bag','Reef-safe sunscreen (reapply!)','Snacks if not all-inclusive'],
+  'Xenotes (Mon Jun 22)':['Closed-toe water shoes','Snorkel mask (optional)','Light rash guard','Hydrate — no alcohol served'],
+  'Xel-Há (Wed Jun 24)':['Wetsuit top (optional)','Underwater camera or GoPro','Fins (provided)','Reef-safe sunscreen only'],
+  'Xoximilco (Sat Jun 20)':['Festive / colorful outfit','Dancing shoes (flats ok)','Light jacket for boat breeze'],
+  'Nights out (El Deseo)':['Going-out outfit','ID / passport copy','Cash for tips','Comfortable shoes to dance in'],
+  'Encanta dinner (Tue Jun 23)':['Smart-casual outfit','Appetite (8 courses!)'],
+};
+function getCustomItems(s){return(JSON.parse(localStorage.getItem('cancun-custom')||'{}')[s])||[];}
+function saveCustomItems(s,items){const a=JSON.parse(localStorage.getItem('cancun-custom')||'{}');a[s]=items;localStorage.setItem('cancun-custom',JSON.stringify(a));}
+function addCustomItem(section,sid){const input=document.getElementById('input-'+sid),val=input.value.trim();if(!val)return;const customs=getCustomItems(section);if(!customs.includes(val)){customs.push(val);saveCustomItems(section,customs);}input.value='';rebuildSection(section,sid);}
+function removeCustomItem(section,sid,item){saveCustomItems(section,getCustomItems(section).filter(i=>i!==item));const saved=JSON.parse(localStorage.getItem('cancun-packing')||'{}');delete saved[section+'|'+item];localStorage.setItem('cancun-packing',JSON.stringify(saved));rebuildSection(section,sid);}
+function rebuildSection(section,sid){
+  const base=BASE_PACKING[section]||[],customs=getCustomItems(section),all=[...base,...customs];
+  const saved=JSON.parse(localStorage.getItem('cancun-packing')||'{}');
+  const checked=all.filter(i=>saved[section+'|'+i]).length;
+  document.getElementById('badge-'+sid).textContent=checked+'/'+all.length;
+  document.getElementById('prog-'+sid).style.width=Math.round(checked/all.length*100)+'%';
+  const grid=document.getElementById('grid-'+sid);grid.innerHTML='';
+  all.forEach(item=>{const key=section+'|'+item,isC=!!saved[key],isCu=customs.includes(item);const div=document.createElement('div');div.className='bring-item'+(isC?' checked':'')+(isCu?' custom-item':'');div.onclick=(e)=>{if(e.target.classList.contains('remove-btn'))return;toggleBring(div,key,sid);};div.innerHTML=`<div class="bring-check">${isC?'✓':''}</div><span>${item}</span>${isCu?`<button class="remove-btn" onclick="removeCustomItem('${section.replace(/'/g,"\\'")}','${sid}','${item.replace(/'/g,"\\'")}')">✕</button>`:''}`;grid.appendChild(div);});
+}
+function buildPacking(){
+  const container=document.getElementById('packing-container');
+  Object.entries(BASE_PACKING).forEach(([section,base])=>{
+    const sid=btoa(encodeURIComponent(section)).replace(/[^a-zA-Z0-9]/g,'');
+    const customs=getCustomItems(section),all=[...base,...customs];
+    const saved=JSON.parse(localStorage.getItem('cancun-packing')||'{}');
+    const checked=all.filter(i=>saved[section+'|'+i]).length;
+    const el=document.createElement('div');el.className='day-card';el.style.marginBottom='16px';
+    el.innerHTML=`<div class="section-label">${section} <span class="count-badge" id="badge-${sid}">${checked}/${all.length}</span></div><div class="progress-bar"><div class="progress-fill" id="prog-${sid}" style="width:${Math.round(checked/all.length*100)}%"></div></div><div class="bring-grid" id="grid-${sid}"></div><div class="add-item-row"><input type="text" id="input-${sid}" placeholder="Add an item..." onkeydown="if(event.key==='Enter')addCustomItem('${section.replace(/'/g,"\\'")}','${sid}')"><button class="add-btn" onclick="addCustomItem('${section.replace(/'/g,"\\'")}','${sid}')">+ Add</button></div>`;
+    container.appendChild(el);
+    all.forEach(item=>{const key=section+'|'+item,isC=!!saved[key],isCu=customs.includes(item);const div=document.createElement('div');div.className='bring-item'+(isC?' checked':'')+(isCu?' custom-item':'');div.onclick=(e)=>{if(e.target.classList.contains('remove-btn'))return;toggleBring(div,key,sid);};div.innerHTML=`<div class="bring-check">${isC?'✓':''}</div><span>${item}</span>${isCu?`<button class="remove-btn" onclick="removeCustomItem('${section.replace(/'/g,"\\'")}','${sid}','${item.replace(/'/g,"\\'")}')">✕</button>`:''}`;document.getElementById('grid-'+sid).appendChild(div);});
+  });
+}
+function toggleBring(el,key,sid){
+  const saved=JSON.parse(localStorage.getItem('cancun-packing')||'{}');
+  if(el.classList.contains('checked')){el.classList.remove('checked');el.querySelector('.bring-check').textContent='';delete saved[key];}else{el.classList.add('checked');el.querySelector('.bring-check').textContent='✓';saved[key]=true;}
+  localStorage.setItem('cancun-packing',JSON.stringify(saved));
+  const section=Object.keys(BASE_PACKING).find(s=>btoa(encodeURIComponent(s)).replace(/[^a-zA-Z0-9]/g,'')=== sid)||'';
+  const all=[...(BASE_PACKING[section]||[]),...getCustomItems(section)];
+  const savedNow=JSON.parse(localStorage.getItem('cancun-packing')||'{}');
+  const cn=all.filter(i=>savedNow[section+'|'+i]).length;
+  document.getElementById('badge-'+sid).textContent=cn+'/'+all.length;
+  document.getElementById('prog-'+sid).style.width=Math.round(cn/all.length*100)+'%';
+}
+
+const TIPS=[
+  {icon:'🔥',name:'Xplor Fuego',date:'Sun Jun 21 · 5:30–10:30pm',tips:['Night-time version — ATVs, zip lines, and underground rafts after dark.','Troglodita buffet is included — eat before you zip.','Bring a change of clothes — you WILL get soaked on the underground river.','No professional cameras on rides; keep the GoPro in waterproof mode.']},
+  {icon:'🌿',name:'Xenotes Park',date:'Mon Jun 22 · 8:40am–5:30pm',tips:['Four distinct cenotes — zip, kayak, snorkel, rappel. Pace yourself.','No alcohol served — but the jungle picnic is legit.','Water temp is cooler than the sea; a rash guard helps. Closed-toe shoes required.','Small group tour vibe with a guide the whole time.']},
+  {icon:'🎡',name:'Xplor or Xcaret',date:'Tue Jun 23 · Optional',tips:['Xplor daytime: unlimited food and drinks including booze — better value.','Xcaret: cultural shows, river, aquarium — 1 meal, no alcohol. More low-key.','Vote that morning based on energy levels.']},
+  {icon:'🌊',name:'Xel-Há',date:'Wed Jun 24 · 9am–5:30pm',tips:['All-inclusive snorkel park — food, drinks, equipment included.','Go early — fish are most active in the morning.','Reef-safe sunscreen ONLY — they\'re strict about this.','Cliff jumping area is a highlight — totally optional.']},
+  {icon:'🎉',name:'Xoximilco',date:'Sat Jun 20 · 6–12:30am',tips:['Festive boat party on the canals — mariachi, food, drinks.','Dress colorfully — the photos look way better.','Pace yourself on drinks early; it\'s a long night on a boat.']},
+  {icon:'🎶',name:'El Deseo Speakeasy',date:'Fri Jun 19 · Wed Jun 24 · Thu Jun 25',tips:['Inside Xcaret Arte — no Uber needed, just walk back.','Hidden entrance; ask staff if you can\'t find it.','Smart casual dress code minimum — they do turn people away.','Gets busy after midnight; earlier is more chill.']},
+];
+function buildTips(){const c=document.getElementById('tips-container');TIPS.forEach(p=>{const card=document.createElement('div');card.className='tip-card';card.innerHTML=`<div class="tip-header"><div class="tip-header-icon">${p.icon}</div><div><div class="tip-header-name">${p.name}</div><div class="tip-header-sub">${p.date}</div></div></div><div class="tip-body">${p.tips.map(t=>`<div class="tip-row"><div class="tip-bullet">›</div><div>${t}</div></div>`).join('')}</div>`;c.appendChild(card);});}
+
+function buildResort(){
+  const rate=FX_RATE;
+  document.getElementById('resort-container').innerHTML=`
+    <div class="info-strip"><div style="font-size:20px;color:rgba(255,255,255,0.7)">🏨</div><div class="info-strip-text"><strong>Xcaret Arte</strong> — adults-only all-inclusive. Food, drinks, shows, beach all included. Tip in cash.</div></div>
+    <div class="fx-bar"><div class="fx-icon">💱</div><div class="fx-main"><div class="fx-rate">$1 USD = ${rate.toFixed(2)} MXN</div><div class="fx-sub">Mid-market rate as of Jun 9, 2026 · exchange booth rates will be lower</div><div class="fx-pills"><div class="fx-pill">$1 tip = <span>~${rate.toFixed(0)} MXN</span></div><div class="fx-pill">$5 = <span>~${(rate*5).toFixed(0)} MXN</span></div><div class="fx-pill">$20 = <span>~${(rate*20).toFixed(0)} MXN</span></div><div class="fx-pill">$50 = <span>~${(rate*50).toFixed(0)} MXN</span></div><div class="fx-pill">$100 = <span>~${(rate*100).toFixed(0)} MXN</span></div></div></div></div>
+    <div class="day-card" style="margin-bottom:16px"><div class="section-label">Restaurants</div><div style="padding:4px 0 12px;">${[{n:'Mercado San Juan',i:'Buffet, casual, open longest hours'},{n:'Cayuco',i:'Buffet option, good for groups'},{n:'Cantina',i:'Mexican, lively atmosphere'},{n:'Tah-Xido',i:'Teppanyaki · Asian fusion — book at check-in!'},{n:'Encanta',i:'8-course fine dining — book at check-in!'},{n:'Arenal',i:'Thu dinner · reserve ahead'}].map(r=>`<div class="tip-row" style="padding:9px 16px;"><div class="tip-bullet">›</div><div><strong>${r.n}</strong> — ${r.i}</div></div>`).join('')}</div></div>
+    <div class="day-card"><div class="section-label">Good to know</div><div style="padding:4px 0 12px;">${[{e:'🏖️',l:'Beach & pool',n:'All-inclusive — chairs, towels, service included'},{e:'🎭',l:'Evening shows',n:'Check daily schedule at concierge desk'},{e:'🍹',l:'Drinks',n:'Unlimited at resort bars — tip 1–2 USD (~17–35 MXN)'},{e:'📱',l:'WiFi',n:'Available throughout — ask front desk for code'},{e:'🏥',l:'Medical',n:'Nurse on site 24/7; nearest hospital ~20 min'},{e:'💰',l:'Tipping',n:"1–2 USD per drink/service (~17–35 MXN at today's rate)"}].map(r=>`<div class="tip-row" style="padding:9px 16px;"><div style="font-size:18px;flex-shrink:0">${r.e}</div><div><strong>${r.l}</strong> — ${r.n}</div></div>`).join('')}</div></div>`;
+}
+
+function switchView(name,btn){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById('view-'+name).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
+
+buildCountdown();buildDays();buildReservations();buildPacking();buildTips();buildResort();
+</script>
+</body>
+</html>
