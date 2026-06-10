@@ -400,16 +400,16 @@
 </div>
 
 <div class="nav">
-  <button class="nav-btn active" onclick="switchView('itinerary',this)">Itinerary</button>
-  <button class="nav-btn" onclick="switchView('reservations',this)">Reservations</button>
-  <button class="nav-btn" onclick="switchView('flights',this)">Flights</button>
-  <button class="nav-btn" onclick="switchView('map',this)">Map</button>
-  <button class="nav-btn" onclick="switchView('packing',this)">Packing</button>
-  <button class="nav-btn" onclick="switchView('tips',this)">Park Tips</button>
-  <button class="nav-btn" onclick="switchView('resort',this)">Resort</button>
-  <button class="nav-btn" onclick="switchView('depart',this)">Departure</button>
+  <button class="nav-btn active" onclick="switchView('itinerary',this)">📅 Itinerary</button>
   <button class="nav-btn" onclick="switchView('drinks',this)">🍋 Drinks</button>
-  <button class="nav-btn" onclick="switchView('feedback',this)">Feedback</button>
+  <button class="nav-btn" onclick="switchView('map',this)">🗺️ Map</button>
+  <button class="nav-btn" onclick="switchView('tips',this)">🎡 Park Tips</button>
+  <button class="nav-btn" onclick="switchView('resort',this)">🏨 Resort</button>
+  <button class="nav-btn" onclick="switchView('reservations',this)">📋 Reservations</button>
+  <button class="nav-btn" onclick="switchView('flights',this)">✈️ Flights</button>
+  <button class="nav-btn" onclick="switchView('packing',this)">🎒 Packing</button>
+  <button class="nav-btn" onclick="switchView('depart',this)">🧳 Departure</button>
+  <button class="nav-btn" onclick="switchView('feedback',this)">💬 Feedback</button>
   <button id="theme-fab" class="theme-fab" onclick="cycleTheme()">☀️ Classic</button>
 </div>
 
@@ -966,17 +966,30 @@ function renderCounters(){
     </div>`;
 }
 
+function getCustomDrinks(){return JSON.parse(localStorage.getItem('cancun-custom-drinks')||'[]');}
 function voteForDrink(id){
   localStorage.setItem('cancun-drink-vote',id);
   renderDrinkVote();
+}
+function addCustomDrink(){
+  const input=document.getElementById('custom-drink-input');
+  const val=input.value.trim();
+  if(!val)return;
+  const customs=getCustomDrinks();
+  const id='custom-'+Date.now();
+  customs.push({id,icon:'🍸',name:val,desc:'Custom nomination'});
+  localStorage.setItem('cancun-custom-drinks',JSON.stringify(customs));
+  input.value='';
+  voteForDrink(id);
 }
 function renderDrinkVote(){
   const saved=localStorage.getItem('cancun-drink-vote');
   const el=document.getElementById('drinks-vote');
   if(!el)return;
+  const allOptions=[...DRINK_VOTE_OPTIONS,...getCustomDrinks()];
   el.innerHTML=`
     <div class="drink-vote-grid">
-      ${DRINK_VOTE_OPTIONS.map(o=>`
+      ${allOptions.map(o=>`
         <div class="drink-vote-opt${saved===o.id?' voted':''}" onclick="voteForDrink('${o.id}')">
           <div class="dvo-icon">${o.icon}${o.champ?' 🏆':''}</div>
           <div class="dvo-name">${o.name}</div>
@@ -984,7 +997,12 @@ function renderDrinkVote(){
           ${saved===o.id?'<div class="dvo-check">✓ Your vote</div>':''}
         </div>`).join('')}
     </div>
-    <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);padding:0 16px 12px;text-align:right;">${saved?'tap to change':'tap to vote'}</div>`;
+    <div style="padding:8px 16px 14px;border-top:0.5px solid var(--border);display:flex;gap:8px;align-items:center;">
+      <input id="custom-drink-input" type="text" placeholder="Nominate your own drink…" onkeydown="if(event.key==='Enter')addCustomDrink()"
+        style="flex:1;padding:8px 10px;border-radius:8px;border:0.5px solid var(--border);background:var(--sand);font-family:'Georgia',serif;font-size:13px;color:var(--text);outline:none;">
+      <button onclick="addCustomDrink()" style="padding:8px 14px;background:var(--teal);border:none;border-radius:8px;color:white;font-family:'Courier New',monospace;font-size:11px;cursor:pointer;white-space:nowrap;">+ Nominate</button>
+    </div>
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);padding:0 16px 10px;text-align:right;">${saved?'tap to change · nominations saved on this device':'tap to vote'}</div>`;
 }
 
 function buildDrinks(){
