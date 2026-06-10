@@ -37,10 +37,14 @@ export default {
     // ── POST /api/vote ──────────────────────────────────────────────────────
     if (url.pathname === '/api/vote' && request.method === 'POST') {
       const { type, person, choice } = await request.json()
-      if (!type || !person || !choice) return json({ error: 'missing fields' }, 400)
+      if (!type || !person) return json({ error: 'missing fields' }, 400)
       const key = type + '_votes'
       const existing = JSON.parse(await env.VOTES.get(key) || '{}')
-      existing[person] = choice
+      if (choice === null) {
+        delete existing[person]   // null choice = remove vote
+      } else {
+        existing[person] = choice
+      }
       await env.VOTES.put(key, JSON.stringify(existing))
       return json({ ok: true })
     }

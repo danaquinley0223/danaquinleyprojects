@@ -719,7 +719,10 @@ function buildVoteCard(){
             ${myVote===o.id?`<div style="font-family:'Courier New',monospace;font-size:9px;color:var(--teal);font-weight:700;margin-top:4px;">✓ Your pick</div>`:''}
           </div>`).join('')}
       </div>
-      <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);margin-top:8px;text-align:right;">${me?'tap to change · shared across devices':'pick who you are above to vote'}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
+        <span style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);">${me?'shared across devices':'pick who you are above to vote'}</span>
+        ${myVote?`<button onclick="removeVote('tuesday')" style="font-family:'Courier New',monospace;font-size:10px;color:var(--coral);background:none;border:none;cursor:pointer;padding:0;">Remove my vote</button>`:''}
+      </div>
     </div>`;
   renderPersonPicker('tuesday-who');
 }
@@ -963,10 +966,11 @@ async function postVote(type,choice){
   const me=getMe();
   if(!me)return;
   sharedVotes[type]=sharedVotes[type]||{};
-  sharedVotes[type][me]=choice;
+  if(choice===null){delete sharedVotes[type][me];}else{sharedVotes[type][me]=choice;}
   refreshAllVotes();
   try{await fetch('/api/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type,person:me,choice})});}catch(e){}
 }
+function removeVote(type){postVote(type,null);}
 async function postCustomDrink(name){
   const me=getMe();
   try{
@@ -1086,7 +1090,10 @@ function renderDrinkVote(){
         style="flex:1;padding:8px 10px;border-radius:8px;border:0.5px solid var(--border);background:var(--sand);font-family:'Georgia',serif;font-size:13px;color:var(--text);outline:none;">
       <button onclick="addCustomDrink()" style="padding:8px 14px;background:var(--teal);border:none;border-radius:8px;color:white;font-family:'Courier New',monospace;font-size:11px;cursor:pointer;white-space:nowrap;">+ Nominate</button>
     </div>
-    <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);padding:0 16px 10px;text-align:right;">${me?'tap any option to vote · shared across all devices':'pick who you are above to vote'}</div>`;
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:0 16px 10px;">
+      <span style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);">${me?'shared across all devices':'pick who you are above to vote'}</span>
+      ${myVote?`<button onclick="removeVote('drink')" style="font-family:'Courier New',monospace;font-size:10px;color:var(--coral);background:none;border:none;cursor:pointer;padding:0;">Remove my vote</button>`:''}
+    </div>`;
 }
 
 function buildDrinks(){
