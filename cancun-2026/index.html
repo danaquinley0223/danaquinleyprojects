@@ -211,20 +211,28 @@
   .seat-name { font-size:11px; font-weight:600; color:var(--text); }
   .seat-num { font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); }
   /* seat map */
-  .leg-sm { border-top:0.5px solid var(--border); padding:10px 16px 4px; }
-  .leg-sm-title { font-family:'Courier New',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px; }
-  .leg-sm-grid { display:grid; grid-template-columns:26px repeat(3,30px) 10px repeat(3,30px); gap:3px; align-items:center; margin-bottom:3px; }
-  .leg-sm-head { font-family:'Courier New',monospace; font-size:9px; letter-spacing:1px; color:var(--text-muted); text-align:center; }
-  .leg-sm-num { font-family:'Courier New',monospace; font-size:9px; color:var(--text-muted); text-align:right; padding-right:3px; }
-  .leg-sm-seat { width:30px; height:30px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:'Courier New',monospace; font-size:9px; font-weight:700; }
-  .leg-sm-empty { background:rgba(28,43,53,0.04); border:0.5px solid var(--border); }
-  .leg-sm-dana { background:#E3F5F2; color:#1A7A6E; }
-  .leg-sm-leia { background:#FDF0EB; color:#E8623A; }
-  .leg-sm-diana { background:#E6F1FB; color:#185FA5; }
-  .leg-sm-miguel { background:#FAEEDA; color:#854F0B; }
-  .leg-sm-gap { font-family:'Courier New',monospace; font-size:9px; color:var(--text-muted); text-align:center; padding:2px 0; letter-spacing:2px; grid-column:1/9; }
-  .leg-sm-tbd-row { display:grid; grid-template-columns:26px 1fr; gap:3px; align-items:center; margin-bottom:3px; }
-  .leg-sm-tbd-seats { display:flex; gap:3px; align-items:center; }
+  .leg-sm { border-top:0.5px solid var(--border); padding:12px 16px 8px; }
+  .leg-sm-title { font-family:'Courier New',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
+  .leg-sm-grid { display:grid; grid-template-columns:30px repeat(3,34px) 16px repeat(3,34px); gap:4px; align-items:center; margin-bottom:4px; }
+  .leg-sm-head { font-family:'Courier New',monospace; font-size:10px; letter-spacing:1px; color:var(--text-muted); text-align:center; font-weight:700; }
+  .leg-sm-num { font-family:'Courier New',monospace; font-size:10px; color:var(--text-muted); text-align:right; padding-right:4px; line-height:34px; }
+  .leg-sm-num.exit { color:var(--coral); }
+  .leg-sm-seat { width:34px; height:34px; border-radius:8px 8px 5px 5px; display:flex; align-items:center; justify-content:center; font-family:'Courier New',monospace; font-size:9px; font-weight:700; position:relative; }
+  .leg-sm-seat::before { content:''; position:absolute; top:0; left:0; right:0; height:7px; border-radius:8px 8px 0 0; background:rgba(0,0,0,0.08); }
+  .leg-sm-empty { background:rgba(43,168,152,0.08); border:0.5px solid rgba(43,168,152,0.15); }
+  .leg-sm-none { background:transparent; }
+  .leg-sm-dana { background:#E3F5F2; color:#1A7A6E; border:0.5px solid rgba(26,122,110,0.25); }
+  .leg-sm-dana::before { background:rgba(26,122,110,0.15); }
+  .leg-sm-leia { background:#FDF0EB; color:#E8623A; border:0.5px solid rgba(232,98,58,0.25); }
+  .leg-sm-leia::before { background:rgba(232,98,58,0.15); }
+  .leg-sm-diana { background:#E6F1FB; color:#185FA5; border:0.5px solid rgba(24,95,165,0.25); }
+  .leg-sm-diana::before { background:rgba(24,95,165,0.15); }
+  .leg-sm-miguel { background:#FAEEDA; color:#854F0B; border:0.5px solid rgba(133,79,11,0.25); }
+  .leg-sm-miguel::before { background:rgba(133,79,11,0.1); }
+  .leg-sm-gap { font-family:'Courier New',monospace; font-size:9px; color:var(--text-muted); text-align:center; padding:2px 0; letter-spacing:2px; grid-column:1/9; opacity:0.5; }
+  .leg-sm-exit-bar { grid-column:2/9; font-family:'Courier New',monospace; font-size:9px; color:var(--coral); letter-spacing:1px; padding:1px 0 3px; border-top:1px dashed rgba(232,98,58,0.4); text-align:center; }
+  .leg-sm-tbd-row { display:grid; grid-template-columns:30px 1fr; gap:4px; align-items:center; margin-bottom:4px; }
+  .leg-sm-tbd-seats { display:flex; gap:4px; align-items:center; }
   .leg-sm-tbd-txt { font-family:'Courier New',monospace; font-size:9px; color:var(--text-muted); margin-left:4px; }
 
   .map-outer { background:var(--white); border-radius:var(--radius); border:0.5px solid var(--border); overflow:hidden; margin-bottom:16px; }
@@ -695,21 +703,28 @@ const SEAT_MAPS={
   'den-smf':{rows:[
     {n:9,seats:{A:null,B:{i:'DL',p:'diana'},C:{i:'MD',p:'miguel'},D:null,E:null,F:null}},
     {n:'···',gap:true},
-    {n:14,seats:{A:null,B:{i:'DQ',p:'dana'},C:{i:'LG',p:'leia'},D:null,E:null,F:null}},
+    {n:14,exit:true,seats:{A:'none',B:{i:'DQ',p:'dana'},C:{i:'LG',p:'leia'},D:null,E:null,F:null}},
   ]},
 };
 
 function renderSeatMap(id){
   const map=SEAT_MAPS[id];
-  const seat=(s)=>s?`<div class="leg-sm-seat leg-sm-${s.p}">${s.i}</div>`:`<div class="leg-sm-seat leg-sm-empty"></div>`;
+  // s=null → empty seat, s='none' → no seat (door/exit), s={i,p} → person
+  const seat=(s)=>{
+    if(s==='none') return `<div class="leg-sm-seat leg-sm-none"></div>`;
+    if(!s) return `<div class="leg-sm-seat leg-sm-empty"></div>`;
+    return `<div class="leg-sm-seat leg-sm-${s.p}">${s.i}</div>`;
+  };
   let rows='';
   map.rows.forEach(row=>{
     if(row.gap){rows+=`<div class="leg-sm-grid"><div class="leg-sm-gap">· · ·</div></div>`;return;}
     if(row.tbd){rows+=`<div class="leg-sm-tbd-row"><div class="leg-sm-num">${row.n}</div><div class="leg-sm-tbd-seats">${row.tbd.map(p=>`<div class="leg-sm-seat leg-sm-${p.p}">${p.i}</div>`).join('')}<span class="leg-sm-tbd-txt">seats TBD</span></div></div>`;return;}
     const s=row.seats;
-    rows+=`<div class="leg-sm-grid"><div class="leg-sm-num">${row.n}</div>${seat(s.A)}${seat(s.B)}${seat(s.C)}<div></div>${seat(s.D)}${seat(s.E)}${seat(s.F)}</div>`;
+    const numClass=row.exit?'leg-sm-num exit':'leg-sm-num';
+    if(row.exit) rows+=`<div class="leg-sm-grid"><div class="leg-sm-exit-bar">EXIT ROW</div></div>`;
+    rows+=`<div class="leg-sm-grid"><div class="${numClass}">${row.n}</div>${seat(s.A)}${seat(s.B)}${seat(s.C)}<div></div>${seat(s.D)}${seat(s.E)}${seat(s.F)}</div>`;
   });
-  return `<div class="leg-sm"><div class="leg-sm-title">Seat layout</div><div class="leg-sm-grid leg-sm-head"><div></div><div>A</div><div>B</div><div>C</div><div></div><div>D</div><div>E</div><div>F</div></div>${rows}</div>`;
+  return `<div class="leg-sm"><div class="leg-sm-title">Seat layout — A B C ✈ D E F</div><div class="leg-sm-grid leg-sm-head"><div></div><div>A</div><div>B</div><div>C</div><div></div><div>D</div><div>E</div><div>F</div></div>${rows}</div>`;
 }
 
 function buildSeatMaps(){
