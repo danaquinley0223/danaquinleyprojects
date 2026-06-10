@@ -47,6 +47,9 @@
   .app-sub { font-family:'Courier New',monospace; font-size:10px; color:rgba(255,255,255,0.45); margin-top:2px; }
   .app-arrow { font-size:16px; color:rgba(255,255,255,0.4); }
   .hero-dates { display:inline-flex; gap:6px; align-items:center; background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:20px; padding:6px 16px; font-family:'Courier New',monospace; font-size:12px; color:rgba(255,255,255,0.7); position:relative; margin-top:6px; }
+  .hero-fx { position:relative; background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:10px; padding:10px 14px; margin:0 0 8px; }
+  .hero-fx-rate { font-family:'Courier New',monospace; font-size:11px; font-weight:700; color:var(--teal-mid); margin-bottom:8px; letter-spacing:0.5px; }
+  .hero-fx-inputs { display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:center; }
 
   .nav { background:var(--white); border-bottom:0.5px solid var(--border); display:flex; overflow-x:auto; scrollbar-width:none; position:sticky; top:0; z-index:100; }
   .nav::-webkit-scrollbar { display:none; }
@@ -290,6 +293,14 @@
     </div>
     <div class="app-arrow">↗</div>
   </a>
+  <div class="hero-fx">
+    <div class="hero-fx-rate">💱 $1 USD = 17.44 MXN</div>
+    <div class="hero-fx-inputs">
+      <div class="fx-input-wrap"><span class="fx-currency-label">USD $</span><input id="conv-usd" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('usd')"></div>
+      <div style="font-family:'Courier New',monospace;font-size:13px;color:var(--teal-mid);">⇄</div>
+      <div class="fx-input-wrap"><span class="fx-currency-label">MXN $</span><input id="conv-mxn" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('mxn')"></div>
+    </div>
+  </div>
   <div class="hero-dates">✈ Jun 19 &nbsp;—&nbsp; Jun 26, 2026</div>
 </div>
 
@@ -672,12 +683,7 @@ function buildResort(){
   document.getElementById('resort-container').innerHTML=`
     <div class="info-strip"><div style="font-size:20px;color:rgba(255,255,255,0.7)">🏨</div><div class="info-strip-text"><strong>Xcaret Arte</strong> — adults-only all-inclusive. Food, drinks, shows, beach all included. Tip in cash.</div></div>
     <div class="fx-bar">
-      <div style="display:flex;align-items:center;gap:14px"><div class="fx-icon">💱</div><div><div class="fx-rate">$1 USD = ${rate.toFixed(2)} MXN</div><div class="fx-sub">Mid-market rate · Jun 9, 2026</div></div></div>
-      <div class="fx-converter">
-        <div class="fx-input-wrap"><span class="fx-currency-label">USD $</span><input id="conv-usd" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('usd')"></div>
-        <div style="font-family:'Courier New',monospace;font-size:14px;color:var(--teal-mid);text-align:center;">⇄</div>
-        <div class="fx-input-wrap"><span class="fx-currency-label">MXN $</span><input id="conv-mxn" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('mxn')"></div>
-      </div>
+      <div style="display:flex;align-items:center;gap:14px"><div class="fx-icon">💱</div><div><div class="fx-rate">$1 USD = ${rate.toFixed(2)} MXN</div><div class="fx-sub">Mid-market rate · Jun 9, 2026 · converter on the home screen</div></div></div>
       <div class="fx-pills" style="margin-top:10px;"><div class="fx-pill">$1 tip = <span>~${rate.toFixed(0)} MXN</span></div><div class="fx-pill">$5 = <span>~${(rate*5).toFixed(0)} MXN</span></div><div class="fx-pill">$20 = <span>~${(rate*20).toFixed(0)} MXN</span></div><div class="fx-pill">$50 = <span>~${(rate*50).toFixed(0)} MXN</span></div><div class="fx-pill">$100 = <span>~${(rate*100).toFixed(0)} MXN</span></div></div>
     </div>
     <div class="day-card" style="margin-bottom:16px"><div class="section-label">Restaurants</div><div style="padding:4px 0 12px;">${[{n:'Mercado San Juan',i:'Buffet, casual, open longest hours'},{n:'Cayuco',i:'Buffet option, good for groups'},{n:'Cantina',i:'Mexican, lively atmosphere'},{n:'Tah-Xido',i:'Teppanyaki · Asian fusion — book at check-in!'},{n:'Encanta',i:'8-course fine dining — book at check-in!'},{n:'Arenal',i:'Thu dinner · reserve ahead'}].map(r=>`<div class="tip-row" style="padding:9px 16px;"><div class="tip-bullet">›</div><div><strong>${r.n}</strong> — ${r.i}</div></div>`).join('')}</div></div>
