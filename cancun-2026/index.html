@@ -381,7 +381,6 @@
       <div style="font-family:'Courier New',monospace;font-size:11px;color:rgba(255,255,255,0.3);padding:6px 0 2px;">Fetching from Open-Meteo…</div>
     </div>
   </div>
-  <div id="vote-card"></div>
   <div id="days-container"></div>
 </div>
 
@@ -620,7 +619,8 @@ function buildDays(){
       const nameHtml=ev.url?`<a href="${ev.url}" target="_blank" class="park-name-link">${ev.name}</a>`:ev.name;
       return `<div class="event"><div class="event-time">${ev.time||''}</div><div class="event-icon">${ev.icon}</div><div class="event-info"><div class="event-name">${nameHtml}</div>${ev.note?`<div class="event-note">${ev.note}</div>`:''}${ev.video?`<a href="${ev.video.url}" target="_blank" class="event-video-link">${ev.video.label}</a>`:''}${ev.tag?`<span class="tag tag-${ev.tag}">${tagMap[ev.tag]}</span>`:''}</div></div>`;
     }).join('');
-    card.innerHTML=`<div class="day-header" onclick="toggleDay(${i})"><div class="day-num" style="background:${day.color};color:${day.textColor}"><span class="dn">${day.date.split(' ')[1]}</span><span class="dm">${day.date.split(' ')[0]}</span></div><div class="day-meta"><div class="day-name">${day.dayName} — ${day.label}</div><div class="day-preview">${tags.map(t=>tagMap[t]).join(' · ')||'Departure day'}</div></div><div class="day-chevron">⌄</div></div><div class="day-body"><div class="event-list">${eventsHtml}</div></div>`;
+    const voteSlot = i===4 ? '<div id="vote-card"></div>' : '';
+    card.innerHTML=`<div class="day-header" onclick="toggleDay(${i})"><div class="day-num" style="background:${day.color};color:${day.textColor}"><span class="dn">${day.date.split(' ')[1]}</span><span class="dm">${day.date.split(' ')[0]}</span></div><div class="day-meta"><div class="day-name">${day.dayName} — ${day.label}</div><div class="day-preview">${tags.map(t=>tagMap[t]).join(' · ')||'Departure day'}</div></div><div class="day-chevron">⌄</div></div><div class="day-body"><div class="event-list">${eventsHtml}</div>${voteSlot}</div>`;
     container.appendChild(card);
   });
   const now=new Date(),start=new Date('2026-06-19');
@@ -635,16 +635,22 @@ const VOTE_OPTIONS=[
   {id:'xcaret',icon:'🐠',label:'Xcaret',desc:'Cultural park · river · aquarium · wildlife · 1 included meal'},
 ];
 function buildVoteCard(){
+  const el=document.getElementById('vote-card');
+  if(!el)return;
   const saved=localStorage.getItem('cancun-vote');
-  document.getElementById('vote-card').innerHTML=`
-    <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
-      <div style="background:var(--night);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
-        <div><div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">📊 Tue Jun 23 — your pick</div><div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Xplor or Xcaret?</div></div>
-        <div style="font-family:'Courier New',monospace;font-size:10px;color:rgba(255,255,255,0.35);">${saved?'tap to change':'cast your vote'}</div>
+  el.innerHTML=`
+    <div style="border-top:0.5px solid var(--border);padding:12px 16px 14px;">
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:10px;">📊 Your pick — Xplor or Xcaret?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        ${VOTE_OPTIONS.map(o=>`
+          <div onclick="castVote('${o.id}')" style="cursor:pointer;padding:12px 10px;text-align:center;border-radius:10px;border:1.5px solid ${saved===o.id?'var(--teal)':'var(--border)'};background:${saved===o.id?'var(--teal-light)':'var(--sand)'};transition:all 0.15s;">
+            <div style="font-size:26px;margin-bottom:4px;">${o.icon}</div>
+            <div style="font-size:13px;font-weight:700;color:${saved===o.id?'var(--teal)':'var(--text)'};">${o.label}</div>
+            <div style="font-family:'Courier New',monospace;font-size:9px;color:${saved===o.id?'var(--teal)':'var(--text-muted)'};margin-top:3px;line-height:1.4;">${o.desc}</div>
+            ${saved===o.id?`<div style="font-family:'Courier New',monospace;font-size:9px;color:var(--teal);font-weight:700;margin-top:5px;">✓ Your pick</div>`:''}
+          </div>`).join('')}
       </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;">
-        ${VOTE_OPTIONS.map((o,i)=>`<div class="vote-option${saved===o.id?' voted':''}" onclick="castVote('${o.id}')" style="border-right:${i===0?'0.5px solid var(--border)':'none'};"><div class="vote-emoji">${o.icon}</div><div class="vote-label">${o.label}</div><div class="vote-desc">${o.desc}</div>${saved===o.id?'<div class="vote-badge">✓ Your pick</div>':''}</div>`).join('')}
-      </div>
+      <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);margin-top:8px;text-align:right;">${saved?'tap to change':'tap to vote'}</div>
     </div>`;
 }
 function castVote(id){localStorage.setItem('cancun-vote',id);buildVoteCard();}
