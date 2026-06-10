@@ -314,6 +314,16 @@
   .feedback-btn-email { background:var(--teal); }
   .feedback-btn-sms { background:var(--night); }
 
+  /* person picker */
+  .person-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; padding:12px 16px 14px; }
+  .person-btn { padding:10px 4px; border-radius:8px; border:1.5px solid var(--border); background:var(--sand); cursor:pointer; text-align:center; transition:all 0.15s; }
+  .person-btn:hover { border-color:var(--teal-mid); }
+  .person-btn.selected { border-color:var(--teal); background:var(--teal-light); }
+  .person-btn-name { font-family:'Courier New',monospace; font-size:10px; color:var(--text-muted); margin-top:4px; }
+  .person-btn.selected .person-btn-name { color:var(--teal); }
+  .voter-row { display:flex; gap:3px; justify-content:center; flex-wrap:wrap; margin-top:5px; min-height:22px; }
+  .voter-pip { width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Courier New',monospace; font-size:8px; font-weight:700; flex-shrink:0; }
+
   /* drinks */
   .trophy-card { background:var(--night); border-radius:var(--radius); border:2px solid #C8A020; padding:20px 16px; text-align:center; margin-bottom:16px; position:relative; overflow:hidden; }
   .trophy-card::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(200,160,32,0.05) 20px,rgba(200,160,32,0.05) 40px); }
@@ -693,23 +703,30 @@ const VOTE_OPTIONS=[
 function buildVoteCard(){
   const el=document.getElementById('vote-card');
   if(!el)return;
-  const saved=localStorage.getItem('cancun-vote');
+  const me=getMe();
+  const myVote=me&&sharedVotes.tuesday?sharedVotes.tuesday[me]:null;
   el.innerHTML=`
+    <div id="tuesday-who"></div>
     <div style="border-top:0.5px solid var(--border);padding:12px 16px 14px;">
-      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:10px;">📊 Your pick — Xplor or Xcaret?</div>
+      <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);margin-bottom:10px;">📊 Xplor or Xcaret?</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
         ${VOTE_OPTIONS.map(o=>`
-          <div onclick="castVote('${o.id}')" style="cursor:pointer;padding:12px 10px;text-align:center;border-radius:10px;border:1.5px solid ${saved===o.id?'var(--teal)':'var(--border)'};background:${saved===o.id?'var(--teal-light)':'var(--sand)'};transition:all 0.15s;">
+          <div onclick="castVote('${o.id}')" style="cursor:pointer;padding:12px 10px;text-align:center;border-radius:10px;border:1.5px solid ${myVote===o.id?'var(--teal)':'var(--border)'};background:${myVote===o.id?'var(--teal-light)':'var(--sand)'};transition:all 0.15s;">
             <div style="font-size:26px;margin-bottom:4px;">${o.icon}</div>
-            <div style="font-size:13px;font-weight:700;color:${saved===o.id?'var(--teal)':'var(--text)'};">${o.label}</div>
-            <div style="font-family:'Courier New',monospace;font-size:9px;color:${saved===o.id?'var(--teal)':'var(--text-muted)'};margin-top:3px;line-height:1.4;">${o.desc}</div>
-            ${saved===o.id?`<div style="font-family:'Courier New',monospace;font-size:9px;color:var(--teal);font-weight:700;margin-top:5px;">✓ Your pick</div>`:''}
+            <div style="font-size:13px;font-weight:700;color:${myVote===o.id?'var(--teal)':'var(--text)'};">${o.label}</div>
+            <div style="font-family:'Courier New',monospace;font-size:9px;color:${myVote===o.id?'var(--teal)':'var(--text-muted)'};margin-top:3px;line-height:1.4;">${o.desc}</div>
+            <div class="voter-row" style="margin-top:6px;">${voterPips('tuesday',o.id)}</div>
+            ${myVote===o.id?`<div style="font-family:'Courier New',monospace;font-size:9px;color:var(--teal);font-weight:700;margin-top:4px;">✓ Your pick</div>`:''}
           </div>`).join('')}
       </div>
-      <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);margin-top:8px;text-align:right;">${saved?'tap to change':'tap to vote'}</div>
+      <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);margin-top:8px;text-align:right;">${me?'tap to change · shared across devices':'pick who you are above to vote'}</div>
     </div>`;
+  renderPersonPicker('tuesday-who');
 }
-function castVote(id){localStorage.setItem('cancun-vote',id);buildVoteCard();}
+function castVote(id){
+  if(!getMe()){document.getElementById('tuesday-who')?.scrollIntoView({behavior:'smooth'});return;}
+  postVote('tuesday',id);
+}
 
 // ── Reservations ──────────────────────────────────────────────────────────────
 const RESERVATIONS=[
@@ -910,13 +927,72 @@ function sendFeedbackSMS(){const msg=document.getElementById('feedback-msg').val
 
 function switchView(name,btn){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById('view-'+name).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
 
-// ── Drinks ────────────────────────────────────────────────────────────────────
-const DRINKERS=[
+// ── Person identity ───────────────────────────────────────────────────────────
+const PEOPLE=[
   {id:'DQ',name:'Dana',cls:'dana'},
   {id:'LG',name:'Leia',cls:'leia'},
   {id:'DL',name:'Diana',cls:'diana'},
   {id:'MD',name:'Miguel',cls:'miguel'},
 ];
+function getMe(){return localStorage.getItem('cancun-person');}
+function setMe(id){localStorage.setItem('cancun-person',id);refreshAllVotes();}
+function clearMe(){localStorage.removeItem('cancun-person');refreshAllVotes();}
+
+function renderPersonPicker(containerId){
+  const el=document.getElementById(containerId);
+  if(!el)return;
+  const me=getMe();
+  if(me){
+    const p=PEOPLE.find(x=>x.id===me);
+    el.innerHTML=`<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:0.5px solid var(--border);"><div style="display:flex;align-items:center;gap:8px;"><div class="seat-avatar av-${p.cls}" style="width:26px;height:26px;font-size:9px;">${p.id}</div><span style="font-family:'Courier New',monospace;font-size:12px;color:var(--text-muted);">voting as <strong style="color:var(--text);">${p.name}</strong></span></div><button onclick="clearMe()" style="font-family:'Courier New',monospace;font-size:10px;color:var(--teal-mid);background:none;border:none;cursor:pointer;padding:0;">change</button></div>`;
+  } else {
+    el.innerHTML=`<div style="padding:12px 16px 0;"><div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Who are you?</div></div><div class="person-grid">${PEOPLE.map(p=>`<button class="person-btn" onclick="setMe('${p.id}')"><div class="seat-avatar av-${p.cls}" style="width:28px;height:28px;margin:0 auto;">${p.id}</div><div class="person-btn-name">${p.name}</div></button>`).join('')}</div>`;
+  }
+}
+
+// ── Shared votes (KV) ─────────────────────────────────────────────────────────
+let sharedVotes={tuesday:{},drink:{},customDrinks:[]};
+
+async function fetchSharedVotes(){
+  try{
+    const r=await fetch('/api/votes');
+    if(r.ok){sharedVotes=await r.json();refreshAllVotes();}
+  }catch(e){}
+}
+async function postVote(type,choice){
+  const me=getMe();
+  if(!me)return;
+  sharedVotes[type]=sharedVotes[type]||{};
+  sharedVotes[type][me]=choice;
+  refreshAllVotes();
+  try{await fetch('/api/vote',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type,person:me,choice})});}catch(e){}
+}
+async function postCustomDrink(name){
+  const me=getMe();
+  try{
+    const r=await fetch('/api/custom-drink',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,person:me})});
+    if(r.ok){
+      const d=await r.json();
+      sharedVotes.customDrinks=sharedVotes.customDrinks||[];
+      sharedVotes.customDrinks.push({id:d.id,icon:'🍸',name,desc:`Nominated by ${me||'someone'}`});
+      if(me){sharedVotes.drink=sharedVotes.drink||{};sharedVotes.drink[me]=d.id;}
+      refreshAllVotes();
+    }
+  }catch(e){}
+}
+function refreshAllVotes(){
+  renderPersonPicker('drinks-who');
+  renderPersonPicker('tuesday-who');
+  renderDrinkVote();
+  buildVoteCard();
+}
+function voterPips(type,optionId){
+  return PEOPLE.filter(p=>sharedVotes[type]&&sharedVotes[type][p.id]===optionId)
+    .map(p=>`<div class="voter-pip av-${p.cls}">${p.id}</div>`).join('');
+}
+
+// ── Drinks ────────────────────────────────────────────────────────────────────
+const DRINKERS=PEOPLE;
 const DRINK_VOTE_OPTIONS=[
   {id:'lemondrop',icon:'🍋',name:'Lemon Drop',desc:'Vodka · triple sec · fresh lemon · sugar rim',champ:true},
   {id:'margarita',icon:'🍹',name:'Margarita',desc:'Tequila · triple sec · lime — Mexico mandatory'},
@@ -977,35 +1053,32 @@ function renderCounters(){
     </div>`;
 }
 
-function getCustomDrinks(){return JSON.parse(localStorage.getItem('cancun-custom-drinks')||'[]');}
 function voteForDrink(id){
-  localStorage.setItem('cancun-drink-vote',id);
-  renderDrinkVote();
+  if(!getMe()){document.getElementById('drinks-who')?.scrollIntoView({behavior:'smooth'});return;}
+  postVote('drink',id);
 }
 function addCustomDrink(){
   const input=document.getElementById('custom-drink-input');
   const val=input.value.trim();
   if(!val)return;
-  const customs=getCustomDrinks();
-  const id='custom-'+Date.now();
-  customs.push({id,icon:'🍸',name:val,desc:'Custom nomination'});
-  localStorage.setItem('cancun-custom-drinks',JSON.stringify(customs));
   input.value='';
-  voteForDrink(id);
+  postCustomDrink(val);
 }
 function renderDrinkVote(){
-  const saved=localStorage.getItem('cancun-drink-vote');
   const el=document.getElementById('drinks-vote');
   if(!el)return;
-  const allOptions=[...DRINK_VOTE_OPTIONS,...getCustomDrinks()];
+  const me=getMe();
+  const myVote=me&&sharedVotes.drink?sharedVotes.drink[me]:null;
+  const allOptions=[...DRINK_VOTE_OPTIONS,...(sharedVotes.customDrinks||[])];
   el.innerHTML=`
     <div class="drink-vote-grid">
       ${allOptions.map(o=>`
-        <div class="drink-vote-opt${saved===o.id?' voted':''}" onclick="voteForDrink('${o.id}')">
+        <div class="drink-vote-opt${myVote===o.id?' voted':''}" onclick="voteForDrink('${o.id}')">
           <div class="dvo-icon">${o.icon}${o.champ?' 🏆':''}</div>
           <div class="dvo-name">${o.name}</div>
           <div class="dvo-desc">${o.desc}</div>
-          ${saved===o.id?'<div class="dvo-check">✓ Your vote</div>':''}
+          <div class="voter-row">${voterPips('drink',o.id)}</div>
+          ${myVote===o.id?'<div class="dvo-check">✓ Your vote</div>':''}
         </div>`).join('')}
     </div>
     <div style="padding:8px 16px 14px;border-top:0.5px solid var(--border);display:flex;gap:8px;align-items:center;">
@@ -1013,7 +1086,7 @@ function renderDrinkVote(){
         style="flex:1;padding:8px 10px;border-radius:8px;border:0.5px solid var(--border);background:var(--sand);font-family:'Georgia',serif;font-size:13px;color:var(--text);outline:none;">
       <button onclick="addCustomDrink()" style="padding:8px 14px;background:var(--teal);border:none;border-radius:8px;color:white;font-family:'Courier New',monospace;font-size:11px;cursor:pointer;white-space:nowrap;">+ Nominate</button>
     </div>
-    <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);padding:0 16px 10px;text-align:right;">${saved?'tap to change · nominations saved on this device':'tap to vote'}</div>`;
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);padding:0 16px 10px;text-align:right;">${me?'tap any option to vote · shared across all devices':'pick who you are above to vote'}</div>`;
 }
 
 function buildDrinks(){
@@ -1027,12 +1100,11 @@ function buildDrinks(){
       <div class="trophy-sub">Vodka · Triple Sec · Fresh Lemon · Sugar Rim<br>The drink that started it all. Can it defend its title?</div>
     </div>
     <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
-      <div style="background:var(--night);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
-        <div>
-          <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">📊 Vote</div>
-          <div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Drink of the Trip?</div>
-        </div>
+      <div style="background:var(--night);padding:12px 16px;">
+        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">📊 Vote</div>
+        <div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Drink of the Trip?</div>
       </div>
+      <div id="drinks-who"></div>
       <div id="drinks-vote"></div>
     </div>
     <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
@@ -1105,7 +1177,7 @@ function applyTheme(t){
   if(btn)btn.textContent=THEME_LABEL[t];
 }
 
-buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();buildDrinks();updateTimes();
+buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();buildDrinks();updateTimes();fetchSharedVotes();
 applyTheme(localStorage.getItem('cancun-theme')||'light');
 </script>
 </body>
