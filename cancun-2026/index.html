@@ -20,8 +20,58 @@
     --border: rgba(28,43,53,0.12);
     --radius: 12px;
   }
+  /* ── Dark theme ─────────────────────────────────────────────────────────── */
+  [data-theme="dark"] {
+    --sand: #0C1925;
+    --teal: #26A69A;
+    --teal-light: rgba(38,166,154,0.15);
+    --teal-mid: #4DB6AC;
+    --coral: #FF7043;
+    --coral-light: rgba(255,112,67,0.1);
+    --night: #050D16;
+    --night-mid: #0F2030;
+    --text: #C5D9E8;
+    --text-muted: #4E7A92;
+    --white: #101E2C;
+    --border: rgba(197,217,232,0.08);
+  }
+  /* ── Vibrant / Mexico theme ──────────────────────────────────────────────── */
+  [data-theme="vibrant"] {
+    --sand: #FFF7ED;
+    --teal: #0097A7;
+    --teal-light: #E0F7FA;
+    --teal-mid: #00BCD4;
+    --coral: #FF5722;
+    --coral-light: #FBE9E7;
+    --night: #1A0050;
+    --night-mid: #2D0E6E;
+    --text: #1A0050;
+    --text-muted: #6040A0;
+    --white: #FFFFFF;
+    --border: rgba(26,0,80,0.1);
+  }
+  [data-theme="vibrant"] .hero::before {
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,200,0,0.07) 20px, rgba(255,200,0,0.07) 40px);
+  }
+  /* dark-mode border fixes (hardcoded rgba won't flip automatically) */
+  [data-theme="dark"] .event,
+  [data-theme="dark"] .tip-row,
+  [data-theme="dark"] .res-item,
+  [data-theme="dark"] .flight-leg,
+  [data-theme="dark"] .depart-item,
+  [data-theme="dark"] .bring-item { border-color: rgba(197,217,232,0.06); }
+  [data-theme="dark"] .event { border-bottom-color: rgba(197,217,232,0.06); }
+  [data-theme="dark"] .tip-row { border-bottom-color: rgba(197,217,232,0.06); }
+  [data-theme="dark"] .res-item { border-bottom-color: rgba(197,217,232,0.06); }
+  [data-theme="dark"] .flight-leg { border-bottom-color: rgba(197,217,232,0.06); }
+  [data-theme="dark"] .depart-item { border-bottom-color: rgba(197,217,232,0.06); }
+  [data-theme="dark"] .tag-night { background:rgba(197,217,232,0.1); color:var(--teal-mid); }
+  [data-theme="dark"] .leg-sm-empty { background:rgba(197,217,232,0.05); border-color:rgba(197,217,232,0.1); }
+  [data-theme="dark"] .forecast-day { background:rgba(197,217,232,0.05); border-color:rgba(197,217,232,0.1); }
+  [data-theme="vibrant"] .tag-night { background:rgba(26,0,80,0.08); color:var(--night-mid); }
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Georgia', serif; background: var(--sand); color: var(--text); min-height: 100vh; }
+  body { font-family: 'Georgia', serif; background: var(--sand); color: var(--text); min-height: 100vh; transition: background 0.3s, color 0.3s; }
 
   .back-bar { background: var(--night); padding: 10px 20px; }
   .back-link { font-family: 'Courier New', monospace; font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; letter-spacing: 0.5px; transition: color 0.15s; }
@@ -255,6 +305,11 @@
   .feedback-btn-email { background:var(--teal); }
   .feedback-btn-sms { background:var(--night); }
 
+  /* theme fab */
+  .theme-fab { position:fixed; bottom:20px; right:16px; z-index:300; background:var(--night); border:0.5px solid rgba(255,255,255,0.2); border-radius:24px; padding:9px 16px; font-family:'Courier New',monospace; font-size:11px; color:rgba(255,255,255,0.85); cursor:pointer; box-shadow:0 4px 20px rgba(0,0,0,0.3); letter-spacing:0.5px; transition:transform 0.15s, opacity 0.15s; }
+  .theme-fab:hover { transform:scale(1.04); opacity:0.9; }
+  [data-theme="vibrant"] .theme-fab { background:var(--night); box-shadow:0 4px 20px rgba(26,0,80,0.4); }
+
   .vote-option { padding:16px 12px; text-align:center; cursor:pointer; transition:background 0.15s; }
   .vote-option:hover { filter:brightness(0.97); }
   .vote-option.voted { background:var(--teal-light); }
@@ -445,6 +500,8 @@
     ℹ Both buttons open your device's email or messages app with your note pre-filled — nothing is sent automatically.
   </div>
 </div>
+
+<button class="theme-fab" id="theme-fab" onclick="cycleTheme()">🌙 Dark</button>
 
 <script>
 const TRIP_START=new Date('2026-06-19T05:55:00');
@@ -791,7 +848,23 @@ function sendFeedbackSMS(){const msg=document.getElementById('feedback-msg').val
 
 function switchView(name,btn){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById('view-'+name).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
 
+// ── Themes ────────────────────────────────────────────────────────────────────
+const THEMES=['light','dark','vibrant'];
+const NEXT_LABEL={light:'🌙 Dark',dark:'🌴 Vibrant',vibrant:'☀️ Classic'};
+function cycleTheme(){
+  const cur=document.body.getAttribute('data-theme')||'light';
+  const next=THEMES[(THEMES.indexOf(cur)+1)%THEMES.length];
+  applyTheme(next);
+  localStorage.setItem('cancun-theme',next);
+}
+function applyTheme(t){
+  document.body.setAttribute('data-theme',t);
+  const btn=document.getElementById('theme-fab');
+  if(btn)btn.textContent=NEXT_LABEL[t];
+}
+
 buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();
+applyTheme(localStorage.getItem('cancun-theme')||'light');
 </script>
 </body>
 </html>
