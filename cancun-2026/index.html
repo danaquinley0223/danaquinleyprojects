@@ -37,22 +37,23 @@
   }
   /* ── Vibrant / Mexico theme ──────────────────────────────────────────────── */
   [data-theme="vibrant"] {
-    --sand: #FFF7ED;
-    --teal: #0097A7;
-    --teal-light: #E0F7FA;
-    --teal-mid: #00BCD4;
-    --coral: #FF5722;
-    --coral-light: #FBE9E7;
-    --night: #1A0050;
-    --night-mid: #2D0E6E;
-    --text: #1A0050;
-    --text-muted: #6040A0;
+    --sand: #F4FFF7;
+    --teal: #006847;
+    --teal-light: #D6F5E3;
+    --teal-mid: #008C52;
+    --coral: #CE1126;
+    --coral-light: #FFE8EB;
+    --night: #003D24;
+    --night-mid: #005C37;
+    --text: #002B18;
+    --text-muted: #4A7A5A;
     --white: #FFFFFF;
-    --border: rgba(26,0,80,0.1);
+    --border: rgba(0,68,36,0.12);
   }
   [data-theme="vibrant"] .hero::before {
-    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,200,0,0.07) 20px, rgba(255,200,0,0.07) 40px);
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(206,17,38,0.07) 20px, rgba(206,17,38,0.07) 40px);
   }
+  [data-theme="vibrant"] .tag-night { background:rgba(0,68,36,0.08); color:var(--night-mid); }
   /* dark-mode border fixes (hardcoded rgba won't flip automatically) */
   [data-theme="dark"] .event,
   [data-theme="dark"] .tip-row,
@@ -68,7 +69,6 @@
   [data-theme="dark"] .tag-night { background:rgba(197,217,232,0.1); color:var(--teal-mid); }
   [data-theme="dark"] .leg-sm-empty { background:rgba(197,217,232,0.05); border-color:rgba(197,217,232,0.1); }
   [data-theme="dark"] .forecast-day { background:rgba(197,217,232,0.05); border-color:rgba(197,217,232,0.1); }
-  [data-theme="vibrant"] .tag-night { background:rgba(26,0,80,0.08); color:var(--night-mid); }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Georgia', serif; background: var(--sand); color: var(--text); min-height: 100vh; transition: background 0.3s, color 0.3s; }
@@ -305,10 +305,9 @@
   .feedback-btn-email { background:var(--teal); }
   .feedback-btn-sms { background:var(--night); }
 
-  /* theme fab */
-  .theme-fab { position:fixed; bottom:20px; right:16px; z-index:300; background:var(--night); border:0.5px solid rgba(255,255,255,0.2); border-radius:24px; padding:9px 16px; font-family:'Courier New',monospace; font-size:11px; color:rgba(255,255,255,0.85); cursor:pointer; box-shadow:0 4px 20px rgba(0,0,0,0.3); letter-spacing:0.5px; transition:transform 0.15s, opacity 0.15s; }
-  .theme-fab:hover { transform:scale(1.04); opacity:0.9; }
-  [data-theme="vibrant"] .theme-fab { background:var(--night); box-shadow:0 4px 20px rgba(26,0,80,0.4); }
+  /* theme button in nav */
+  .theme-fab { flex-shrink:0; padding:12px 14px; background:none; border:none; border-left:0.5px solid var(--border); font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.5px; color:var(--teal-mid); cursor:pointer; white-space:nowrap; transition:color 0.15s; margin-left:auto; }
+  .theme-fab:hover { color:var(--teal); }
 
   .vote-option { padding:16px 12px; text-align:center; cursor:pointer; transition:background 0.15s; }
   .vote-option:hover { filter:brightness(0.97); }
@@ -371,6 +370,7 @@
   <button class="nav-btn" onclick="switchView('resort',this)">Resort</button>
   <button class="nav-btn" onclick="switchView('depart',this)">Departure</button>
   <button class="nav-btn" onclick="switchView('feedback',this)">Feedback</button>
+  <button id="theme-fab" class="theme-fab" onclick="cycleTheme()">☀️ Classic</button>
 </div>
 
 <div class="view active" id="view-itinerary">
@@ -499,8 +499,6 @@
     ℹ Both buttons open your device's email or messages app with your note pre-filled — nothing is sent automatically.
   </div>
 </div>
-
-<button class="theme-fab" id="theme-fab" onclick="cycleTheme()">🌙 Dark</button>
 
 <script>
 const TRIP_START=new Date('2026-06-19T05:55:00');
@@ -856,7 +854,7 @@ function switchView(name,btn){document.querySelectorAll('.view').forEach(v=>v.cl
 
 // ── Themes ────────────────────────────────────────────────────────────────────
 const THEMES=['light','dark','vibrant'];
-const NEXT_LABEL={light:'🌙 Dark',dark:'🌴 Vibrant',vibrant:'☀️ Classic'};
+const THEME_LABEL={light:'☀️ Classic',dark:'🌙 Dark',vibrant:'🌮 Mexico'};
 function cycleTheme(){
   const cur=document.body.getAttribute('data-theme')||'light';
   const next=THEMES[(THEMES.indexOf(cur)+1)%THEMES.length];
@@ -866,7 +864,7 @@ function cycleTheme(){
 function applyTheme(t){
   document.body.setAttribute('data-theme',t);
   const btn=document.getElementById('theme-fab');
-  if(btn)btn.textContent=NEXT_LABEL[t];
+  if(btn)btn.textContent=THEME_LABEL[t];
 }
 
 buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();
