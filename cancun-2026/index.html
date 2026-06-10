@@ -47,8 +47,9 @@
   .app-sub { font-family:'Courier New',monospace; font-size:10px; color:rgba(255,255,255,0.45); margin-top:2px; }
   .app-arrow { font-size:16px; color:rgba(255,255,255,0.4); }
   .hero-dates { display:inline-flex; gap:6px; align-items:center; background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:20px; padding:6px 16px; font-family:'Courier New',monospace; font-size:12px; color:rgba(255,255,255,0.7); position:relative; margin-top:6px; }
-  .hero-fx { position:relative; background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:10px; padding:10px 14px; margin:0 0 8px; }
-  .hero-fx-rate { font-family:'Courier New',monospace; font-size:11px; font-weight:700; color:var(--teal-mid); margin-bottom:8px; letter-spacing:0.5px; }
+  .hero-fx { position:relative; background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:10px; padding:10px 14px; margin:0 0 8px; text-align:left; }
+  .hero-fx-label { font-family:'Courier New',monospace; font-size:10px; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
+  .hero-fx-rate { font-family:'Courier New',monospace; font-size:18px; font-weight:700; color:var(--white); margin-bottom:10px; }
   .hero-fx-inputs { display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:center; }
 
   .nav { background:var(--white); border-bottom:0.5px solid var(--border); display:flex; overflow-x:auto; scrollbar-width:none; position:sticky; top:0; z-index:100; }
@@ -294,7 +295,8 @@
     <div class="app-arrow">↗</div>
   </a>
   <div class="hero-fx">
-    <div class="hero-fx-rate">💱 $1 USD = 17.44 MXN</div>
+    <div class="hero-fx-label">💱 Currency Converter</div>
+    <div class="hero-fx-rate">$1 USD = 17.44 MXN</div>
     <div class="hero-fx-inputs">
       <div class="fx-input-wrap"><span class="fx-currency-label">USD $</span><input id="conv-usd" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('usd')"></div>
       <div style="font-family:'Courier New',monospace;font-size:13px;color:var(--teal-mid);">⇄</div>
