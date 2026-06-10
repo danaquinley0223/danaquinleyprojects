@@ -146,6 +146,10 @@
   .day-preview { font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); }
   .day-chevron { font-size:18px; color:var(--text-muted); transition:transform 0.2s; }
   .day-card.open .day-chevron { transform:rotate(180deg); }
+  .day-card.past { opacity:0.4; }
+  .day-card.past .day-name { text-decoration:line-through; color:var(--text-muted); }
+  .day-card.past .day-num { filter:grayscale(0.6); }
+  .day-card.today { border-left:3px solid var(--teal-mid); }
   .day-body { display:none; border-top:0.5px solid var(--border); }
   .day-card.open .day-body { display:block; }
   .event-list { padding:8px 0; }
@@ -668,8 +672,15 @@ function buildDays(){
     card.innerHTML=`<div class="day-header" onclick="toggleDay(${i})"><div class="day-num" style="background:${day.color};color:${day.textColor}"><span class="dn">${day.date.split(' ')[1]}</span><span class="dm">${day.date.split(' ')[0]}</span></div><div class="day-meta"><div class="day-name">${day.dayName} — ${day.label}</div><div class="day-preview">${tags.map(t=>tagMap[t]).join(' · ')||'Departure day'}</div></div><div class="day-chevron">⌄</div></div><div class="day-body"><div class="event-list">${eventsHtml}</div>${voteSlot}</div>`;
     container.appendChild(card);
   });
-  const now=new Date(),start=new Date('2026-06-19');
-  let idx=0;if(now>=start)idx=Math.min(Math.floor((now-start)/86400000),DAYS.length-1);
+  const now=new Date(),start=new Date('2026-06-19T00:00:00');
+  const daysSinceStart=Math.floor((now-start)/86400000);
+  DAYS.forEach((_,i)=>{
+    const card=document.getElementById('day-'+i);
+    if(!card)return;
+    if(now>=start&&i<daysSinceStart) card.classList.add('past');
+    else if(now>=start&&i===daysSinceStart) card.classList.add('today');
+  });
+  let idx=0;if(now>=start)idx=Math.min(daysSinceStart,DAYS.length-1);
   toggleDay(idx);
 }
 function toggleDay(i){document.getElementById('day-'+i).classList.toggle('open');}
