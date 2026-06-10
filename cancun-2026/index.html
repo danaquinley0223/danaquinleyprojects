@@ -421,7 +421,6 @@
       <div style="font-family:'Courier New',monospace;font-size:11px;color:rgba(255,255,255,0.3);padding:6px 0 2px;">Fetching from Open-Meteo…</div>
     </div>
   </div>
-  <div id="trip-stats-card"></div>
   <div id="days-container"></div>
 </div>
 
@@ -1061,35 +1060,6 @@ function updateTimes(){
 }
 setInterval(updateTimes,1000);
 
-// ── Trip stats ────────────────────────────────────────────────────────────────
-function buildTripStats(){
-  const stats=[
-    {icon:'🛫',val:'~2,800 mi',label:'Sacramento → Cancún (each way)'},
-    {icon:'🔄',val:'~5,600 mi',label:'Round trip per person'},
-    {icon:'👥',val:'~22,400 mi',label:'Total miles flown by the group'},
-    {icon:'⏱',val:'15h 55m',label:'Total journey time per person'},
-    {icon:'🌴',val:'7 nights',label:'At Xcaret Arte all-inclusive'},
-    {icon:'🎡',val:'5 parks',label:'Xoximilco, Xplor, Xenotes, Xel-Há + vote day'},
-    {icon:'🍽️',val:'4 dinners',label:'Specialty restaurant reservations'},
-    {icon:'🌡️',val:'88°F avg',label:'High temp in Cancún late June'},
-  ];
-  const el=document.getElementById('trip-stats-card');
-  if(!el)return;
-  el.innerHTML=`
-    <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
-      <div style="background:var(--night);padding:12px 16px;">
-        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">✈ By the numbers</div>
-        <div style="font-size:15px;font-weight:600;color:white;margin-top:2px;">Trip Stats</div>
-      </div>
-      <div style="padding:4px 0 4px;">
-        ${stats.map((s,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:9px 16px;border-bottom:${i<stats.length-1?'0.5px solid rgba(28,43,53,0.06)':'none'};">
-          <span style="font-size:18px;width:24px;flex-shrink:0;">${s.icon}</span>
-          <span style="font-family:'Courier New',monospace;font-size:13px;font-weight:700;color:var(--teal);min-width:88px;">${s.val}</span>
-          <span style="font-size:12px;color:var(--text-muted);line-height:1.4;">${s.label}</span>
-        </div>`).join('')}
-      </div>
-    </div>`;
-}
 
 // ── Themes ────────────────────────────────────────────────────────────────────
 const THEMES=['light','dark','vibrant'];
@@ -1106,7 +1076,7 @@ function applyTheme(t){
   if(btn)btn.textContent=THEME_LABEL[t];
 }
 
-buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();buildTripStats();buildDrinks();updateTimes();
+buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();buildDrinks();updateTimes();
 applyTheme(localStorage.getItem('cancun-theme')||'light');
 </script>
 </body>
