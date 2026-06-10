@@ -96,6 +96,11 @@
   .app-title { font-family:'Courier New',monospace; font-size:12px; font-weight:700; color:var(--white); }
   .app-sub { font-family:'Courier New',monospace; font-size:10px; color:rgba(255,255,255,0.45); margin-top:2px; }
   .app-arrow { font-size:16px; color:rgba(255,255,255,0.4); }
+  .time-strip { position:relative; display:flex; justify-content:center; gap:10px; margin-bottom:12px; flex-wrap:wrap; }
+  .time-chip { background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.12); border-radius:8px; padding:6px 14px; text-align:center; min-width:100px; }
+  .time-chip-label { font-family:'Courier New',monospace; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,0.4); }
+  .time-chip-time { font-family:'Courier New',monospace; font-size:17px; font-weight:700; color:white; margin-top:2px; line-height:1; }
+  .time-chip-tz { font-family:'Courier New',monospace; font-size:8px; color:rgba(255,255,255,0.3); margin-top:2px; letter-spacing:1px; }
   .hero-dates { display:inline-flex; gap:6px; align-items:center; background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:20px; padding:6px 16px; font-family:'Courier New',monospace; font-size:12px; color:rgba(255,255,255,0.7); position:relative; margin-top:6px; }
   .hero-fx { position:relative; background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:10px; padding:10px 14px; margin:0 0 8px; text-align:left; }
   .hero-fx-label { font-family:'Courier New',monospace; font-size:10px; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
@@ -332,6 +337,7 @@
   <div class="hero-sub">8 days · 7 nights · Full Squad (Minus Kevin 😑)</div>
   <div class="countdown-strip" id="countdown-strip"></div>
   <div class="cd-msg" id="cd-msg"></div>
+  <div class="time-strip" id="time-strip"></div>
   <a class="app-banner" href="https://apps.apple.com/us/app/hoteles-xcaret/id1474819420" target="_blank">
     <div class="app-icon">🏨</div>
     <div class="app-text">
@@ -381,6 +387,7 @@
       <div style="font-family:'Courier New',monospace;font-size:11px;color:rgba(255,255,255,0.3);padding:6px 0 2px;">Fetching from Open-Meteo…</div>
     </div>
   </div>
+  <div id="trip-stats-card"></div>
   <div id="days-container"></div>
 </div>
 
@@ -852,6 +859,64 @@ function sendFeedbackSMS(){const msg=document.getElementById('feedback-msg').val
 
 function switchView(name,btn){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById('view-'+name).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
 
+// ── Local times ───────────────────────────────────────────────────────────────
+function getTimeInZone(offsetHours){
+  const now=new Date();
+  const utcMs=now.getTime()+(now.getTimezoneOffset()*60000);
+  const zd=new Date(utcMs+(offsetHours*3600000));
+  let h=zd.getHours();
+  const m=String(zd.getMinutes()).padStart(2,'0');
+  const ampm=h>=12?'PM':'AM';
+  h=h%12||12;
+  return `${h}:${m} ${ampm}`;
+}
+function updateTimes(){
+  const strip=document.getElementById('time-strip');
+  if(!strip)return;
+  strip.innerHTML=`
+    <div class="time-chip">
+      <div class="time-chip-label">Cancún</div>
+      <div class="time-chip-time">${getTimeInZone(-5)}</div>
+      <div class="time-chip-tz">CDT · UTC−5</div>
+    </div>
+    <div class="time-chip">
+      <div class="time-chip-label">Sacramento</div>
+      <div class="time-chip-time">${getTimeInZone(-7)}</div>
+      <div class="time-chip-tz">PDT · UTC−7</div>
+    </div>`;
+}
+setInterval(updateTimes,1000);
+
+// ── Trip stats ────────────────────────────────────────────────────────────────
+function buildTripStats(){
+  const stats=[
+    {icon:'🛫',val:'~2,800 mi',label:'Sacramento → Cancún (each way)'},
+    {icon:'🔄',val:'~5,600 mi',label:'Round trip per person'},
+    {icon:'👥',val:'~22,400 mi',label:'Total miles flown by the group'},
+    {icon:'⏱',val:'15h 55m',label:'Total journey time per person'},
+    {icon:'🌴',val:'7 nights',label:'At Xcaret Arte all-inclusive'},
+    {icon:'🎡',val:'5 parks',label:'Xoximilco, Xplor, Xenotes, Xel-Há + vote day'},
+    {icon:'🍽️',val:'4 dinners',label:'Specialty restaurant reservations'},
+    {icon:'🌡️',val:'88°F avg',label:'High temp in Cancún late June'},
+  ];
+  const el=document.getElementById('trip-stats-card');
+  if(!el)return;
+  el.innerHTML=`
+    <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
+      <div style="background:var(--night);padding:12px 16px;">
+        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">✈ By the numbers</div>
+        <div style="font-size:15px;font-weight:600;color:white;margin-top:2px;">Trip Stats</div>
+      </div>
+      <div style="padding:4px 0 4px;">
+        ${stats.map((s,i)=>`<div style="display:flex;align-items:center;gap:12px;padding:9px 16px;border-bottom:${i<stats.length-1?'0.5px solid rgba(28,43,53,0.06)':'none'};">
+          <span style="font-size:18px;width:24px;flex-shrink:0;">${s.icon}</span>
+          <span style="font-family:'Courier New',monospace;font-size:13px;font-weight:700;color:var(--teal);min-width:88px;">${s.val}</span>
+          <span style="font-size:12px;color:var(--text-muted);line-height:1.4;">${s.label}</span>
+        </div>`).join('')}
+      </div>
+    </div>`;
+}
+
 // ── Themes ────────────────────────────────────────────────────────────────────
 const THEMES=['light','dark','vibrant'];
 const THEME_LABEL={light:'☀️ Classic',dark:'🌙 Dark',vibrant:'🌮 Mexico'};
@@ -867,7 +932,7 @@ function applyTheme(t){
   if(btn)btn.textContent=THEME_LABEL[t];
 }
 
-buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();
+buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();buildTripStats();updateTimes();
 applyTheme(localStorage.getItem('cancun-theme')||'light');
 </script>
 </body>
