@@ -59,18 +59,22 @@
   .view-title { font-size:20px; font-weight:400; margin-bottom:6px; margin-top:4px; }
   .view-sub { font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); margin-bottom:20px; letter-spacing:0.5px; }
 
+  /* weather & forecast */
   .weather-bar { background:var(--night); border-radius:var(--radius); padding:16px; }
-  .weather-title { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--teal-mid); margin-bottom:12px; }
-  .weather-main { display:flex; align-items:center; gap:16px; margin-bottom:14px; }
-  .weather-big { font-size:44px; line-height:1; }
-  .weather-temp { font-family:'Courier New',monospace; font-size:26px; font-weight:700; color:var(--white); }
-  .weather-desc { font-family:'Courier New',monospace; font-size:12px; color:rgba(255,255,255,0.55); margin-top:2px; }
-  .weather-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; }
-  .weather-cell { background:rgba(255,255,255,0.06); border-radius:8px; padding:8px; text-align:center; }
-  .weather-cell-icon { font-size:16px; margin-bottom:4px; }
-  .weather-cell-val { font-family:'Courier New',monospace; font-size:13px; font-weight:700; color:var(--white); }
-  .weather-cell-lbl { font-family:'Courier New',monospace; font-size:9px; color:rgba(255,255,255,0.4); margin-top:2px; letter-spacing:1px; text-transform:uppercase; }
-  .weather-note { font-family:'Courier New',monospace; font-size:11px; color:rgba(255,255,255,0.4); margin-top:12px; line-height:1.5; border-top:0.5px solid rgba(255,255,255,0.08); padding-top:10px; }
+  .weather-title { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--teal-mid); margin-bottom:10px; }
+  .weather-meta { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+  .weather-meta-chip { background:rgba(255,255,255,0.06); border-radius:8px; padding:6px 10px; display:flex; align-items:center; gap:6px; font-family:'Courier New',monospace; font-size:11px; color:rgba(255,255,255,0.7); }
+  .forecast-strip { display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px; }
+  .forecast-strip::-webkit-scrollbar { display:none; }
+  .forecast-day { flex-shrink:0; width:66px; background:rgba(255,255,255,0.06); border:0.5px solid rgba(255,255,255,0.1); border-radius:10px; padding:7px 4px; text-align:center; }
+  .forecast-day.trip-day { border-color:var(--teal-mid); background:rgba(43,168,152,0.2); }
+  .fd-name { font-family:'Courier New',monospace; font-size:9px; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.55); }
+  .fd-date { font-family:'Courier New',monospace; font-size:9px; color:rgba(255,255,255,0.35); margin-top:1px; }
+  .fd-icon { font-size:20px; margin:4px 0 2px; }
+  .fd-high { font-family:'Courier New',monospace; font-size:13px; font-weight:700; color:white; line-height:1.1; }
+  .fd-low { font-family:'Courier New',monospace; font-size:10px; color:rgba(255,255,255,0.5); }
+  .fd-stat { font-family:'Courier New',monospace; font-size:9px; color:rgba(255,255,255,0.45); margin-top:3px; line-height:1.4; }
+  .weather-note { font-family:'Courier New',monospace; font-size:11px; color:rgba(255,255,255,0.4); margin-top:10px; line-height:1.5; border-top:0.5px solid rgba(255,255,255,0.08); padding-top:10px; }
 
   .day-card { background:var(--white); border-radius:var(--radius); border:0.5px solid var(--border); margin-bottom:16px; overflow:hidden; }
   .day-header { display:flex; align-items:center; gap:12px; padding:14px 16px; cursor:pointer; user-select:none; }
@@ -98,8 +102,15 @@
   .tag-dinner { background:var(--coral-light); color:var(--coral); }
   .tag-night { background:rgba(28,43,53,0.08); color:var(--night-mid); }
   .tag-optional { background:#FFF8E1; color:#8B6914; }
-  .park-link { color:var(--teal-mid); font-size:11px; text-decoration:none; margin-left:5px; font-weight:400; }
-  .park-link:hover { text-decoration:underline; }
+  /* park name link — on light bg */
+  .park-name-link { color:var(--teal); text-decoration:none; border-bottom:1.5px dashed var(--teal-mid); }
+  .park-name-link:hover { color:var(--teal-mid); }
+  /* park name link — on dark (tip header) bg */
+  .park-name-link-dark { color:rgba(255,255,255,0.95); text-decoration:none; border-bottom:1px dashed rgba(255,255,255,0.35); }
+  .park-name-link-dark:hover { color:white; border-bottom-color:var(--teal-mid); }
+  /* video link in event note */
+  .event-video-link { display:inline-block; margin-top:5px; font-family:'Courier New',monospace; font-size:11px; color:var(--teal-mid); text-decoration:none; }
+  .event-video-link:hover { text-decoration:underline; }
 
   .res-item { display:flex; align-items:flex-start; gap:12px; padding:14px 16px; border-bottom:0.5px solid rgba(28,43,53,0.06); cursor:pointer; user-select:none; }
   .res-item:last-child { border-bottom:none; }
@@ -139,7 +150,6 @@
   .add-btn { padding:7px 14px; background:var(--teal); border:none; border-radius:8px; color:white; font-family:'Courier New',monospace; font-size:11px; cursor:pointer; white-space:nowrap; }
   .add-btn:hover { opacity:0.85; }
 
-  /* departure checklist — single-column items */
   .depart-item { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--text); cursor:pointer; padding:8px 16px; border-bottom:0.5px solid rgba(28,43,53,0.06); transition:background 0.12s; user-select:none; }
   .depart-item:last-child { border-bottom:none; }
   .depart-item:hover { background:rgba(26,122,110,0.02); }
@@ -171,6 +181,7 @@
   .tip-row:last-child { border-bottom:none; }
   .tip-bullet { color:var(--teal-mid); font-size:16px; flex-shrink:0; margin-top:1px; }
 
+  /* flights */
   .flight-card { background:var(--white); border-radius:var(--radius); border:0.5px solid var(--border); margin-bottom:16px; overflow:hidden; }
   .flight-header { background:var(--night); padding:14px 16px; display:flex; align-items:center; justify-content:space-between; }
   .flight-direction { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--teal-mid); }
@@ -190,7 +201,7 @@
   .flight-leg-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
   .flight-leg-route { font-family:'Courier New',monospace; font-size:11px; font-weight:700; color:var(--text); }
   .flight-leg-num { font-family:'Courier New',monospace; font-size:10px; color:var(--text-muted); }
-  .seats-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .seats-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px; }
   .seat-pill { background:var(--sand); border-radius:8px; border:0.5px solid var(--border); padding:6px 10px; display:flex; align-items:center; gap:8px; }
   .seat-avatar { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; font-family:'Courier New',monospace; }
   .av-dana { background:#E3F5F2; color:#1A7A6E; }
@@ -199,6 +210,22 @@
   .av-miguel { background:#FAEEDA; color:#854F0B; }
   .seat-name { font-size:11px; font-weight:600; color:var(--text); }
   .seat-num { font-family:'Courier New',monospace; font-size:11px; color:var(--text-muted); }
+  /* seat map */
+  .leg-sm { border-top:0.5px solid var(--border); padding:10px 16px 4px; }
+  .leg-sm-title { font-family:'Courier New',monospace; font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px; }
+  .leg-sm-grid { display:grid; grid-template-columns:26px repeat(3,30px) 10px repeat(3,30px); gap:3px; align-items:center; margin-bottom:3px; }
+  .leg-sm-head { font-family:'Courier New',monospace; font-size:9px; letter-spacing:1px; color:var(--text-muted); text-align:center; }
+  .leg-sm-num { font-family:'Courier New',monospace; font-size:9px; color:var(--text-muted); text-align:right; padding-right:3px; }
+  .leg-sm-seat { width:30px; height:30px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:'Courier New',monospace; font-size:9px; font-weight:700; }
+  .leg-sm-empty { background:rgba(28,43,53,0.04); border:0.5px solid var(--border); }
+  .leg-sm-dana { background:#E3F5F2; color:#1A7A6E; }
+  .leg-sm-leia { background:#FDF0EB; color:#E8623A; }
+  .leg-sm-diana { background:#E6F1FB; color:#185FA5; }
+  .leg-sm-miguel { background:#FAEEDA; color:#854F0B; }
+  .leg-sm-gap { font-family:'Courier New',monospace; font-size:9px; color:var(--text-muted); text-align:center; padding:2px 0; letter-spacing:2px; grid-column:1/9; }
+  .leg-sm-tbd-row { display:grid; grid-template-columns:26px 1fr; gap:3px; align-items:center; margin-bottom:3px; }
+  .leg-sm-tbd-seats { display:flex; gap:3px; align-items:center; }
+  .leg-sm-tbd-txt { font-family:'Courier New',monospace; font-size:9px; color:var(--text-muted); margin-left:4px; }
 
   .map-outer { background:var(--white); border-radius:var(--radius); border:0.5px solid var(--border); overflow:hidden; margin-bottom:16px; }
   .map-img { width:100%; display:block; }
@@ -216,7 +243,6 @@
   .feedback-btn-email { background:var(--teal); }
   .feedback-btn-sms { background:var(--night); }
 
-  /* vote card */
   .vote-option { padding:16px 12px; text-align:center; cursor:pointer; transition:background 0.15s; }
   .vote-option:hover { filter:brightness(0.97); }
   .vote-option.voted { background:var(--teal-light); }
@@ -274,19 +300,9 @@
 <div class="view active" id="view-itinerary">
   <div style="padding-top:12px"></div>
   <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
-    <div class="weather-bar">
-      <div class="weather-title">☀ Cancún weather · Late June</div>
-      <div class="weather-main">
-        <div class="weather-big">🌤</div>
-        <div><div class="weather-temp">88°F / 31°C</div><div class="weather-desc">Hot, humid, mostly sunny with brief afternoon showers</div></div>
-      </div>
-      <div class="weather-grid">
-        <div class="weather-cell"><div class="weather-cell-icon">🌡</div><div class="weather-cell-val">88°F</div><div class="weather-cell-lbl">High</div></div>
-        <div class="weather-cell"><div class="weather-cell-icon">💧</div><div class="weather-cell-val">78°F</div><div class="weather-cell-lbl">Sea temp</div></div>
-        <div class="weather-cell"><div class="weather-cell-icon">🌧</div><div class="weather-cell-val">~4pm</div><div class="weather-cell-lbl">Rain window</div></div>
-        <div class="weather-cell"><div class="weather-cell-icon">☀</div><div class="weather-cell-val">UV 11</div><div class="weather-cell-lbl">Extreme</div></div>
-      </div>
-      <div class="weather-note">Late June is early rainy season — showers are typically short (20–30 min) in the late afternoon. Mornings are almost always clear. UV is extreme; reapply reef-safe sunscreen every 90 min.</div>
+    <div class="weather-bar" id="weather-bar">
+      <div class="weather-title">☀ Cancún 10-day forecast · Loading…</div>
+      <div style="font-family:'Courier New',monospace;font-size:11px;color:rgba(255,255,255,0.3);padding:6px 0 2px;">Fetching from Open-Meteo…</div>
     </div>
   </div>
   <div id="vote-card"></div>
@@ -313,22 +329,41 @@
   <div style="padding-top:8px"></div>
   <div class="view-title">Flights</div>
   <div class="view-sub">Southwest · SMF ↔ CUN via DEN</div>
+
   <div class="flight-card">
     <div class="flight-header"><div><div class="flight-direction">✈ Outbound</div><div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Sacramento → Cancún</div></div><div class="flight-date">Fri, Jun 19 · 7h 30m</div></div>
     <div class="flight-route"><div class="flight-city"><div class="flight-city-code">SMF</div><div class="flight-city-name">Sacramento, CA</div><div class="flight-city-time">5:55 AM</div></div><div class="flight-middle"><div class="flight-arrow">→</div><div class="flight-stop-badge">1 stop · DEN</div></div><div class="flight-city right"><div class="flight-city-code">CUN</div><div class="flight-city-name">Cancún, Mexico</div><div class="flight-city-time">3:25 PM</div></div></div>
     <div class="flight-legs">
-      <div class="flight-leg"><div class="flight-leg-header"><div class="flight-leg-route">SMF → DEN</div><div class="flight-leg-num">WN3773 · Boeing 737 MAX8</div></div><div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">19F · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">19E · Middle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">Row 18</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">Row 18</div></div></div></div></div>
-      <div class="flight-leg"><div class="flight-leg-header"><div class="flight-leg-route">DEN → CUN</div><div class="flight-leg-num">WN131 · Boeing 737 MAX8</div></div><div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">24E · Middle</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">24D · Aisle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">Row 23</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">Row 23</div></div></div></div></div>
+      <div class="flight-leg">
+        <div class="flight-leg-header"><div class="flight-leg-route">SMF → DEN</div><div class="flight-leg-num">WN3773 · Boeing 737 MAX8</div></div>
+        <div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">19F · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">19E · Middle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">Row 18</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">Row 18</div></div></div></div>
+        <div id="sm-smf-den"></div>
+      </div>
+      <div class="flight-leg">
+        <div class="flight-leg-header"><div class="flight-leg-route">DEN → CUN</div><div class="flight-leg-num">WN131 · Boeing 737 MAX8</div></div>
+        <div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">24E · Middle</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">24D · Aisle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">Row 23</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">Row 23</div></div></div></div>
+        <div id="sm-den-cun"></div>
+      </div>
     </div>
   </div>
+
   <div class="flight-card">
     <div class="flight-header"><div><div class="flight-direction">✈ Return</div><div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Cancún → Sacramento</div></div><div class="flight-date">Fri, Jun 26 · 8h 25m</div></div>
     <div class="flight-route"><div class="flight-city"><div class="flight-city-code">CUN</div><div class="flight-city-name">Cancún, Mexico</div><div class="flight-city-time">3:25 PM</div></div><div class="flight-middle"><div class="flight-arrow">→</div><div class="flight-stop-badge">1 stop · DEN</div></div><div class="flight-city right"><div class="flight-city-code">SMF</div><div class="flight-city-name">Sacramento, CA</div><div class="flight-city-time">9:50 PM</div></div></div>
     <div class="flight-legs">
-      <div class="flight-leg"><div class="flight-leg-header"><div class="flight-leg-route">CUN → DEN</div><div class="flight-leg-num">WN1018 · Boeing 737 MAX8</div></div><div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">21A · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">21B · Middle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">19F · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">19E · Middle</div></div></div></div></div>
-      <div class="flight-leg"><div class="flight-leg-header"><div class="flight-leg-route">DEN → SMF</div><div class="flight-leg-num">WN136 · Boeing 737-700</div></div><div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">14B · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">14C · Aisle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">9C · Aisle</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">9B · Middle</div></div></div></div></div>
+      <div class="flight-leg">
+        <div class="flight-leg-header"><div class="flight-leg-route">CUN → DEN</div><div class="flight-leg-num">WN1018 · Boeing 737 MAX8</div></div>
+        <div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">21A · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">21B · Middle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">19F · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">19E · Middle</div></div></div></div>
+        <div id="sm-cun-den"></div>
+      </div>
+      <div class="flight-leg">
+        <div class="flight-leg-header"><div class="flight-leg-route">DEN → SMF</div><div class="flight-leg-num">WN136 · Boeing 737-700</div></div>
+        <div class="seats-grid"><div class="seat-pill"><div class="seat-avatar av-dana">DQ</div><div><div class="seat-name">Dana</div><div class="seat-num">14B · Window</div></div></div><div class="seat-pill"><div class="seat-avatar av-leia">LG</div><div><div class="seat-name">Leia</div><div class="seat-num">14C · Aisle</div></div></div><div class="seat-pill"><div class="seat-avatar av-miguel">MD</div><div><div class="seat-name">Miguel</div><div class="seat-num">9C · Aisle</div></div></div><div class="seat-pill"><div class="seat-avatar av-diana">DL</div><div><div class="seat-name">Diana</div><div class="seat-num">9B · Middle</div></div></div></div>
+        <div id="sm-den-smf"></div>
+      </div>
     </div>
   </div>
+
   <div style="background:var(--coral-light);border-radius:var(--radius);border:0.5px solid rgba(232,98,58,0.2);padding:12px 16px;font-size:13px;color:var(--coral);font-family:'Courier New',monospace;line-height:1.6;">⚠ Check-in opens 24 hrs before — set reminders for Thu Jun 18 at 5:55am and Thu Jun 25 at 3:25pm.</div>
 </div>
 
@@ -394,8 +429,9 @@
 const TRIP_START=new Date('2026-06-19T05:55:00');
 const FX_RATE=17.44;
 const FEEDBACK_EMAIL='danaquinley0223@gmail.com';
-const FEEDBACK_PHONE='REPLACE_WITH_YOUR_PHONE'; // e.g. '+19165550123'
+const FEEDBACK_PHONE='+12093803694';
 
+// ── Countdown ─────────────────────────────────────────────────────────────────
 function buildCountdown(){
   const now=new Date(),diff=TRIP_START-now;
   const strip=document.getElementById('countdown-strip'),msg=document.getElementById('cd-msg');
@@ -406,15 +442,95 @@ function buildCountdown(){
   setTimeout(()=>{setInterval(()=>{const n=new Date(),d2=TRIP_START-n;if(d2<=0)return;const ds=Math.floor(d2/86400000),hs=Math.floor((d2%86400000)/3600000),ms=Math.floor((d2%3600000)/60000),ss=Math.floor((d2%60000)/1000);const de=document.getElementById('cd-d'),he=document.getElementById('cd-h'),me=document.getElementById('cd-m'),se=document.getElementById('cd-s');if(de)de.textContent=ds;if(he)he.textContent=String(hs).padStart(2,'0');if(me)me.textContent=String(ms).padStart(2,'0');if(se)se.textContent=String(ss).padStart(2,'0');},1000);},100);
 }
 
+// ── Weather (10-day live forecast via Open-Meteo) ────────────────────────────
+const WMO={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌦',55:'🌦',61:'🌧',63:'🌧',65:'🌧',71:'❄️',73:'❄️',75:'❄️',80:'🌦',81:'🌦',82:'🌧',95:'⛈️',96:'⛈️',99:'⛈️'};
+const TRIP_DATES=new Set(['2026-06-19','2026-06-20','2026-06-21','2026-06-22','2026-06-23','2026-06-24','2026-06-25','2026-06-26']);
+const WEEKDAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+async function fetchWeather(){
+  try{
+    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=21.1606&longitude=-86.8475&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,uv_index_max,weathercode&temperature_unit=fahrenheit&timezone=America%2FCancun&forecast_days=10');
+    if(!r.ok)throw new Error();
+    const d=await r.json();
+    renderForecast(d.daily);
+  }catch(e){renderStaticWeather();}
+}
+
+function renderForecast(daily){
+  let strip='';
+  daily.time.forEach((date,i)=>{
+    const isTrip=TRIP_DATES.has(date);
+    const dow=WEEKDAYS[new Date(date+'T12:00:00').getDay()];
+    const mon=new Date(date+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    const icon=WMO[daily.weathercode[i]]||'🌤';
+    const hi=Math.round(daily.temperature_2m_max[i]);
+    const lo=Math.round(daily.temperature_2m_min[i]);
+    const rain=daily.precipitation_probability_max[i];
+    const uv=Math.round(daily.uv_index_max[i]);
+    strip+=`<div class="forecast-day${isTrip?' trip-day':''}"><div class="fd-name">${dow}</div><div class="fd-date">${mon}</div><div class="fd-icon">${icon}</div><div class="fd-high">${hi}°</div><div class="fd-low">${lo}°</div><div class="fd-stat">💧 ${rain}%</div><div class="fd-stat">☀ UV ${uv}</div></div>`;
+  });
+  document.getElementById('weather-bar').innerHTML=`
+    <div class="weather-title">☀ Cancún 10-day forecast</div>
+    <div class="weather-meta">
+      <div class="weather-meta-chip">🌊 Sea temp ~78°F</div>
+      <div class="weather-meta-chip">🌤 Mostly sunny · brief afternoon rain ~4pm</div>
+    </div>
+    <div class="forecast-strip">${strip}</div>
+    <div class="weather-note" style="margin-top:8px;">Trip days highlighted in teal · UV is extreme — reapply reef-safe sunscreen every 90 min · Showers typically 20–30 min in late afternoon</div>`;
+}
+
+function renderStaticWeather(){
+  document.getElementById('weather-bar').innerHTML=`
+    <div class="weather-title">☀ Cancún weather · Late June</div>
+    <div class="weather-meta">
+      <div class="weather-meta-chip">🌡 ~88°F high</div>
+      <div class="weather-meta-chip">🌊 Sea ~78°F</div>
+      <div class="weather-meta-chip">🌧 Rain ~4pm</div>
+      <div class="weather-meta-chip">☀ UV 11 (extreme)</div>
+    </div>
+    <div class="weather-note">Hot &amp; humid — brief afternoon showers typical. Mornings almost always clear. Reapply reef-safe sunscreen every 90 min.</div>`;
+}
+
+// ── Itinerary ─────────────────────────────────────────────────────────────────
 const DAYS=[
-  {date:'Jun 19',dayName:'Friday',label:'Arrival Day',color:'#E3F5F2',textColor:'#1A7A6E',events:[{time:'3–5pm',icon:'✈️',name:'Arrive to Cancún',note:'Walk around hotel, check in, grab lunch or coffee',tag:null},{time:'6–11pm',icon:'🍽️',name:'Dinner @ Buffet',note:'Options: Mercado San Juan, Cayuco, or Cantina',tag:'dinner'},{time:'8pm–4am',icon:'🎶',name:'El Deseo Speakeasy / Club',note:'First night out — pace yourselves 😉',tag:'night'}]},
-  {date:'Jun 20',dayName:'Saturday',label:'Xoximilco Night',color:'#FDF0EB',textColor:'#E8623A',events:[{time:'9am',icon:'📋',name:'Presentation (90 min)',note:null,tag:null},{time:'Morning',icon:'🏊',name:'Hang out @ hotel',note:'Pool, beach, relax',tag:null},{time:'6pm–12:30am',icon:'🎉',name:'Xoximilco Experience',note:'Dinner + drinks on colorful trajineras — dress festive!',tag:'park',url:'https://www.xoximilco.com/en/'}]},
-  {date:'Jun 21',dayName:'Sunday',label:'Brunch + Xplor Fuego',color:'#E3F5F2',textColor:'#1A7A6E',events:[{time:'10am–4pm',icon:'🥂',name:'Sunday Brunch @ San Juan Mercado',note:'Long brunch, take your time',tag:'dinner'},{time:'Afternoon',icon:'🏨',name:'Hang out @ hotel',note:null,tag:null},{time:'5:30–10:30pm',icon:'🔥',name:'Xplor Fuego',note:'Night version — zip lines, rafts & ATVs after dark',tag:'park',url:'https://www.xplor.travel/en/xplor-fuego-admission/'},{time:'~7pm',icon:'🍖',name:'Dinner @ Troglodita Buffet',note:'Included with Xplor Fuego ticket',tag:'dinner'}]},
-  {date:'Jun 22',dayName:'Monday',label:'Xenotes + Tah-Xido',color:'#E6F1FB',textColor:'#185FA5',events:[{time:'8:40am–5:30pm',icon:'🌿',name:'Xenotes Park Tour',note:'Includes snack + jungle picnic. No alcohol.',tag:'park',url:'https://www.xenotes.com/en/'},{time:'~7–8pm',icon:'🍣',name:'Dinner @ Tah-Xido',note:'Confirm reservation at check-in',tag:'dinner'}]},
-  {date:'Jun 23',dayName:'Tuesday',label:'Xplor or Xcaret + Encanta',color:'#FDF0EB',textColor:'#E8623A',events:[{time:'8:30am–5pm',icon:'🎡',name:'Xplor or Xcaret (if energy allows)',note:'Xplor: unlimited buffet + drinks. Xcaret: 1 meal, no alcohol. More low-key.',tag:'optional',url:'https://www.xplor.travel/en/'},{time:'~7–8pm',icon:'🍽️',name:'Dinner @ Encanta',note:'8-course meal — dress up a bit',tag:'dinner'}]},
-  {date:'Jun 24',dayName:'Wednesday',label:'Xel-Há + El Deseo',color:'#E3F5F2',textColor:'#1A7A6E',events:[{time:'9am–5:30pm',icon:'🌊',name:'Xel-Há Park',note:'All-inclusive snorkel park — full day in the water',tag:'park',url:'https://es.xelha.com'},{time:'8pm',icon:'🥩',name:'Dinner @ Tah-Xido (Teppanyaki)',note:'Book ASAP — fills up fast',tag:'dinner'},{time:'8pm–4am',icon:'🎶',name:'El Deseo Speakeasy / Club',note:null,tag:'night'}]},
-  {date:'Jun 25',dayName:'Thursday',label:'Chill Day + Last Night Out',color:'#F1EFE8',textColor:'#5A7080',events:[{time:'All day',icon:'😎',name:'Chill day @ hotel',note:'Final pool day — recharge before the night',tag:null},{time:'7:30pm',icon:'🍷',name:'Dinner @ Arenal',note:null,tag:'dinner'},{time:'8pm–4am',icon:'🎶',name:'El Deseo Speakeasy / Club',note:'Last night — make it count',tag:'night'}]},
-  {date:'Jun 26',dayName:'Friday',label:'Departure',color:'#1C2B35',textColor:'#FFFFFF',events:[{time:'By 12pm',icon:'🧳',name:'Check out of hotel',note:"Pack the night before — you'll be tired!",tag:null},{time:'3:25pm',icon:'✈️',name:'Flight home (WN1018)',note:'Allow 2+ hrs to airport',tag:null}]},
+  {date:'Jun 19',dayName:'Friday',label:'Arrival Day',color:'#E3F5F2',textColor:'#1A7A6E',events:[
+    {time:'3–5pm',icon:'✈️',name:'Arrive to Cancún',note:'Walk around hotel, check in, grab lunch or coffee'},
+    {time:'6–11pm',icon:'🍽️',name:'Dinner @ Buffet',note:'Options: Mercado San Juan, Cayuco, or Cantina',tag:'dinner'},
+    {time:'8pm–4am',icon:'🎶',name:'El Deseo Speakeasy / Club',note:'First night out — pace yourselves 😉',tag:'night',video:{url:'https://www.youtube.com/watch?v=GGjO5YevKgE',label:'🎬 Watch this before tonight 🤫'}},
+  ]},
+  {date:'Jun 20',dayName:'Saturday',label:'Xoximilco Night',color:'#FDF0EB',textColor:'#E8623A',events:[
+    {time:'9am',icon:'📋',name:'Presentation (90 min)'},
+    {time:'Morning',icon:'🏊',name:'Hang out @ hotel',note:'Pool, beach, relax'},
+    {time:'6pm–12:30am',icon:'🎉',name:'Xoximilco Experience',note:'Dinner + drinks on colorful trajineras — dress festive!',tag:'park',url:'https://www.xoximilco.com/en/'},
+  ]},
+  {date:'Jun 21',dayName:'Sunday',label:'Brunch + Xplor Fuego',color:'#E3F5F2',textColor:'#1A7A6E',events:[
+    {time:'10am–4pm',icon:'🥂',name:'Sunday Brunch @ San Juan Mercado',note:'Long brunch, take your time',tag:'dinner'},
+    {time:'Afternoon',icon:'🏨',name:'Hang out @ hotel'},
+    {time:'5:30–10:30pm',icon:'🔥',name:'Xplor Fuego',note:'Night version — zip lines, rafts & ATVs after dark',tag:'park',url:'https://www.xplor.travel/en/xplor-fuego-admission/'},
+    {time:'~7pm',icon:'🍖',name:'Dinner @ Troglodita Buffet',note:'Included with Xplor Fuego ticket',tag:'dinner'},
+  ]},
+  {date:'Jun 22',dayName:'Monday',label:'Xenotes + Tah-Xido',color:'#E6F1FB',textColor:'#185FA5',events:[
+    {time:'8:40am–5:30pm',icon:'🌿',name:'Xenotes Park Tour',note:'Includes snack + jungle picnic. No alcohol.',tag:'park',url:'https://www.xenotes.com/en/'},
+    {time:'~7–8pm',icon:'🍣',name:'Dinner @ Tah-Xido',note:'Confirm reservation at check-in',tag:'dinner'},
+  ]},
+  {date:'Jun 23',dayName:'Tuesday',label:'Xplor or Xcaret + Encanta',color:'#FDF0EB',textColor:'#E8623A',events:[
+    {time:'8:30am–5pm',icon:'🎡',name:'Xplor or Xcaret (if energy allows)',note:'Xplor: unlimited buffet + drinks. Xcaret: 1 meal, no alcohol. More low-key.',tag:'optional',url:'https://www.xplor.travel/en/'},
+    {time:'~7–8pm',icon:'🍽️',name:'Dinner @ Encanta',note:'8-course meal — dress up a bit',tag:'dinner'},
+  ]},
+  {date:'Jun 24',dayName:'Wednesday',label:'Xel-Há + El Deseo',color:'#E3F5F2',textColor:'#1A7A6E',events:[
+    {time:'9am–5:30pm',icon:'🌊',name:'Xel-Há Park',note:'All-inclusive snorkel park — full day in the water',tag:'park',url:'https://es.xelha.com'},
+    {time:'8pm',icon:'🥩',name:'Dinner @ Tah-Xido (Teppanyaki)',note:'Book ASAP — fills up fast',tag:'dinner'},
+    {time:'8pm–4am',icon:'🎶',name:'El Deseo Speakeasy / Club',tag:'night'},
+  ]},
+  {date:'Jun 25',dayName:'Thursday',label:'Chill Day + Last Night Out',color:'#F1EFE8',textColor:'#5A7080',events:[
+    {time:'All day',icon:'😎',name:'Chill day @ hotel',note:'Final pool day — recharge before the night'},
+    {time:'7:30pm',icon:'🍷',name:'Dinner @ Arenal',tag:'dinner'},
+    {time:'8pm–4am',icon:'🎶',name:'El Deseo Speakeasy / Club',note:'Last night — make it count',tag:'night'},
+  ]},
+  {date:'Jun 26',dayName:'Friday',label:'Departure',color:'#1C2B35',textColor:'#FFFFFF',events:[
+    {time:'By 12pm',icon:'🧳',name:'Check out of hotel',note:"Pack the night before — you'll be tired!"},
+    {time:'3:25pm',icon:'✈️',name:'Flight home (WN1018)',note:'Allow 2+ hrs to airport'},
+  ]},
 ];
 
 function buildDays(){
@@ -422,7 +538,11 @@ function buildDays(){
   DAYS.forEach((day,i)=>{
     const card=document.createElement('div');card.className='day-card';card.id='day-'+i;
     const tags=[...new Set(day.events.map(e=>e.tag).filter(Boolean))];
-    card.innerHTML=`<div class="day-header" onclick="toggleDay(${i})"><div class="day-num" style="background:${day.color};color:${day.textColor}"><span class="dn">${day.date.split(' ')[1]}</span><span class="dm">${day.date.split(' ')[0]}</span></div><div class="day-meta"><div class="day-name">${day.dayName} — ${day.label}</div><div class="day-preview">${tags.map(t=>tagMap[t]).join(' · ')||'Departure day'}</div></div><div class="day-chevron">⌄</div></div><div class="day-body"><div class="event-list">${day.events.map(ev=>`<div class="event"><div class="event-time">${ev.time}</div><div class="event-icon">${ev.icon}</div><div class="event-info"><div class="event-name">${ev.name}${ev.url?` <a href="${ev.url}" target="_blank" class="park-link">↗</a>`:''}</div>${ev.note?`<div class="event-note">${ev.note}</div>`:''}${ev.tag?`<span class="tag tag-${ev.tag}">${tagMap[ev.tag]}</span>`:''}</div></div>`).join('')}</div></div>`;
+    const eventsHtml=day.events.map(ev=>{
+      const nameHtml=ev.url?`<a href="${ev.url}" target="_blank" class="park-name-link">${ev.name}</a>`:ev.name;
+      return `<div class="event"><div class="event-time">${ev.time||''}</div><div class="event-icon">${ev.icon}</div><div class="event-info"><div class="event-name">${nameHtml}</div>${ev.note?`<div class="event-note">${ev.note}</div>`:''}${ev.video?`<a href="${ev.video.url}" target="_blank" class="event-video-link">${ev.video.label}</a>`:''}${ev.tag?`<span class="tag tag-${ev.tag}">${tagMap[ev.tag]}</span>`:''}</div></div>`;
+    }).join('');
+    card.innerHTML=`<div class="day-header" onclick="toggleDay(${i})"><div class="day-num" style="background:${day.color};color:${day.textColor}"><span class="dn">${day.date.split(' ')[1]}</span><span class="dm">${day.date.split(' ')[0]}</span></div><div class="day-meta"><div class="day-name">${day.dayName} — ${day.label}</div><div class="day-preview">${tags.map(t=>tagMap[t]).join(' · ')||'Departure day'}</div></div><div class="day-chevron">⌄</div></div><div class="day-body"><div class="event-list">${eventsHtml}</div></div>`;
     container.appendChild(card);
   });
   const now=new Date(),start=new Date('2026-06-19');
@@ -433,29 +553,19 @@ function toggleDay(i){document.getElementById('day-'+i).classList.toggle('open')
 
 // ── Tuesday vote ──────────────────────────────────────────────────────────────
 const VOTE_OPTIONS=[
-  {id:'xplor',icon:'🎡',label:'Xplor',desc:'Unlimited food & drinks · zip lines · ATVs · underground river',url:'https://www.xplor.travel/en/'},
-  {id:'xcaret',icon:'🐠',label:'Xcaret',desc:'Cultural park · river · aquarium · wildlife · 1 included meal',url:null},
+  {id:'xplor',icon:'🎡',label:'Xplor',desc:'Unlimited food & drinks · zip lines · ATVs · underground river'},
+  {id:'xcaret',icon:'🐠',label:'Xcaret',desc:'Cultural park · river · aquarium · wildlife · 1 included meal'},
 ];
 function buildVoteCard(){
   const saved=localStorage.getItem('cancun-vote');
   document.getElementById('vote-card').innerHTML=`
     <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
       <div style="background:var(--night);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
-        <div>
-          <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">📊 Tue Jun 23 — your pick</div>
-          <div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Xplor or Xcaret?</div>
-        </div>
+        <div><div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">📊 Tue Jun 23 — your pick</div><div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Xplor or Xcaret?</div></div>
         <div style="font-family:'Courier New',monospace;font-size:10px;color:rgba(255,255,255,0.35);">${saved?'tap to change':'cast your vote'}</div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;">
-        ${VOTE_OPTIONS.map((o,i)=>`
-          <div class="vote-option${saved===o.id?' voted':''}" onclick="castVote('${o.id}')"
-               style="border-right:${i===0?'0.5px solid var(--border)':'none'};">
-            <div class="vote-emoji">${o.icon}</div>
-            <div class="vote-label">${o.label}</div>
-            <div class="vote-desc">${o.desc}</div>
-            ${saved===o.id?'<div class="vote-badge">✓ Your pick</div>':''}
-          </div>`).join('')}
+        ${VOTE_OPTIONS.map((o,i)=>`<div class="vote-option${saved===o.id?' voted':''}" onclick="castVote('${o.id}')" style="border-right:${i===0?'0.5px solid var(--border)':'none'};"><div class="vote-emoji">${o.icon}</div><div class="vote-label">${o.label}</div><div class="vote-desc">${o.desc}</div>${saved===o.id?'<div class="vote-badge">✓ Your pick</div>':''}</div>`).join('')}
       </div>
     </div>`;
 }
@@ -532,95 +642,100 @@ const TIPS=[
   {icon:'🌊',name:'Xel-Há',date:'Wed Jun 24 · 9am–5:30pm',url:'https://es.xelha.com',tips:['All-inclusive snorkel park — food, drinks, equipment included.','Go early — fish are most active in the morning.','Reef-safe sunscreen ONLY — they\'re strict about this.','Cliff jumping area is a highlight — totally optional.']},
   {icon:'🎶',name:'El Deseo Speakeasy',date:'Fri Jun 19 · Wed Jun 24 · Thu Jun 25',url:null,tips:['Inside Xcaret Arte — no Uber needed, just walk back.','Hidden entrance; ask staff if you can\'t find it.','Smart casual dress code minimum — they do turn people away.','Gets busy after midnight; earlier is more chill.']},
 ];
-function buildTips(){const c=document.getElementById('tips-container');TIPS.forEach(p=>{const card=document.createElement('div');card.className='tip-card';card.innerHTML=`<div class="tip-header"><div class="tip-header-icon">${p.icon}</div><div><div class="tip-header-name">${p.name}${p.url?` <a href="${p.url}" target="_blank" class="park-link" style="color:var(--teal-mid)">↗</a>`:''}</div><div class="tip-header-sub">${p.date}</div></div></div><div class="tip-body">${p.tips.map(t=>`<div class="tip-row"><div class="tip-bullet">›</div><div>${t}</div></div>`).join('')}</div>`;c.appendChild(card);});}
+function buildTips(){
+  const c=document.getElementById('tips-container');
+  TIPS.forEach(p=>{
+    const card=document.createElement('div');card.className='tip-card';
+    const nameHtml=p.url?`<a href="${p.url}" target="_blank" class="park-name-link-dark">${p.name}</a>`:p.name;
+    card.innerHTML=`<div class="tip-header"><div class="tip-header-icon">${p.icon}</div><div><div class="tip-header-name">${nameHtml}</div><div class="tip-header-sub">${p.date}</div></div></div><div class="tip-body">${p.tips.map(t=>`<div class="tip-row"><div class="tip-bullet">›</div><div>${t}</div></div>`).join('')}</div>`;
+    c.appendChild(card);
+  });
+}
 
 // ── Resort + currency converter ───────────────────────────────────────────────
 function convertFrom(dir){
-  const rate=FX_RATE;
-  const uEl=document.getElementById('conv-usd'),mEl=document.getElementById('conv-mxn');
+  const rate=FX_RATE,uEl=document.getElementById('conv-usd'),mEl=document.getElementById('conv-mxn');
   if(!uEl||!mEl)return;
   if(dir==='usd'){const v=parseFloat(uEl.value);mEl.value=isNaN(v)?'':(v*rate).toFixed(0);}
   else{const v=parseFloat(mEl.value);uEl.value=isNaN(v)?'':(v/rate).toFixed(2);}
 }
-
 function buildResort(){
   const rate=FX_RATE;
   document.getElementById('resort-container').innerHTML=`
     <div class="info-strip"><div style="font-size:20px;color:rgba(255,255,255,0.7)">🏨</div><div class="info-strip-text"><strong>Xcaret Arte</strong> — adults-only all-inclusive. Food, drinks, shows, beach all included. Tip in cash.</div></div>
     <div class="fx-bar">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div class="fx-icon">💱</div>
-        <div>
-          <div class="fx-rate">$1 USD = ${rate.toFixed(2)} MXN</div>
-          <div class="fx-sub">Mid-market rate · Jun 9, 2026</div>
-        </div>
-      </div>
+      <div style="display:flex;align-items:center;gap:14px"><div class="fx-icon">💱</div><div><div class="fx-rate">$1 USD = ${rate.toFixed(2)} MXN</div><div class="fx-sub">Mid-market rate · Jun 9, 2026</div></div></div>
       <div class="fx-converter">
-        <div class="fx-input-wrap">
-          <span class="fx-currency-label">USD $</span>
-          <input id="conv-usd" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('usd')">
-        </div>
+        <div class="fx-input-wrap"><span class="fx-currency-label">USD $</span><input id="conv-usd" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('usd')"></div>
         <div style="font-family:'Courier New',monospace;font-size:14px;color:var(--teal-mid);text-align:center;">⇄</div>
-        <div class="fx-input-wrap">
-          <span class="fx-currency-label">MXN $</span>
-          <input id="conv-mxn" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('mxn')">
-        </div>
+        <div class="fx-input-wrap"><span class="fx-currency-label">MXN $</span><input id="conv-mxn" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('mxn')"></div>
       </div>
-      <div class="fx-pills" style="margin-top:10px;">
-        <div class="fx-pill">$1 tip = <span>~${rate.toFixed(0)} MXN</span></div>
-        <div class="fx-pill">$5 = <span>~${(rate*5).toFixed(0)} MXN</span></div>
-        <div class="fx-pill">$20 = <span>~${(rate*20).toFixed(0)} MXN</span></div>
-        <div class="fx-pill">$50 = <span>~${(rate*50).toFixed(0)} MXN</span></div>
-        <div class="fx-pill">$100 = <span>~${(rate*100).toFixed(0)} MXN</span></div>
-      </div>
+      <div class="fx-pills" style="margin-top:10px;"><div class="fx-pill">$1 tip = <span>~${rate.toFixed(0)} MXN</span></div><div class="fx-pill">$5 = <span>~${(rate*5).toFixed(0)} MXN</span></div><div class="fx-pill">$20 = <span>~${(rate*20).toFixed(0)} MXN</span></div><div class="fx-pill">$50 = <span>~${(rate*50).toFixed(0)} MXN</span></div><div class="fx-pill">$100 = <span>~${(rate*100).toFixed(0)} MXN</span></div></div>
     </div>
     <div class="day-card" style="margin-bottom:16px"><div class="section-label">Restaurants</div><div style="padding:4px 0 12px;">${[{n:'Mercado San Juan',i:'Buffet, casual, open longest hours'},{n:'Cayuco',i:'Buffet option, good for groups'},{n:'Cantina',i:'Mexican, lively atmosphere'},{n:'Tah-Xido',i:'Teppanyaki · Asian fusion — book at check-in!'},{n:'Encanta',i:'8-course fine dining — book at check-in!'},{n:'Arenal',i:'Thu dinner · reserve ahead'}].map(r=>`<div class="tip-row" style="padding:9px 16px;"><div class="tip-bullet">›</div><div><strong>${r.n}</strong> — ${r.i}</div></div>`).join('')}</div></div>
     <div class="day-card"><div class="section-label">Good to know</div><div style="padding:4px 0 12px;">${[{e:'🏖️',l:'Beach & pool',n:'All-inclusive — chairs, towels, service included'},{e:'🎭',l:'Evening shows',n:'Check daily schedule at concierge desk'},{e:'🍹',l:'Drinks',n:'Unlimited at resort bars — tip 1–2 USD (~17–35 MXN)'},{e:'📱',l:'WiFi',n:'Available throughout — ask front desk for code'},{e:'🏥',l:'Medical',n:'Nurse on site 24/7; nearest hospital ~20 min'},{e:'💰',l:'Tipping',n:"1–2 USD per drink/service (~17–35 MXN at today's rate)"}].map(r=>`<div class="tip-row" style="padding:9px 16px;"><div style="font-size:18px;flex-shrink:0">${r.e}</div><div><strong>${r.l}</strong> — ${r.n}</div></div>`).join('')}</div></div>`;
 }
 
+// ── Seat maps ─────────────────────────────────────────────────────────────────
+// Southwest 737 layout: A=win-L, B=mid-L, C=aisle-L | D=aisle-R, E=mid-R, F=win-R
+const SEAT_MAPS={
+  'smf-den':{rows:[
+    {n:18,tbd:[{i:'MD',p:'miguel'},{i:'DL',p:'diana'}]},
+    {n:19,seats:{A:null,B:null,C:null,D:null,E:{i:'LG',p:'leia'},F:{i:'DQ',p:'dana'}}},
+  ]},
+  'den-cun':{rows:[
+    {n:23,tbd:[{i:'MD',p:'miguel'},{i:'DL',p:'diana'}]},
+    {n:24,seats:{A:null,B:null,C:null,D:{i:'LG',p:'leia'},E:{i:'DQ',p:'dana'},F:null}},
+  ]},
+  'cun-den':{rows:[
+    {n:19,seats:{A:null,B:null,C:null,D:null,E:{i:'DL',p:'diana'},F:{i:'MD',p:'miguel'}}},
+    {n:'···',gap:true},
+    {n:21,seats:{A:{i:'DQ',p:'dana'},B:{i:'LG',p:'leia'},C:null,D:null,E:null,F:null}},
+  ]},
+  'den-smf':{rows:[
+    {n:9,seats:{A:null,B:{i:'DL',p:'diana'},C:{i:'MD',p:'miguel'},D:null,E:null,F:null}},
+    {n:'···',gap:true},
+    {n:14,seats:{A:null,B:{i:'DQ',p:'dana'},C:{i:'LG',p:'leia'},D:null,E:null,F:null}},
+  ]},
+};
+
+function renderSeatMap(id){
+  const map=SEAT_MAPS[id];
+  const seat=(s)=>s?`<div class="leg-sm-seat leg-sm-${s.p}">${s.i}</div>`:`<div class="leg-sm-seat leg-sm-empty"></div>`;
+  let rows='';
+  map.rows.forEach(row=>{
+    if(row.gap){rows+=`<div class="leg-sm-grid"><div class="leg-sm-gap">· · ·</div></div>`;return;}
+    if(row.tbd){rows+=`<div class="leg-sm-tbd-row"><div class="leg-sm-num">${row.n}</div><div class="leg-sm-tbd-seats">${row.tbd.map(p=>`<div class="leg-sm-seat leg-sm-${p.p}">${p.i}</div>`).join('')}<span class="leg-sm-tbd-txt">seats TBD</span></div></div>`;return;}
+    const s=row.seats;
+    rows+=`<div class="leg-sm-grid"><div class="leg-sm-num">${row.n}</div>${seat(s.A)}${seat(s.B)}${seat(s.C)}<div></div>${seat(s.D)}${seat(s.E)}${seat(s.F)}</div>`;
+  });
+  return `<div class="leg-sm"><div class="leg-sm-title">Seat layout</div><div class="leg-sm-grid leg-sm-head"><div></div><div>A</div><div>B</div><div>C</div><div></div><div>D</div><div>E</div><div>F</div></div>${rows}</div>`;
+}
+
+function buildSeatMaps(){
+  ['smf-den','den-cun','cun-den','den-smf'].forEach(id=>{
+    const el=document.getElementById('sm-'+id);
+    if(el)el.innerHTML=renderSeatMap(id);
+  });
+}
+
 // ── Departure checklist ───────────────────────────────────────────────────────
 const DEPART_SECTIONS={
-  'Documents 📄':[
-    'Passports — all 4 (valid 6+ months past Jun 26)',
-    'Printed flight confirmations',
-    'Hotel confirmation — Xcaret Arte reservation',
-    'Travel insurance docs',
-    'Passport photo copies (keep separate from originals)',
-  ],
-  'Money 💵':[
-    'Notify bank & credit cards of Mexico travel dates',
-    'USD cash for tips (~$50–80 per person)',
-    'Confirm cards work internationally',
-  ],
-  'Tech & apps 📱':[
-    'Download Hoteles Xcaret app',
-    'Download Southwest app — check-in reminder set Jun 18',
-    'GoPro fully charged + memory cards formatted',
-    'Phone chargers + portable battery pack',
-    'Back up phone photos before leaving',
-  ],
-  'Health 🩺':[
-    'Reef-safe sunscreen (pack extra — buy more if low)',
-    'Prescription meds — enough for 8 days',
-    'Motion sickness meds (boat at Xoximilco, ATVs at Xplor)',
-    'Hand sanitizer',
-  ],
-  'Logistics 🚗':[
-    'Airport ride arranged — leave by 3am Jun 19',
-    'Park tickets confirmed: Xoximilco, Xplor Fuego, Xenotes, Xel-Há',
-    'Pet / house sitter arranged (if needed)',
-    'Unplug appliances + lock up',
-  ],
+  'Documents 📄':['Passports — all 4 (valid 6+ months past Jun 26)','Printed flight confirmations','Hotel confirmation — Xcaret Arte reservation','Travel insurance docs','Passport photo copies (keep separate from originals)'],
+  'Money 💵':['Notify bank & credit cards of Mexico travel dates','USD cash for tips (~$50–80 per person)','Confirm cards work internationally'],
+  'Tech & apps 📱':['Download Hoteles Xcaret app','Download Southwest app — check-in reminder set Jun 18','GoPro fully charged + memory cards formatted','Phone chargers + portable battery pack','Back up phone photos before leaving'],
+  'Health 🩺':['Reef-safe sunscreen (pack extra — buy more if low)','Prescription meds — enough for 8 days','Motion sickness meds (boat at Xoximilco, ATVs at Xplor)','Hand sanitizer'],
+  'Logistics 🚗':['Airport ride arranged — leave by 3am Jun 19','Park tickets confirmed: Xoximilco, Xplor Fuego, Xenotes, Xel-Há','Pet / house sitter arranged (if needed)','Unplug appliances + lock up'],
 };
 function buildDepartChecklist(){
   const container=document.getElementById('depart-container');
   const saved=JSON.parse(localStorage.getItem('cancun-depart')||'{}');
   Object.entries(DEPART_SECTIONS).forEach(([section,items])=>{
     const checked=items.filter(i=>saved[section+'|'+i]).length;
-    const el=document.createElement('div');el.className='day-card';el.style.marginBottom='16px';
-    el.innerHTML=`<div class="section-label">${section} <span class="count-badge" id="dbadge-${btoa(section).replace(/[^a-zA-Z0-9]/g,'')}">${checked}/${items.length}</span></div><div class="progress-bar" style="margin-bottom:4px;"><div class="progress-fill" id="dprog-${btoa(section).replace(/[^a-zA-Z0-9]/g,'')}" style="width:${Math.round(checked/items.length*100)}%"></div></div><div id="dlist-${btoa(section).replace(/[^a-zA-Z0-9]/g,'')}"></div>`;
-    container.appendChild(el);
     const sid=btoa(section).replace(/[^a-zA-Z0-9]/g,'');
+    const el=document.createElement('div');el.className='day-card';el.style.marginBottom='16px';
+    el.innerHTML=`<div class="section-label">${section} <span class="count-badge" id="dbadge-${sid}">${checked}/${items.length}</span></div><div class="progress-bar" style="margin-bottom:4px;"><div class="progress-fill" id="dprog-${sid}" style="width:${Math.round(checked/items.length*100)}%"></div></div><div id="dlist-${sid}"></div>`;
+    container.appendChild(el);
     items.forEach(item=>{
       const key=section+'|'+item,isC=!!saved[key];
       const div=document.createElement('div');div.className='depart-item'+(isC?' checked':'');
@@ -648,18 +763,12 @@ function toggleDepart(section,item,sid){
 }
 
 // ── Feedback ──────────────────────────────────────────────────────────────────
-function sendFeedbackEmail(){
-  const msg=document.getElementById('feedback-msg').value.trim()||'(no message)';
-  window.open('mailto:'+FEEDBACK_EMAIL+'?subject='+encodeURIComponent('Cancún Trip Feedback')+'&body='+encodeURIComponent(msg),'_self');
-}
-function sendFeedbackSMS(){
-  const msg=document.getElementById('feedback-msg').value.trim()||'(no message)';
-  window.open('sms:'+FEEDBACK_PHONE+'?body='+encodeURIComponent(msg),'_self');
-}
+function sendFeedbackEmail(){const msg=document.getElementById('feedback-msg').value.trim()||'(no message)';window.open('mailto:'+FEEDBACK_EMAIL+'?subject='+encodeURIComponent('Cancún Trip Feedback')+'&body='+encodeURIComponent(msg),'_self');}
+function sendFeedbackSMS(){const msg=document.getElementById('feedback-msg').value.trim()||'(no message)';window.open('sms:'+FEEDBACK_PHONE+'?body='+encodeURIComponent(msg),'_self');}
 
 function switchView(name,btn){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById('view-'+name).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
 
-buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();
+buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();
 </script>
 </body>
 </html>
