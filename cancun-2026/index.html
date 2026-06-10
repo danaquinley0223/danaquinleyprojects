@@ -23,7 +23,6 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Georgia', serif; background: var(--sand); color: var(--text); min-height: 100vh; }
 
-  /* back link */
   .back-bar { background: var(--night); padding: 10px 20px; }
   .back-link { font-family: 'Courier New', monospace; font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; letter-spacing: 0.5px; transition: color 0.15s; }
   .back-link:hover { color: rgba(255,255,255,0.85); }
@@ -140,14 +139,27 @@
   .add-btn { padding:7px 14px; background:var(--teal); border:none; border-radius:8px; color:white; font-family:'Courier New',monospace; font-size:11px; cursor:pointer; white-space:nowrap; }
   .add-btn:hover { opacity:0.85; }
 
-  .fx-bar { background:var(--night); border-radius:var(--radius); padding:14px 16px; margin-bottom:16px; display:flex; align-items:center; gap:14px; }
+  /* departure checklist — single-column items */
+  .depart-item { display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--text); cursor:pointer; padding:8px 16px; border-bottom:0.5px solid rgba(28,43,53,0.06); transition:background 0.12s; user-select:none; }
+  .depart-item:last-child { border-bottom:none; }
+  .depart-item:hover { background:rgba(26,122,110,0.02); }
+  .depart-item.checked { color:var(--text-muted); text-decoration:line-through; background:rgba(26,122,110,0.03); }
+  .depart-check { width:18px; height:18px; border-radius:5px; border:1.5px solid var(--border); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:11px; margin-top:1px; }
+  .depart-item.checked .depart-check { background:var(--teal); border-color:var(--teal); color:white; }
+
+  .fx-bar { background:var(--night); border-radius:var(--radius); padding:14px 16px; margin-bottom:16px; }
   .fx-icon { font-size:22px; flex-shrink:0; }
-  .fx-main { flex:1; }
   .fx-rate { font-family:'Courier New',monospace; font-size:18px; font-weight:700; color:var(--white); }
   .fx-sub { font-family:'Courier New',monospace; font-size:10px; color:rgba(255,255,255,0.4); margin-top:3px; }
   .fx-pills { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
   .fx-pill { background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.12); border-radius:8px; padding:6px 12px; font-family:'Courier New',monospace; font-size:12px; color:rgba(255,255,255,0.75); }
   .fx-pill span { color:var(--teal-mid); font-weight:700; }
+  .fx-converter { display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:center; margin-top:12px; padding-top:12px; border-top:0.5px solid rgba(255,255,255,0.08); }
+  .fx-input-wrap { background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:8px; padding:8px 10px; display:flex; align-items:center; gap:6px; }
+  .fx-input-wrap:focus-within { border-color:var(--teal-mid); }
+  .fx-currency-label { font-family:'Courier New',monospace; font-size:11px; color:rgba(255,255,255,0.45); flex-shrink:0; }
+  .fx-input { flex:1; background:none; border:none; outline:none; font-family:'Courier New',monospace; font-size:18px; font-weight:700; color:white; width:100%; min-width:0; }
+  .fx-input::placeholder { color:rgba(255,255,255,0.2); font-weight:400; }
 
   .tip-card { background:var(--white); border-radius:var(--radius); border:0.5px solid var(--border); margin-bottom:12px; overflow:hidden; }
   .tip-header { display:flex; align-items:center; gap:10px; padding:14px 16px; background:var(--night); color:white; }
@@ -203,6 +215,17 @@
   .feedback-btn:hover { opacity:0.85; }
   .feedback-btn-email { background:var(--teal); }
   .feedback-btn-sms { background:var(--night); }
+
+  /* vote card */
+  .vote-option { padding:16px 12px; text-align:center; cursor:pointer; transition:background 0.15s; }
+  .vote-option:hover { filter:brightness(0.97); }
+  .vote-option.voted { background:var(--teal-light); }
+  .vote-emoji { font-size:30px; margin-bottom:6px; }
+  .vote-label { font-size:15px; font-weight:700; }
+  .vote-desc { font-family:'Courier New',monospace; font-size:10px; color:var(--text-muted); margin-top:3px; line-height:1.4; }
+  .vote-option.voted .vote-label { color:var(--teal); }
+  .vote-option.voted .vote-desc { color:var(--teal); }
+  .vote-badge { font-family:'Courier New',monospace; font-size:10px; color:var(--teal); font-weight:700; margin-top:5px; }
 </style>
 </head>
 <body>
@@ -244,6 +267,7 @@
   <button class="nav-btn" onclick="switchView('packing',this)">Packing</button>
   <button class="nav-btn" onclick="switchView('tips',this)">Park Tips</button>
   <button class="nav-btn" onclick="switchView('resort',this)">Resort</button>
+  <button class="nav-btn" onclick="switchView('depart',this)">Departure</button>
   <button class="nav-btn" onclick="switchView('feedback',this)">Feedback</button>
 </div>
 
@@ -265,6 +289,7 @@
       <div class="weather-note">Late June is early rainy season — showers are typically short (20–30 min) in the late afternoon. Mornings are almost always clear. UV is extreme; reapply reef-safe sunscreen every 90 min.</div>
     </div>
   </div>
+  <div id="vote-card"></div>
   <div id="days-container"></div>
 </div>
 
@@ -338,6 +363,14 @@
   <div id="resort-container"></div>
 </div>
 
+<div class="view" id="view-depart">
+  <div style="padding-top:8px"></div>
+  <div class="view-title">Departure checklist</div>
+  <div class="view-sub">Before you leave for SMF · Jun 19 · 3am departure</div>
+  <div id="depart-container"></div>
+  <div style="background:var(--coral-light);border-radius:var(--radius);border:0.5px solid rgba(232,98,58,0.2);padding:12px 16px;font-size:13px;color:var(--coral);font-family:'Courier New',monospace;line-height:1.6;">⚠ Pack bags the night of Jun 18 — you leave before 3am and will be half asleep.</div>
+</div>
+
 <div class="view" id="view-feedback">
   <div style="padding-top:8px"></div>
   <div class="view-title">Trip Feedback</div>
@@ -398,6 +431,37 @@ function buildDays(){
 }
 function toggleDay(i){document.getElementById('day-'+i).classList.toggle('open');}
 
+// ── Tuesday vote ──────────────────────────────────────────────────────────────
+const VOTE_OPTIONS=[
+  {id:'xplor',icon:'🎡',label:'Xplor',desc:'Unlimited food & drinks · zip lines · ATVs · underground river',url:'https://www.xplor.travel/en/'},
+  {id:'xcaret',icon:'🐠',label:'Xcaret',desc:'Cultural park · river · aquarium · wildlife · 1 included meal',url:null},
+];
+function buildVoteCard(){
+  const saved=localStorage.getItem('cancun-vote');
+  document.getElementById('vote-card').innerHTML=`
+    <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
+      <div style="background:var(--night);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">📊 Tue Jun 23 — your pick</div>
+          <div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Xplor or Xcaret?</div>
+        </div>
+        <div style="font-family:'Courier New',monospace;font-size:10px;color:rgba(255,255,255,0.35);">${saved?'tap to change':'cast your vote'}</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+        ${VOTE_OPTIONS.map((o,i)=>`
+          <div class="vote-option${saved===o.id?' voted':''}" onclick="castVote('${o.id}')"
+               style="border-right:${i===0?'0.5px solid var(--border)':'none'};">
+            <div class="vote-emoji">${o.icon}</div>
+            <div class="vote-label">${o.label}</div>
+            <div class="vote-desc">${o.desc}</div>
+            ${saved===o.id?'<div class="vote-badge">✓ Your pick</div>':''}
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+function castVote(id){localStorage.setItem('cancun-vote',id);buildVoteCard();}
+
+// ── Reservations ──────────────────────────────────────────────────────────────
 const RESERVATIONS=[
   {id:'tahxido-mon',name:'Tah-Xido',date:'Mon Jun 22',time:'~7–8pm',note:'Asian fusion — book at check-in Fri',urgency:'urgent'},
   {id:'encanta',name:'Encanta (8-course)',date:'Tue Jun 23',time:'~7–8pm',note:'Fine dining — book at check-in Fri',urgency:'urgent'},
@@ -411,6 +475,7 @@ function buildReservations(){
 }
 function toggleRes(id){const saved=JSON.parse(localStorage.getItem('cancun-res')||'{}');saved[id]=!saved[id];if(!saved[id])delete saved[id];localStorage.setItem('cancun-res',JSON.stringify(saved));buildReservations();}
 
+// ── Packing ───────────────────────────────────────────────────────────────────
 const BASE_PACKING={
   'Every day (resort)':['Sunscreen (reef-safe!)','Sunglasses','Hat / cap','Reusable water bottle','Room key / wristband','Phone + charger','Light layers for AC','Cash (pesos or USD — $1 ≈ 17.44 MXN)'],
   'Park days':['Water shoes','GoPro + mounts','Waterproof phone case','Quick-dry clothes','Extra swimsuit','Dry bag','Reef-safe sunscreen (reapply!)','Snacks if not all-inclusive'],
@@ -458,6 +523,7 @@ function toggleBring(el,key,sid){
   document.getElementById('prog-'+sid).style.width=Math.round(cn/all.length*100)+'%';
 }
 
+// ── Park tips ─────────────────────────────────────────────────────────────────
 const TIPS=[
   {icon:'🎉',name:'Xoximilco',date:'Sat Jun 20 · 6–12:30am',url:'https://www.xoximilco.com/en/',tips:['Festive boat party on the canals — mariachi, food, drinks.','Dress colorfully — the photos look way better.','Pace yourself on drinks early; it\'s a long night on a boat.']},
   {icon:'🔥',name:'Xplor Fuego',date:'Sun Jun 21 · 5:30–10:30pm',url:'https://www.xplor.travel/en/xplor-fuego-admission/',tips:['Night-time version — ATVs, zip lines, and underground rafts after dark.','Troglodita buffet is included — eat before you zip.','Bring a change of clothes — you WILL get soaked on the underground river.','No professional cameras on rides; keep the GoPro in waterproof mode.']},
@@ -468,15 +534,120 @@ const TIPS=[
 ];
 function buildTips(){const c=document.getElementById('tips-container');TIPS.forEach(p=>{const card=document.createElement('div');card.className='tip-card';card.innerHTML=`<div class="tip-header"><div class="tip-header-icon">${p.icon}</div><div><div class="tip-header-name">${p.name}${p.url?` <a href="${p.url}" target="_blank" class="park-link" style="color:var(--teal-mid)">↗</a>`:''}</div><div class="tip-header-sub">${p.date}</div></div></div><div class="tip-body">${p.tips.map(t=>`<div class="tip-row"><div class="tip-bullet">›</div><div>${t}</div></div>`).join('')}</div>`;c.appendChild(card);});}
 
+// ── Resort + currency converter ───────────────────────────────────────────────
+function convertFrom(dir){
+  const rate=FX_RATE;
+  const uEl=document.getElementById('conv-usd'),mEl=document.getElementById('conv-mxn');
+  if(!uEl||!mEl)return;
+  if(dir==='usd'){const v=parseFloat(uEl.value);mEl.value=isNaN(v)?'':(v*rate).toFixed(0);}
+  else{const v=parseFloat(mEl.value);uEl.value=isNaN(v)?'':(v/rate).toFixed(2);}
+}
+
 function buildResort(){
   const rate=FX_RATE;
   document.getElementById('resort-container').innerHTML=`
     <div class="info-strip"><div style="font-size:20px;color:rgba(255,255,255,0.7)">🏨</div><div class="info-strip-text"><strong>Xcaret Arte</strong> — adults-only all-inclusive. Food, drinks, shows, beach all included. Tip in cash.</div></div>
-    <div class="fx-bar"><div class="fx-icon">💱</div><div class="fx-main"><div class="fx-rate">$1 USD = ${rate.toFixed(2)} MXN</div><div class="fx-sub">Mid-market rate as of Jun 9, 2026 · exchange booth rates will be lower</div><div class="fx-pills"><div class="fx-pill">$1 tip = <span>~${rate.toFixed(0)} MXN</span></div><div class="fx-pill">$5 = <span>~${(rate*5).toFixed(0)} MXN</span></div><div class="fx-pill">$20 = <span>~${(rate*20).toFixed(0)} MXN</span></div><div class="fx-pill">$50 = <span>~${(rate*50).toFixed(0)} MXN</span></div><div class="fx-pill">$100 = <span>~${(rate*100).toFixed(0)} MXN</span></div></div></div></div>
+    <div class="fx-bar">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div class="fx-icon">💱</div>
+        <div>
+          <div class="fx-rate">$1 USD = ${rate.toFixed(2)} MXN</div>
+          <div class="fx-sub">Mid-market rate · Jun 9, 2026</div>
+        </div>
+      </div>
+      <div class="fx-converter">
+        <div class="fx-input-wrap">
+          <span class="fx-currency-label">USD $</span>
+          <input id="conv-usd" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('usd')">
+        </div>
+        <div style="font-family:'Courier New',monospace;font-size:14px;color:var(--teal-mid);text-align:center;">⇄</div>
+        <div class="fx-input-wrap">
+          <span class="fx-currency-label">MXN $</span>
+          <input id="conv-mxn" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('mxn')">
+        </div>
+      </div>
+      <div class="fx-pills" style="margin-top:10px;">
+        <div class="fx-pill">$1 tip = <span>~${rate.toFixed(0)} MXN</span></div>
+        <div class="fx-pill">$5 = <span>~${(rate*5).toFixed(0)} MXN</span></div>
+        <div class="fx-pill">$20 = <span>~${(rate*20).toFixed(0)} MXN</span></div>
+        <div class="fx-pill">$50 = <span>~${(rate*50).toFixed(0)} MXN</span></div>
+        <div class="fx-pill">$100 = <span>~${(rate*100).toFixed(0)} MXN</span></div>
+      </div>
+    </div>
     <div class="day-card" style="margin-bottom:16px"><div class="section-label">Restaurants</div><div style="padding:4px 0 12px;">${[{n:'Mercado San Juan',i:'Buffet, casual, open longest hours'},{n:'Cayuco',i:'Buffet option, good for groups'},{n:'Cantina',i:'Mexican, lively atmosphere'},{n:'Tah-Xido',i:'Teppanyaki · Asian fusion — book at check-in!'},{n:'Encanta',i:'8-course fine dining — book at check-in!'},{n:'Arenal',i:'Thu dinner · reserve ahead'}].map(r=>`<div class="tip-row" style="padding:9px 16px;"><div class="tip-bullet">›</div><div><strong>${r.n}</strong> — ${r.i}</div></div>`).join('')}</div></div>
     <div class="day-card"><div class="section-label">Good to know</div><div style="padding:4px 0 12px;">${[{e:'🏖️',l:'Beach & pool',n:'All-inclusive — chairs, towels, service included'},{e:'🎭',l:'Evening shows',n:'Check daily schedule at concierge desk'},{e:'🍹',l:'Drinks',n:'Unlimited at resort bars — tip 1–2 USD (~17–35 MXN)'},{e:'📱',l:'WiFi',n:'Available throughout — ask front desk for code'},{e:'🏥',l:'Medical',n:'Nurse on site 24/7; nearest hospital ~20 min'},{e:'💰',l:'Tipping',n:"1–2 USD per drink/service (~17–35 MXN at today's rate)"}].map(r=>`<div class="tip-row" style="padding:9px 16px;"><div style="font-size:18px;flex-shrink:0">${r.e}</div><div><strong>${r.l}</strong> — ${r.n}</div></div>`).join('')}</div></div>`;
 }
 
+// ── Departure checklist ───────────────────────────────────────────────────────
+const DEPART_SECTIONS={
+  'Documents 📄':[
+    'Passports — all 4 (valid 6+ months past Jun 26)',
+    'Printed flight confirmations',
+    'Hotel confirmation — Xcaret Arte reservation',
+    'Travel insurance docs',
+    'Passport photo copies (keep separate from originals)',
+  ],
+  'Money 💵':[
+    'Notify bank & credit cards of Mexico travel dates',
+    'USD cash for tips (~$50–80 per person)',
+    'Confirm cards work internationally',
+  ],
+  'Tech & apps 📱':[
+    'Download Hoteles Xcaret app',
+    'Download Southwest app — check-in reminder set Jun 18',
+    'GoPro fully charged + memory cards formatted',
+    'Phone chargers + portable battery pack',
+    'Back up phone photos before leaving',
+  ],
+  'Health 🩺':[
+    'Reef-safe sunscreen (pack extra — buy more if low)',
+    'Prescription meds — enough for 8 days',
+    'Motion sickness meds (boat at Xoximilco, ATVs at Xplor)',
+    'Hand sanitizer',
+  ],
+  'Logistics 🚗':[
+    'Airport ride arranged — leave by 3am Jun 19',
+    'Park tickets confirmed: Xoximilco, Xplor Fuego, Xenotes, Xel-Há',
+    'Pet / house sitter arranged (if needed)',
+    'Unplug appliances + lock up',
+  ],
+};
+function buildDepartChecklist(){
+  const container=document.getElementById('depart-container');
+  const saved=JSON.parse(localStorage.getItem('cancun-depart')||'{}');
+  Object.entries(DEPART_SECTIONS).forEach(([section,items])=>{
+    const checked=items.filter(i=>saved[section+'|'+i]).length;
+    const el=document.createElement('div');el.className='day-card';el.style.marginBottom='16px';
+    el.innerHTML=`<div class="section-label">${section} <span class="count-badge" id="dbadge-${btoa(section).replace(/[^a-zA-Z0-9]/g,'')}">${checked}/${items.length}</span></div><div class="progress-bar" style="margin-bottom:4px;"><div class="progress-fill" id="dprog-${btoa(section).replace(/[^a-zA-Z0-9]/g,'')}" style="width:${Math.round(checked/items.length*100)}%"></div></div><div id="dlist-${btoa(section).replace(/[^a-zA-Z0-9]/g,'')}"></div>`;
+    container.appendChild(el);
+    const sid=btoa(section).replace(/[^a-zA-Z0-9]/g,'');
+    items.forEach(item=>{
+      const key=section+'|'+item,isC=!!saved[key];
+      const div=document.createElement('div');div.className='depart-item'+(isC?' checked':'');
+      div.onclick=()=>toggleDepart(section,item,sid);
+      div.innerHTML=`<div class="depart-check">${isC?'✓':''}</div><span>${item}</span>`;
+      document.getElementById('dlist-'+sid).appendChild(div);
+    });
+  });
+}
+function toggleDepart(section,item,sid){
+  const saved=JSON.parse(localStorage.getItem('cancun-depart')||'{}');
+  const key=section+'|'+item;
+  if(saved[key]){delete saved[key];}else{saved[key]=true;}
+  localStorage.setItem('cancun-depart',JSON.stringify(saved));
+  const items=DEPART_SECTIONS[section]||[];
+  const checked=items.filter(i=>saved[section+'|'+i]).length;
+  document.getElementById('dbadge-'+sid).textContent=checked+'/'+items.length;
+  document.getElementById('dprog-'+sid).style.width=Math.round(checked/items.length*100)+'%';
+  const list=document.getElementById('dlist-'+sid);
+  list.querySelectorAll('.depart-item').forEach((el,i)=>{
+    const isC=!!saved[section+'|'+items[i]];
+    el.className='depart-item'+(isC?' checked':'');
+    el.querySelector('.depart-check').textContent=isC?'✓':'';
+  });
+}
+
+// ── Feedback ──────────────────────────────────────────────────────────────────
 function sendFeedbackEmail(){
   const msg=document.getElementById('feedback-msg').value.trim()||'(no message)';
   window.open('mailto:'+FEEDBACK_EMAIL+'?subject='+encodeURIComponent('Cancún Trip Feedback')+'&body='+encodeURIComponent(msg),'_self');
@@ -488,7 +659,7 @@ function sendFeedbackSMS(){
 
 function switchView(name,btn){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById('view-'+name).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
 
-buildCountdown();buildDays();buildReservations();buildPacking();buildTips();buildResort();
+buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();
 </script>
 </body>
 </html>
