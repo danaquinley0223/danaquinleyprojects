@@ -732,7 +732,7 @@ function buildDepartChecklist(){
   const saved=JSON.parse(localStorage.getItem('cancun-depart')||'{}');
   Object.entries(DEPART_SECTIONS).forEach(([section,items])=>{
     const checked=items.filter(i=>saved[section+'|'+i]).length;
-    const sid=btoa(section).replace(/[^a-zA-Z0-9]/g,'');
+    const sid='ds'+Object.keys(DEPART_SECTIONS).indexOf(section);
     const el=document.createElement('div');el.className='day-card';el.style.marginBottom='16px';
     el.innerHTML=`<div class="section-label">${section} <span class="count-badge" id="dbadge-${sid}">${checked}/${items.length}</span></div><div class="progress-bar" style="margin-bottom:4px;"><div class="progress-fill" id="dprog-${sid}" style="width:${Math.round(checked/items.length*100)}%"></div></div><div id="dlist-${sid}"></div>`;
     container.appendChild(el);
