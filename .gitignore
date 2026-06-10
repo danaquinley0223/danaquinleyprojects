@@ -1,0 +1,6 @@
+dist
+node_modules
+cocktail-bar/node_modules
+cocktail-bar/dist
+*.zip
+.DS_Store

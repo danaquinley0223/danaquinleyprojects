@@ -9,7 +9,7 @@
 //
 // Result: dist/ has the entire site ready to serve.
 
-import { execSync } from 'node:child_process'
+import { spawnSync } from 'node:child_process'
 import { rmSync, mkdirSync, cpSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -18,7 +18,9 @@ const DIST = join(ROOT, 'dist')
 
 function run(cmd, opts = {}) {
   console.log(`\n→ ${cmd}`)
-  execSync(cmd, { stdio: 'inherit', ...opts })
+  const [prog, ...args] = cmd.split(/\s+/)
+  const result = spawnSync(prog, args, { stdio: 'inherit', ...opts })
+  if (result.status !== 0) process.exit(result.status ?? 1)
 }
 
 console.log('Cleaning dist/')
