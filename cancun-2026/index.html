@@ -310,6 +310,39 @@
   .feedback-btn-email { background:var(--teal); }
   .feedback-btn-sms { background:var(--night); }
 
+  /* drinks */
+  .trophy-card { background:var(--night); border-radius:var(--radius); border:2px solid #C8A020; padding:20px 16px; text-align:center; margin-bottom:16px; position:relative; overflow:hidden; }
+  .trophy-card::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(-45deg,transparent,transparent 20px,rgba(200,160,32,0.05) 20px,rgba(200,160,32,0.05) 40px); }
+  .trophy-emoji { font-size:48px; position:relative; }
+  .trophy-title { font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; text-transform:uppercase; color:#C8A020; margin:8px 0 4px; position:relative; }
+  .trophy-name { font-size:24px; font-weight:400; color:white; position:relative; }
+  .trophy-sub { font-family:'Courier New',monospace; font-size:11px; color:rgba(255,255,255,0.45); margin-top:6px; line-height:1.5; position:relative; }
+  .drink-vote-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:12px 16px 14px; }
+  .drink-vote-opt { padding:12px 8px; text-align:center; border-radius:10px; border:1.5px solid var(--border); background:var(--sand); cursor:pointer; transition:all 0.15s; }
+  .drink-vote-opt.voted { border-color:var(--teal); background:var(--teal-light); }
+  .drink-vote-opt.voted .dvo-name { color:var(--teal); }
+  .dvo-icon { font-size:24px; margin-bottom:4px; }
+  .dvo-name { font-size:13px; font-weight:700; color:var(--text); }
+  .dvo-desc { font-family:'Courier New',monospace; font-size:9px; color:var(--text-muted); margin-top:3px; line-height:1.4; }
+  .dvo-check { font-family:'Courier New',monospace; font-size:9px; color:var(--teal); font-weight:700; margin-top:4px; }
+  .counter-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:12px 16px 14px; }
+  .counter-cell { background:var(--sand); border:0.5px solid var(--border); border-radius:10px; padding:12px 8px; text-align:center; }
+  .counter-num { font-family:'Courier New',monospace; font-size:36px; font-weight:700; color:var(--teal); line-height:1; }
+  .counter-name { font-family:'Courier New',monospace; font-size:10px; letter-spacing:1px; color:var(--text-muted); margin:4px 0 8px; }
+  .counter-btns { display:flex; gap:6px; justify-content:center; }
+  .counter-btn { width:34px; height:34px; border-radius:50%; border:none; font-size:20px; cursor:pointer; line-height:1; transition:opacity 0.1s; }
+  .counter-plus { background:var(--teal); color:white; }
+  .counter-minus { background:rgba(28,43,53,0.08); color:var(--text-muted); font-size:16px; }
+  .counter-plus:active,.counter-minus:active { opacity:0.7; }
+  .round-btn { width:100%; padding:11px; background:var(--teal); border:none; border-radius:8px; color:white; font-family:'Courier New',monospace; font-size:12px; cursor:pointer; letter-spacing:0.5px; }
+  .round-btn:hover { opacity:0.88; }
+  .guide-item { display:flex; align-items:flex-start; gap:12px; padding:12px 16px; border-bottom:0.5px solid rgba(28,43,53,0.06); }
+  .guide-item:last-child { border-bottom:none; }
+  .guide-icon { font-size:24px; flex-shrink:0; margin-top:2px; }
+  .guide-name { font-size:14px; font-weight:600; color:var(--text); margin-bottom:2px; }
+  .guide-where { font-family:'Courier New',monospace; font-size:10px; color:var(--teal-mid); margin-bottom:3px; }
+  .guide-desc { font-size:12px; color:var(--text-muted); line-height:1.4; }
+
   /* theme button in nav */
   .theme-fab { flex-shrink:0; padding:12px 14px; background:none; border:none; border-left:0.5px solid var(--border); font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.5px; color:var(--teal-mid); cursor:pointer; white-space:nowrap; transition:color 0.15s; margin-left:auto; }
   .theme-fab:hover { color:var(--teal); }
@@ -375,6 +408,7 @@
   <button class="nav-btn" onclick="switchView('tips',this)">Park Tips</button>
   <button class="nav-btn" onclick="switchView('resort',this)">Resort</button>
   <button class="nav-btn" onclick="switchView('depart',this)">Departure</button>
+  <button class="nav-btn" onclick="switchView('drinks',this)">🍋 Drinks</button>
   <button class="nav-btn" onclick="switchView('feedback',this)">Feedback</button>
   <button id="theme-fab" class="theme-fab" onclick="cycleTheme()">☀️ Classic</button>
 </div>
@@ -486,6 +520,13 @@
   <div class="view-sub">Before you leave for SMF · Jun 19 · 3am departure</div>
   <div id="depart-container"></div>
   <div style="background:var(--coral-light);border-radius:var(--radius);border:0.5px solid rgba(232,98,58,0.2);padding:12px 16px;font-size:13px;color:var(--coral);font-family:'Courier New',monospace;line-height:1.6;">⚠ Pack bags the night of Jun 18 — you leave before 3am and will be half asleep.</div>
+</div>
+
+<div class="view" id="view-drinks">
+  <div style="padding-top:8px"></div>
+  <div class="view-title">Drinks</div>
+  <div class="view-sub">The most important tab on this page</div>
+  <div id="drinks-container"></div>
 </div>
 
 <div class="view" id="view-feedback">
@@ -859,6 +900,139 @@ function sendFeedbackSMS(){const msg=document.getElementById('feedback-msg').val
 
 function switchView(name,btn){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));document.getElementById('view-'+name).classList.add('active');btn.classList.add('active');window.scrollTo(0,0);}
 
+// ── Drinks ────────────────────────────────────────────────────────────────────
+const DRINKERS=[
+  {id:'DQ',name:'Dana',cls:'dana'},
+  {id:'LG',name:'Leia',cls:'leia'},
+  {id:'DL',name:'Diana',cls:'diana'},
+  {id:'MD',name:'Miguel',cls:'miguel'},
+];
+const DRINK_VOTE_OPTIONS=[
+  {id:'lemondrop',icon:'🍋',name:'Lemon Drop',desc:'Vodka · triple sec · fresh lemon · sugar rim',champ:true},
+  {id:'margarita',icon:'🍹',name:'Margarita',desc:'Tequila · triple sec · lime — Mexico mandatory'},
+  {id:'paloma',icon:'🌸',name:'Paloma',desc:'Tequila · grapefruit soda · lime — the local fave'},
+  {id:'mojito',icon:'🌿',name:'Mojito',desc:'Rum · mint · lime · soda — resort essential'},
+  {id:'pinacolada',icon:'🌴',name:'Piña Colada',desc:'Rum · coconut · pineapple — all-inclusive classic'},
+  {id:'michelada',icon:'🍺',name:'Michelada',desc:'Beer · lime · chili · tomato — go full Mexico'},
+];
+const COCKTAIL_GUIDE=[
+  {icon:'🏺',name:'Cantarito',where:'Cantina bar',desc:'Tequila + grapefruit + orange + lime in a clay cup. Very Mexican, very underrated.'},
+  {icon:'🥭',name:'Spicy Mango Margarita',where:'Any bar',desc:'Ask for "margarita de mango con chile." The sweet-heat combo is addictive.'},
+  {icon:'💧',name:'Ranch Water',where:'Any bar',desc:'Tequila + Topo Chico + lime. Dangerously easy to drink all day.'},
+  {icon:'🥥',name:'Coco Loco',where:'Pool / beach bar',desc:'Rum + pineapple served in a coconut. Mandatory at least once.'},
+  {icon:'🍋',name:'Lemon Drop',where:'Any bar',desc:'Ask for vodka + triple sec + limon dulce + sugar rim. The official drink of Trip 1.0 — defend the title.'},
+  {icon:'🌅',name:'Tequila Sunrise',where:'Any bar',desc:'Tequila + OJ + grenadine. The morning-after apology drink.'},
+];
+
+function getDrinkCounts(){return JSON.parse(localStorage.getItem('cancun-drink-counts')||'{}');}
+function saveDrinkCounts(c){localStorage.setItem('cancun-drink-counts',JSON.stringify(c));}
+
+function changeDrink(id,delta){
+  const c=getDrinkCounts();
+  c[id]=Math.max(0,(c[id]||0)+delta);
+  saveDrinkCounts(c);
+  renderCounters();
+}
+function newRound(){
+  const c=getDrinkCounts();
+  DRINKERS.forEach(d=>{c[d.id]=(c[d.id]||0)+1;});
+  saveDrinkCounts(c);
+  renderCounters();
+}
+function resetCounts(){
+  if(!confirm('Reset all drink counts to zero?'))return;
+  localStorage.removeItem('cancun-drink-counts');
+  renderCounters();
+}
+function renderCounters(){
+  const c=getDrinkCounts();
+  const el=document.getElementById('drinks-counters');
+  if(!el)return;
+  const total=DRINKERS.reduce((s,d)=>s+(c[d.id]||0),0);
+  el.innerHTML=`
+    <div class="counter-grid">
+      ${DRINKERS.map(d=>`
+        <div class="counter-cell">
+          <div class="counter-num" id="cnt-${d.id}">${c[d.id]||0}</div>
+          <div class="counter-name av-${d.cls}" style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;">${d.name}</div>
+          <div class="counter-btns">
+            <button class="counter-btn counter-minus" onclick="changeDrink('${d.id}',-1)">−</button>
+            <button class="counter-btn counter-plus" onclick="changeDrink('${d.id}',1)">+</button>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div style="padding:0 16px 4px;display:flex;gap:8px;align-items:center;">
+      <button class="round-btn" style="flex:1" onclick="newRound()">🥂 New Round (+1 everyone) · ${total} total</button>
+      <button onclick="resetCounts()" style="background:none;border:0.5px solid var(--border);border-radius:8px;padding:11px 12px;font-family:'Courier New',monospace;font-size:11px;color:var(--text-muted);cursor:pointer;">Reset</button>
+    </div>`;
+}
+
+function voteForDrink(id){
+  localStorage.setItem('cancun-drink-vote',id);
+  renderDrinkVote();
+}
+function renderDrinkVote(){
+  const saved=localStorage.getItem('cancun-drink-vote');
+  const el=document.getElementById('drinks-vote');
+  if(!el)return;
+  el.innerHTML=`
+    <div class="drink-vote-grid">
+      ${DRINK_VOTE_OPTIONS.map(o=>`
+        <div class="drink-vote-opt${saved===o.id?' voted':''}" onclick="voteForDrink('${o.id}')">
+          <div class="dvo-icon">${o.icon}${o.champ?' 🏆':''}</div>
+          <div class="dvo-name">${o.name}</div>
+          <div class="dvo-desc">${o.desc}</div>
+          ${saved===o.id?'<div class="dvo-check">✓ Your vote</div>':''}
+        </div>`).join('')}
+    </div>
+    <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--text-muted);padding:0 16px 12px;text-align:right;">${saved?'tap to change':'tap to vote'}</div>`;
+}
+
+function buildDrinks(){
+  const el=document.getElementById('drinks-container');
+  if(!el)return;
+  el.innerHTML=`
+    <div class="trophy-card">
+      <div class="trophy-emoji">🍋🏆🍋</div>
+      <div class="trophy-title">Official Drink · Cancún Trip 1.0</div>
+      <div class="trophy-name">The Lemon Drop</div>
+      <div class="trophy-sub">Vodka · Triple Sec · Fresh Lemon · Sugar Rim<br>The drink that started it all. Can it defend its title?</div>
+    </div>
+    <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
+      <div style="background:var(--night);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">📊 Vote</div>
+          <div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Drink of the Trip?</div>
+        </div>
+      </div>
+      <div id="drinks-vote"></div>
+    </div>
+    <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
+      <div style="background:var(--night);padding:12px 16px;">
+        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">🥃 Round Counter</div>
+        <div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Keep track of the damage</div>
+      </div>
+      <div id="drinks-counters"></div>
+    </div>
+    <div class="day-card" style="overflow:hidden;">
+      <div style="background:var(--night);padding:12px 16px;">
+        <div style="font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal-mid);">🍸 What to order</div>
+        <div style="font-size:14px;font-weight:600;color:white;margin-top:2px;">Cocktail Guide</div>
+      </div>
+      ${COCKTAIL_GUIDE.map(d=>`
+        <div class="guide-item">
+          <div class="guide-icon">${d.icon}</div>
+          <div>
+            <div class="guide-name">${d.name}</div>
+            <div class="guide-where">${d.where}</div>
+            <div class="guide-desc">${d.desc}</div>
+          </div>
+        </div>`).join('')}
+    </div>`;
+  renderDrinkVote();
+  renderCounters();
+}
+
 // ── Local times ───────────────────────────────────────────────────────────────
 function getTimeInZone(offsetHours){
   const now=new Date();
@@ -932,7 +1106,7 @@ function applyTheme(t){
   if(btn)btn.textContent=THEME_LABEL[t];
 }
 
-buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();buildTripStats();updateTimes();
+buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();buildTripStats();buildDrinks();updateTimes();
 applyTheme(localStorage.getItem('cancun-theme')||'light');
 </script>
 </body>
