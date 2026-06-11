@@ -49,6 +49,9 @@ export default function RecipeCard({ cocktail }) {
         {cocktail.isIBA && !cocktail.isCustom && (
           <div className="recipe-card-iba">IBA</div>
         )}
+        {cocktail.isBook && !cocktail.isCustom && (
+          <div className="recipe-card-book">{cocktail.source}</div>
+        )}
       </div>
       <div className="recipe-card-body">
         <h3 className="recipe-card-name">{cocktail.strDrink}</h3>

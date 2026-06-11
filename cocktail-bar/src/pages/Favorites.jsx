@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { lookupById } from '../api/cocktaildb'
+import { getLocalCocktail } from '../data/localCocktails'
 import { useFavorites } from '../context/FavoritesContext'
 import { useCustomRecipes } from '../context/CustomRecipesContext'
 import RecipeCard from '../components/RecipeCard'
@@ -19,7 +20,7 @@ export default function Favorites() {
     setLoading(true)
     Promise.all(favorites.map(async f => {
       if (f.isCustom) return getById(f.idDrink)
-      return lookupById(f.idDrink)
+      return getLocalCocktail(f.idDrink) || lookupById(f.idDrink)
     })).then(results => {
       setDetailed(results.filter(Boolean))
       setLoading(false)

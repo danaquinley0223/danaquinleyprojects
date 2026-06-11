@@ -1,14 +1,11 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { searchByName, searchByFirstLetter, filterByCategory, lookupById, getCategories } from '../api/cocktaildb'
+import { searchByName, searchByFirstLetter } from '../api/cocktaildb'
+import { LOCAL_CATEGORIES, filterLocal } from '../data/localCocktails'
 import { useCustomRecipes } from '../context/CustomRecipesContext'
 import { usePantry } from '../context/PantryContext'
 import { canMake, almostThere } from '../utils/matchUtils'
-import { transformIBACocktails } from '../utils/ibaTransform'
-import ibaRaw from '../data/iba-cocktails.json'
 import RecipeCard from '../components/RecipeCard'
 import './Home.css'
-
-const IBA_COCKTAILS = transformIBACocktails(ibaRaw)
 
 const FILTER_OPTIONS = [
   { value: 'all', label: 'All Drinks' },
@@ -20,20 +17,15 @@ const DEFAULT_LETTERS = ['m', 'c', 'b', 's', 'w']
 
 export default function Home() {
   const [cocktails, setCocktails] = useState([])
-  const [categories, setCategories] = useState([])
+  const [categories] = useState(LOCAL_CATEGORIES)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('')
   const [pantryFilter, setPantryFilter] = useState('all')
   const [loading, setLoading] = useState(false)
-  const [loadingDetails, setLoadingDetails] = useState(false)
   const searchTimeout = useRef(null)
 
   const { customRecipes } = useCustomRecipes()
   const { pantry } = usePantry()
-
-  useEffect(() => {
-    getCategories().then(setCategories)
-  }, [])
 
   useEffect(() => {
     setLoading(true)
@@ -77,16 +69,11 @@ export default function Home() {
     }, 350)
   }, [])
 
-  const ibaFiltered = useCallback((term) => {
-    if (!term.trim()) return IBA_COCKTAILS
-    const lower = term.toLowerCase()
-    return IBA_COCKTAILS.filter(c => c.strDrink.toLowerCase().includes(lower))
-  }, [])
-
   const handleCategory = useCallback(async (category) => {
     setSelectedCategory(category)
     setSearchTerm('')
     if (!category) {
+      // Back to "All": reload the default browse from the API.
       setLoading(true)
       const results = await Promise.all(DEFAULT_LETTERS.map(l => searchByFirstLetter(l)))
       const seen = new Set()
@@ -98,21 +85,15 @@ export default function Home() {
       setLoading(false)
       return
     }
-    setLoading(true)
-    const basicList = await filterByCategory(category)
-    // Category filter only returns id/name/thumb — fetch full details for pantry matching
-    setLoadingDetails(true)
-    const detailed = await Promise.all(basicList.slice(0, 40).map(c => lookupById(c.idDrink)))
-    setCocktails(detailed.filter(Boolean))
-    setLoading(false)
-    setLoadingDetails(false)
+    // Spirit/type categories come from the bundled library — filter those locally.
+    setCocktails([])
   }, [])
 
+  const catMatch = (c) => !selectedCategory || c.strCategory === selectedCategory
   const apiCocktails = cocktails.map(c => ({ ...c, isCustom: false }))
   const apiNames = new Set(apiCocktails.map(c => c.strDrink.toLowerCase()))
-  const relevantIBA = ibaFiltered(searchTerm)
-  const ibaOnly = relevantIBA.filter(c => !apiNames.has(c.strDrink.toLowerCase()))
-  const allCocktails = [...customRecipes, ...apiCocktails, ...ibaOnly]
+  const localOnly = filterLocal(searchTerm).filter(c => !apiNames.has(c.strDrink.toLowerCase()))
+  const allCocktails = [...customRecipes, ...apiCocktails, ...localOnly].filter(catMatch)
 
   const displayed = allCocktails.filter(cocktail => {
     if (pantryFilter === 'all') return true
@@ -200,16 +181,11 @@ export default function Home() {
           )}
         </div>
       ) : (
-        <>
-          {loadingDetails && (
-            <p className="home-details-note">Loading ingredient details for pantry matching...</p>
-          )}
-          <div className="cocktail-grid">
-            {displayed.map(cocktail => (
-              <RecipeCard key={cocktail.idDrink} cocktail={cocktail} />
-            ))}
-          </div>
-        </>
+        <div className="cocktail-grid">
+          {displayed.map(cocktail => (
+            <RecipeCard key={cocktail.idDrink} cocktail={cocktail} />
+          ))}
+        </div>
       )}
     </div>
   )

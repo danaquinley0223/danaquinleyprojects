@@ -95,7 +95,8 @@
 }
 
 .recipe-card-custom,
-.recipe-card-iba {
+.recipe-card-iba,
+.recipe-card-book {
   position: absolute;
   top: 10px;
   left: 10px;
@@ -117,6 +118,12 @@
   background: rgba(99, 102, 241, 0.12);
   border: 1px solid rgba(99, 102, 241, 0.3);
   color: #a5b4fc;
+}
+
+.recipe-card-book {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
 }
 
 .recipe-card-body {

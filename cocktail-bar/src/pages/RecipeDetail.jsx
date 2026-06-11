@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { lookupById, extractIngredients } from '../api/cocktaildb'
+import { getLocalCocktail } from '../data/localCocktails'
 import { useCustomRecipes } from '../context/CustomRecipesContext'
 import { usePantry } from '../context/PantryContext'
 import { useFavorites } from '../context/FavoritesContext'
@@ -46,10 +47,16 @@ export default function RecipeDetail() {
       setCocktail(recipe)
       setLoading(false)
     } else {
-      lookupById(id).then(data => {
-        setCocktail(data)
+      const local = getLocalCocktail(id)
+      if (local) {
+        setCocktail(local)
         setLoading(false)
-      })
+      } else {
+        lookupById(id).then(data => {
+          setCocktail(data)
+          setLoading(false)
+        })
+      }
     }
   }, [id, getById])
 
