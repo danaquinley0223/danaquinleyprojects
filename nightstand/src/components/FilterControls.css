@@ -1,0 +1,33 @@
+.filters { display: flex; flex-direction: column; gap: 18px; }
+
+.filter-group { display: flex; flex-direction: column; gap: 8px; }
+.filter-label {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+.filter-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+
+.filter-chip {
+  padding: 6px 12px; border-radius: 20px; font-size: 13px;
+  background: var(--bg-elevated); color: var(--text-secondary);
+  border: 1px solid var(--border-subtle); transition: var(--transition);
+  text-transform: capitalize;
+}
+.filter-chip:hover { color: var(--text-primary); border-color: var(--border-default); }
+.filter-chip.active { background: var(--amber-dim); color: var(--amber-light); border-color: var(--border-accent); }
+.filter-chip.violet.active { background: var(--violet-dim); color: var(--violet); border-color: rgba(154,140,208,0.4); }
+.filter-chip.teal.active { background: var(--teal-dim); color: var(--teal); border-color: rgba(91,179,166,0.4); }
+
+.filter-row {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.filter-time { display: flex; align-items: center; gap: 12px; }
+.filter-time input[type=range] { accent-color: var(--amber); width: 200px; }
+.filter-time-value { font-size: 13px; color: var(--text-secondary); min-width: 90px; }
+
+.filter-owned {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text-secondary); cursor: pointer;
+}
+.filter-owned input { accent-color: var(--amber); width: 16px; height: 16px; }

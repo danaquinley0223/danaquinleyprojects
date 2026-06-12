@@ -1,0 +1,55 @@
+.book-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform var(--transition);
+}
+.book-card:hover { transform: translateY(-4px); }
+
+.book-card-cover { position: relative; }
+
+.book-card-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--bg-base);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+}
+.book-card-badge.currently-reading { background: var(--teal-dim); color: var(--teal); border-color: rgba(91,179,166,0.4); }
+.book-card-badge.to-read { background: var(--amber-dim); color: var(--amber-light); border-color: var(--border-accent); }
+.book-card-badge.perfect { background: var(--amber); color: #20160a; border: none; }
+.book-card-badge.close { background: var(--violet-dim); color: var(--violet); border-color: rgba(154,140,208,0.4); }
+
+.book-card-body { display: flex; flex-direction: column; gap: 2px; }
+.book-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.book-card-author {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.book-card-rating {
+  font-size: 12px;
+  color: var(--amber);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.book-card-rating span { color: var(--text-muted); }

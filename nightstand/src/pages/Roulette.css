@@ -1,0 +1,32 @@
+.roulette-stage {
+  display: flex;
+  justify-content: center;
+  min-height: 320px;
+  align-items: center;
+  margin: 10px 0 24px;
+}
+
+.roulette-placeholder {
+  text-align: center; color: var(--text-muted);
+}
+.roulette-placeholder span { font-size: 56px; display: block; margin-bottom: 10px; }
+
+.roulette-pick { display: flex; gap: 28px; align-items: center; max-width: 620px; }
+.roulette-cover { width: 180px; flex-shrink: 0; transition: transform 0.1s; }
+.roulette-pick.spinning .roulette-cover { transform: scale(0.96) rotate(-1deg); opacity: 0.85; }
+
+.roulette-pick-info h2 { font-size: 26px; margin-bottom: 4px; }
+.roulette-pick-info > p { color: var(--text-secondary); margin-bottom: 18px; }
+.roulette-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.roulette-controls {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+}
+.roulette-spin { font-size: 16px; padding: 12px 32px; }
+
+.roulette-filters { margin-top: 24px; }
+
+@media (max-width: 560px) {
+  .roulette-pick { flex-direction: column; text-align: center; }
+  .roulette-actions { justify-content: center; }
+}

@@ -1,0 +1,52 @@
+.dropzone {
+  border: 2px dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 48px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--bg-card);
+}
+.dropzone:hover, .dropzone.dragging { border-color: var(--amber); background: var(--amber-dim); }
+.dropzone-icon { font-size: 40px; display: block; margin-bottom: 12px; }
+.dropzone-title { font-size: 17px; font-weight: 600; }
+.dropzone-sub { color: var(--text-secondary); font-size: 14px; margin-top: 4px; }
+
+.import-error {
+  margin-top: 16px; padding: 12px 16px;
+  background: var(--rose-dim); color: var(--rose);
+  border: 1px solid rgba(217,138,138,0.3); border-radius: var(--radius-md);
+  font-size: 14px;
+}
+
+.import-result {
+  margin-top: 16px; padding: 12px 16px;
+  background: var(--teal-dim); color: var(--teal);
+  border: 1px solid rgba(91,179,166,0.3); border-radius: var(--radius-md);
+  font-size: 14px;
+}
+
+.import-progress { margin-top: 16px; }
+.import-progress-bar {
+  height: 8px; background: var(--bg-elevated);
+  border-radius: 4px; overflow: hidden; margin-bottom: 6px;
+}
+.import-progress-bar div { height: 100%; background: var(--amber); transition: width 0.3s ease; }
+.import-progress span { font-size: 13px; color: var(--text-secondary); }
+
+.import-help {
+  margin-top: 24px; font-size: 14px; color: var(--text-secondary);
+}
+.import-help summary { cursor: pointer; color: var(--text-primary); font-weight: 500; }
+.import-help ol { margin: 12px 0 0 20px; display: flex; flex-direction: column; gap: 6px; }
+.import-help code { background: var(--bg-elevated); padding: 1px 5px; border-radius: 4px; }
+
+.import-status {
+  margin-top: 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap;
+}
+.import-status-sub { color: var(--text-secondary); }
+.import-status-actions { display: flex; gap: 8px; }
+.btn-ghost.danger { color: var(--rose); border-color: rgba(217,138,138,0.3); }
+.btn-ghost.danger:hover { background: var(--rose-dim); }

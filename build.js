@@ -44,6 +44,17 @@ run('npm run build', {
 })
 cpSync(join(cocktailDir, 'dist'), join(DIST, 'cocktail-bar'), { recursive: true })
 
+console.log('Building nightstand')
+const nightstandDir = join(ROOT, 'nightstand')
+if (!existsSync(join(nightstandDir, 'node_modules'))) {
+  run('npm install', { cwd: nightstandDir })
+}
+run('npm run build', {
+  cwd: nightstandDir,
+  env: { ...process.env, BASE_PATH: '/nightstand/' },
+})
+cpSync(join(nightstandDir, 'dist'), join(DIST, 'nightstand'), { recursive: true })
+
 console.log('Copying Cloudflare Pages config files')
 const publicDir = join(ROOT, 'public')
 if (existsSync(publicDir)) {

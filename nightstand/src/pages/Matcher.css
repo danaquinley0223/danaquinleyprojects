@@ -1,0 +1,15 @@
+.matcher-clear { margin: 16px 0 0; }
+.matcher-hint { color: var(--text-secondary); text-align: center; padding: 36px; }
+
+.matcher-section { margin-top: 30px; }
+.matcher-section-title {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 18px; margin-bottom: 16px;
+}
+.matcher-section-title span {
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+  padding: 2px 9px; border-radius: 20px;
+  background: var(--bg-elevated); color: var(--text-secondary);
+}
+.matcher-section-title.amber { color: var(--amber-light); }
+.matcher-section-title.violet { color: var(--violet); }

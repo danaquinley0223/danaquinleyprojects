@@ -1,0 +1,51 @@
+.rel-follow { display: flex; flex-direction: column; gap: 12px; }
+.rel-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.rel-chip {
+  padding: 6px 12px; border-radius: 20px; font-size: 13px;
+  background: var(--bg-elevated); color: var(--text-secondary);
+  border: 1px solid var(--border-subtle); transition: var(--transition);
+}
+.rel-chip:hover { color: var(--text-primary); border-color: var(--border-default); }
+.rel-chip.following { background: var(--teal-dim); color: var(--teal); border-color: rgba(91,179,166,0.4); }
+.rel-muted { color: var(--text-muted); font-size: 13px; }
+
+.rel-add-author { display: flex; gap: 8px; }
+.rel-add-author input {
+  flex: 1; max-width: 260px; padding: 8px 12px;
+  background: var(--bg-elevated); border: 1px solid var(--border-default);
+  border-radius: var(--radius-md); color: var(--text-primary); font-size: 13px;
+}
+.rel-add-author input:focus { outline: none; border-color: var(--amber); }
+
+.rel-suggest { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+
+.rel-loading { text-align: center; padding: 30px; color: var(--text-secondary); }
+.rel-loading p { margin-top: 10px; font-size: 14px; }
+
+.rel-section { margin-top: 28px; }
+.rel-section-title { font-size: 18px; margin-bottom: 14px; }
+.rel-section-title.amber { color: var(--amber-light); }
+
+.rel-list { display: flex; flex-direction: column; gap: 8px; }
+.rel-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+.rel-row-title { font-weight: 500; }
+.rel-row-sub { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+.rel-soon { font-family: 'Fraunces', serif; font-size: 18px; color: var(--amber); }
+.rel-x {
+  color: var(--text-muted); font-size: 14px; padding: 4px 8px;
+  transition: var(--transition);
+}
+.rel-x:hover { color: var(--rose); }
+
+.rel-manual { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.rel-manual input {
+  flex: 1; min-width: 130px; padding: 8px 12px;
+  background: var(--bg-elevated); border: 1px solid var(--border-default);
+  border-radius: var(--radius-md); color: var(--text-primary); font-size: 13px;
+}
+.rel-manual input:focus { outline: none; border-color: var(--amber); }

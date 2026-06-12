@@ -2,5 +2,7 @@ dist
 node_modules
 cocktail-bar/node_modules
 cocktail-bar/dist
+nightstand/node_modules
+nightstand/dist
 *.zip
 .DS_Store
