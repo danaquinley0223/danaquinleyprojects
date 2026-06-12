@@ -8,34 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <script>
-    // Apply the saved (or system-preferred) theme before paint to avoid a flash.
-    (function () {
-      try {
-        var t = localStorage.getItem('dq-theme');
-        if (!t && window.matchMedia('(prefers-color-scheme: dark)').matches) t = 'midnight';
-        if (t) document.documentElement.setAttribute('data-theme', t);
-      } catch (e) {}
-    })();
-  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root, [data-theme="paper"] {
-      --page:    #FAF7F2;
-      --ink:     #1C1C1A;
-      --ink-mid: #5A5A56;
-      --ink-dim: #9A9A94;
-      --card:    #F0EBE1;
-      --rust:    #C95A28;
-      --rust-bg: #FBF0EA;
-      --border:  rgba(28,28,26,0.10);
-      --shadow:  rgba(28,28,26,0.10);
-      --thumb-overlay: rgba(0,0,0,0.04);
-    }
-
-    /* Dark, cool */
-    [data-theme="midnight"] {
+    :root {
       --page:    #0E1117;
       --ink:     #E9ECF1;
       --ink-mid: #A2A9B5;
@@ -46,38 +22,8 @@
       --border:  rgba(255,255,255,0.10);
       --shadow:  rgba(0,0,0,0.45);
       --thumb-overlay: rgba(0,0,0,0.16);
+      --radius:  14px;
     }
-
-    /* Dark, warm */
-    [data-theme="ember"] {
-      --page:    #1A1410;
-      --ink:     #F3EADF;
-      --ink-mid: #B7A491;
-      --ink-dim: #6F6051;
-      --card:    #241B14;
-      --rust:    #E8633A;
-      --rust-bg: rgba(232,99,58,0.15);
-      --border:  rgba(255,238,220,0.11);
-      --shadow:  rgba(0,0,0,0.5);
-      --thumb-overlay: rgba(0,0,0,0.14);
-    }
-
-    /* Light, cool green */
-    [data-theme="sage"] {
-      --page:    #F3F6F2;
-      --ink:     #1E2420;
-      --ink-mid: #54605A;
-      --ink-dim: #93A09A;
-      --card:    #E6EDE4;
-      --rust:    #3E8E6E;
-      --rust-bg: #E6F2EB;
-      --border:  rgba(30,40,35,0.10);
-      --shadow:  rgba(30,40,35,0.10);
-      --thumb-overlay: rgba(0,0,0,0.04);
-    }
-
-    html { --radius: 14px; }
-    body { transition: background 0.25s ease, color 0.25s ease; }
 
     html { font-size: 16px; }
     body {
@@ -295,44 +241,7 @@
       color: var(--ink-dim);
     }
 
-    .theme-bar {
-      max-width: 860px;
-      margin: 16px auto 0;
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-    .theme-bar-label {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-dim);
-    }
-    .theme-switch { display: flex; gap: 6px; }
-    .theme-pill {
-      font-family: inherit;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--ink-mid);
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 5px 13px;
-      cursor: pointer;
-      transition: color 0.15s, border-color 0.15s, background 0.15s;
-    }
-    .theme-pill:hover { color: var(--ink); border-color: var(--rust); }
-    .theme-pill.active {
-      color: var(--rust);
-      border-color: var(--rust);
-      background: var(--rust-bg);
-    }
-
     @media (max-width: 600px) {
-      .theme-bar { padding: 0 20px; justify-content: flex-start; flex-wrap: wrap; }
       header { padding: 36px 20px 0; flex-direction: column; gap: 12px; }
       .rule { padding: 0 20px; }
       .section-head { padding: 24px 20px 16px; }
@@ -356,16 +265,6 @@
   </header>
 
   <div class="rule"><hr></div>
-
-  <div class="theme-bar">
-    <span class="theme-bar-label">Theme</span>
-    <div class="theme-switch" role="group" aria-label="Color theme">
-      <button class="theme-pill" data-theme-set="paper">Paper</button>
-      <button class="theme-pill" data-theme-set="midnight">Midnight</button>
-      <button class="theme-pill" data-theme-set="ember">Ember</button>
-      <button class="theme-pill" data-theme-set="sage">Sage</button>
-    </div>
-  </div>
 
   <div class="section-head">
     <span class="section-label">Projects</span>
@@ -421,29 +320,6 @@
     <div class="footer-sig">dq.</div>
     <div class="footer-note">made with curiosity</div>
   </footer>
-
-  <script>
-    (function () {
-      var KEY = 'dq-theme';
-      var pills = document.querySelectorAll('[data-theme-set]');
-      function current() { return document.documentElement.getAttribute('data-theme') || 'paper'; }
-      function sync() {
-        var cur = current();
-        pills.forEach(function (b) {
-          b.classList.toggle('active', b.getAttribute('data-theme-set') === cur);
-        });
-      }
-      pills.forEach(function (b) {
-        b.addEventListener('click', function () {
-          var t = b.getAttribute('data-theme-set');
-          document.documentElement.setAttribute('data-theme', t);
-          try { localStorage.setItem(KEY, t); } catch (e) {}
-          sync();
-        });
-      });
-      sync();
-    })();
-  </script>
 
 </body>
 </html>
