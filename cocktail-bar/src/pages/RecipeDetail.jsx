@@ -10,18 +10,26 @@ import './RecipeDetail.css'
 
 function scaleAmount(measure, scale) {
   if (!measure) return ''
-  return measure.replace(/[\d.\/]+/g, match => {
-    if (match.includes('/')) {
+  // Match mixed numbers ("1 2/3") as a single value before plain fractions or decimals.
+  return measure.replace(/\d+\s+\d+\/\d+|\d+\/\d+|\d+(?:\.\d+)?/g, match => {
+    let value
+    if (/\s/.test(match)) {
+      const [whole, frac] = match.split(/\s+/)
+      const [n, d] = frac.split('/')
+      value = parseFloat(whole) + parseFloat(n) / parseFloat(d)
+    } else if (match.includes('/')) {
       const [n, d] = match.split('/')
-      return formatNumber((parseFloat(n) / parseFloat(d)) * scale)
+      value = parseFloat(n) / parseFloat(d)
+    } else {
+      value = parseFloat(match)
     }
-    return formatNumber(parseFloat(match) * scale)
+    return formatNumber(value * scale)
   })
 }
 
 function formatNumber(n) {
   if (isNaN(n)) return ''
-  const fractions = [[0.25, '¼'], [0.5, '½'], [0.75, '¾'], [0.33, '⅓'], [0.67, '⅔']]
+  const fractions = [[0.125, '⅛'], [0.25, '¼'], [0.33, '⅓'], [0.5, '½'], [0.67, '⅔'], [0.75, '¾']]
   const whole = Math.floor(n)
   const decimal = n - whole
   const frac = fractions.find(([val]) => Math.abs(decimal - val) < 0.04)

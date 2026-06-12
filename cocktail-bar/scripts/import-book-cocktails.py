@@ -119,8 +119,17 @@ def parse_nomad():
         return len(letters)>=2 and all(c.upper()==c for c in letters)
     starts=[i for i,l in enumerate(lines) if is_title(l) and nne(i)<n and lines[nne(i)].strip().startswith('GLASS:')]
     starts.append(n); out=[]
+    def is_caps_heading(s):
+        # an ALL-CAPS line (other than a batch "SERVES N" note) — marks the start of the
+        # book's Basics appendix or trailing sections, which must not leak into a method
+        s=s.strip()
+        if re.match(r'^(SERVES|MAKES)\b', s): return False
+        letters=[c for c in s if c.isalpha()]
+        return len(letters)>=5 and all(c.isupper() for c in letters)
     for k in range(len(starts)-1):
         block=[b.rstrip() for b in lines[starts[k]:starts[k+1]] if not b.strip().startswith('=====')]
+        cut=next((bi for bi in range(1,len(block)) if is_caps_heading(block[bi])), None)
+        if cut is not None: block=block[:cut]
         title=block[0].strip(); glass=''
         body=[]
         for b in block[1:]:
@@ -200,7 +209,10 @@ def parse_seedlip():
             if ':' not in s: continue
             name,amt=s.split(':',1)
             name=re.sub(r'\s*\(see page \d+\)','',name,flags=re.I).strip()
-            ingredients.append({'ingredient':name,'measure':ascii_qty(amt.strip())})
+            amt=amt.strip()
+            # drop the metric half of dual measures, e.g. "2 oz / 60 ml" -> "2 oz"
+            amt=re.sub(r'\s*/\s*[\d.]+\s*ml\b.*$','',amt, flags=re.I)
+            ingredients.append({'ingredient':name,'measure':ascii_qty(amt)})
         gl=raw[i_gl+1:i_me]; glass=gl[0].strip() if gl else ''
         garnish='; '.join(x.strip() for x in gl[1:]) if len(gl)>1 else ''
         meth_end=i_ci if i_ci is not None else end

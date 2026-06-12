@@ -5,15 +5,15 @@
     "method": "Pour peach puree into the mixing glass with ice, add the Prosecco wine. Stir gently and pour in a chilled flute glass.  Note: PUCCINI - Fresh Mandarin Orange Juice; ROSSINI - Fresh Strawberry Puree; TINTORETTO - Fresh Pomegranate Juice.",
     "ingredients": [
       {
-        "direction": "100 ml Prosecco",
-        "quantity": "100",
-        "unit": "ml",
+        "direction": "3 1/3 oz Prosecco",
+        "quantity": "3 1/3",
+        "unit": "oz",
         "ingredient": "Prosecco"
       },
       {
-        "direction": "50 ml White Peach Puree",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz White Peach Puree",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "White Peach Puree"
       }
     ]
@@ -24,15 +24,15 @@
     "method": "Pour the ingredients into the old fashioned glass filled with ice cubes. Stir gently.  Note: WHITE RUSSIAN - Float fresh cream on the top and stir in slowly.",
     "ingredients": [
       {
-        "direction": "50 ml Vodka",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Vodka",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Vodka"
       },
       {
-        "direction": "20 ml Coffee Liqueur",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Coffee Liqueur",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Coffee Liqueur"
       }
     ]
@@ -44,21 +44,21 @@
     "garnish": "Celery, Lemon Wedge (Optional)",
     "ingredients": [
       {
-        "direction": "45 ml Vodka",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Vodka",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Vodka"
       },
       {
-        "direction": "90 ml Tomato Juice",
-        "quantity": "90",
-        "unit": "ml",
+        "direction": "3 oz Tomato Juice",
+        "quantity": "3",
+        "unit": "oz",
         "ingredient": "Tomato Juice"
       },
       {
-        "direction": "15 ml Fresh Lemon Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lemon Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
@@ -94,9 +94,9 @@
     "method": "Place lime and sugar into a double old fashioned glass and muddle gently. Fill the glass with cracked ice and add Cachaça. Stir gently to involve ingredients. Note: CAIPIROSKA - Instead of Cachaça use Vodka;",
     "ingredients": [
       {
-        "direction": "60 ml Cachaça",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Cachaça",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Cachaça"
       },
       {
@@ -120,15 +120,15 @@
     "garnish": "Garnish with orange zest and maraschino cherry.",
     "ingredients": [
       {
-        "direction": "90 ml Chilled Champagne",
-        "quantity": "90",
-        "unit": "ml",
+        "direction": "3 oz Chilled Champagne",
+        "quantity": "3",
+        "unit": "oz",
         "ingredient": "Chilled Champagne"
       },
       {
-        "direction": "10 ml Cognac",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Cognac",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Cognac"
       },
       {
@@ -159,27 +159,27 @@
     "garnish": "Garnish with orange zest",
     "ingredients": [
       {
-        "direction": "30 ml Gin",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Gin",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "30 ml Cointreau",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Cointreau",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Cointreau"
       },
       {
-        "direction": "30 ml Lillet Blanc",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Lillet Blanc",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Lillet Blanc"
       },
       {
-        "direction": "30 ml Fresh Lemon Juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Fresh Lemon Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
@@ -197,27 +197,27 @@
     "garnish": "Garnish with a lemon twist.",
     "ingredients": [
       {
-        "direction": "40 ml Vodka Citron",
-        "quantity": "40",
-        "unit": "ml",
+        "direction": "1 1/3 oz Vodka Citron",
+        "quantity": "1 1/3",
+        "unit": "oz",
         "ingredient": "Vodka Citron"
       },
       {
-        "direction": "15 ml Cointreau",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Cointreau",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Cointreau"
       },
       {
-        "direction": "15 ml Fresh Lime Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lime Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
-        "direction": "30 ml Cranberry Juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Cranberry Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Cranberry Juice"
       }
     ]
@@ -229,21 +229,21 @@
     "garnish": "Garnish with lime wedge.",
     "ingredients": [
       {
-        "direction": "50 ml White Rum",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz White Rum",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "White Rum"
       },
       {
-        "direction": "120 ml Coca Cola",
-        "quantity": "120",
-        "unit": "ml",
+        "direction": "4 oz Coca Cola",
+        "quantity": "4",
+        "unit": "oz",
         "ingredient": "Coca Cola"
       },
       {
-        "direction": "10 ml Fresh Lime Juice",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Fresh Lime Juice",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       }
     ]
@@ -254,27 +254,27 @@
     "method": "Pour all the ingredients, except Champagne, into a shaker. Shake well and strain into a Champagne flute. Top up with Champagne. Stir gently.",
     "ingredients": [
       {
-        "direction": "30 ml Gin",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Gin",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "15 ml Fresh Lemon Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lemon Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "15 ml Sugar Syrup",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Sugar Syrup",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Sugar Syrup"
       },
       {
-        "direction": "60 ml Champagne",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Champagne",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Champagne"
       }
     ]
@@ -285,15 +285,15 @@
     "method": "Pour all ingredients directly into an old fashioned glass filled with ice cubes. Stir gently.",
     "ingredients": [
       {
-        "direction": "35 ml Cognac",
-        "quantity": "35",
-        "unit": "ml",
+        "direction": "1 1/4 oz Cognac",
+        "quantity": "1 1/4",
+        "unit": "oz",
         "ingredient": "Cognac"
       },
       {
-        "direction": "35 ml Amaretto",
-        "quantity": "35",
-        "unit": "ml",
+        "direction": "1 1/4 oz Amaretto",
+        "quantity": "1 1/4",
+        "unit": "oz",
         "ingredient": "Amaretto"
       }
     ]
@@ -304,27 +304,27 @@
     "method": "Pour all ingredients into shaker filled with ice. Shake briskly for few seconds. Strain into chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "20 ml Galliano",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Galliano",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Galliano"
       },
       {
-        "direction": "20 ml Triple Sec",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Triple Sec",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Triple Sec"
       },
       {
-        "direction": "20 ml Fresh Orange Juice",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Fresh Orange Juice",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Fresh Orange Juice"
       },
       {
-        "direction": "10 ml Fresh Cream",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Fresh Cream",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Fresh Cream"
       }
     ]
@@ -336,23 +336,23 @@
     "garnish": "N/A, optional mint leaf",
     "ingredients": [
       {
-        "direction": "20 ml Crème de Cacao (White)",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Crème de Cacao",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Crème de Cacao",
         "note": "White"
       },
       {
-        "direction": "20 ml Crème de Menthe (Green)",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Crème de Menthe",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Crème de Menthe",
         "note": "Green"
       },
       {
-        "direction": "20 ml Fresh Cream",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Fresh Cream",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Fresh Cream"
       }
     ]
@@ -363,27 +363,27 @@
     "method": "Pour all ingredients into a shaker with ice. Shake well and strain into a large cocktail glass.",
     "ingredients": [
       {
-        "direction": "60 ml Rum",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Rum",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Rum"
       },
       {
-        "direction": "40 ml Grapefruit Juice",
-        "quantity": "40",
-        "unit": "ml",
+        "direction": "1 1/3 oz Grapefruit Juice",
+        "quantity": "1 1/3",
+        "unit": "oz",
         "ingredient": "Grapefruit Juice"
       },
       {
-        "direction": "15 ml Maraschino Luxardo",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Maraschino Luxardo",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Maraschino Luxardo"
       },
       {
-        "direction": "15 ml Fresh Lime",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lime",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lime"
       }
     ]
@@ -395,15 +395,15 @@
     "garnish": "Garnish with a rind of one lemon spiral.",
     "ingredients": [
       {
-        "direction": "40 ml Cognac",
-        "quantity": "40",
-        "unit": "ml",
+        "direction": "1 1/3 oz Cognac",
+        "quantity": "1 1/3",
+        "unit": "oz",
         "ingredient": "Cognac"
       },
       {
-        "direction": "120 ml Ginger Ale",
-        "quantity": "120",
-        "unit": "ml",
+        "direction": "4 oz Ginger Ale",
+        "quantity": "4",
+        "unit": "oz",
         "ingredient": "Ginger Ale"
       },
       {
@@ -421,21 +421,21 @@
     "method": "Warm black coffee is poured into a pre-heated Irish coffee glass. Whiskey and at least one teaspoon of sugar is added and stirred until dissolved. Fresh thick chilled cream is carefully poured over the back of a spoon held just above the surface of the coffee. The layer of cream will float on the coffee without mixing. Plain sugar can be replaced with sugar syrup",
     "ingredients": [
       {
-        "direction": "50 ml Irish Whiskey",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Irish Whiskey",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Irish Whiskey"
       },
       {
-        "direction": "120 ml Hot coffee",
-        "quantity": "120",
-        "unit": "ml",
+        "direction": "4 oz Hot coffee",
+        "quantity": "4",
+        "unit": "oz",
         "ingredient": "Hot coffee"
       },
       {
-        "direction": "50 ml Fresh cream (Chilled)",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Fresh cream",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Fresh cream",
         "note": "Chilled"
       },
@@ -453,15 +453,15 @@
     "method": "Pour Crème de Cassis into glass, top up with white wine. Note: KIR ROYAL - Use Champagne instead of white wine",
     "ingredients": [
       {
-        "direction": "90 ml Dry White Wine",
-        "quantity": "90",
-        "unit": "ml",
+        "direction": "3 oz Dry White Wine",
+        "quantity": "3",
+        "unit": "oz",
         "ingredient": "Dry White Wine"
       },
       {
-        "direction": "10 ml Crème de Cassis",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Crème de Cassis",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Crème de Cassis"
       }
     ]
@@ -473,45 +473,45 @@
     "garnish": "Lemon Slice (Optional)",
     "ingredients": [
       {
-        "direction": "15 ml Vodka",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Vodka",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Vodka"
       },
       {
-        "direction": "15 ml Tequila",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Tequila",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Tequila"
       },
       {
-        "direction": "15 ml White rum",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz White rum",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "White rum"
       },
       {
-        "direction": "15 ml Gin",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Gin",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "15 ml Cointreau",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Cointreau",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Cointreau"
       },
       {
-        "direction": "30 ml Lemon juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Lemon juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Lemon juice"
       },
       {
-        "direction": "20 ml Simple syrup",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Simple syrup",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Simple syrup"
       },
       {
@@ -529,40 +529,40 @@
     "garnish": "Garnish with pineapple spear, mint leaves, and lime peel.",
     "ingredients": [
       {
-        "direction": "30 ml Amber Jamaican Rum",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Amber Jamaican Rum",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Amber Jamaican Rum"
       },
       {
-        "direction": "30 ml Martinique Molasses Rhum",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Martinique Molasses Rhum",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Martinique Molasses Rhum"
       },
       {
-        "direction": "15 ml Orange Curacao",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Orange Curacao",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Orange Curacao"
       },
       {
-        "direction": "15 ml Orgeat Syrup (Almond)",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Orgeat Syrup",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Orgeat Syrup",
         "note": "Almond"
       },
       {
-        "direction": "30 ml Fresh Lime Juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Fresh Lime Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
-        "direction": "7.5 ml Simple Syrup",
-        "quantity": "7.5",
-        "unit": "ml",
+        "direction": "1/4 oz Simple Syrup",
+        "quantity": "1/4",
+        "unit": "oz",
         "ingredient": "Simple Syrup"
       }
     ]
@@ -574,21 +574,21 @@
     "garnish": "Half salt rim (Optional)",
     "ingredients": [
       {
-        "direction": "50 ml Tequila 100% Agave",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Tequila 100% Agave",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Tequila 100% Agave"
       },
       {
-        "direction": "20 ml Triple Sec",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Triple Sec",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Triple Sec"
       },
       {
-        "direction": "15 ml Freshly Squeezed Lime Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Freshly Squeezed Lime Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Freshly Squeezed Lime Juice"
       }
     ]
@@ -600,15 +600,15 @@
     "garnish": "Garnish with an orange twist (optional).",
     "ingredients": [
       {
-        "direction": "75 ml Fresh orange juice",
-        "quantity": "75",
-        "unit": "ml",
+        "direction": "2 1/2 oz Fresh orange juice",
+        "quantity": "2 1/2",
+        "unit": "oz",
         "ingredient": "Fresh orange juice"
       },
       {
-        "direction": "75 ml Prosecco",
-        "quantity": "75",
-        "unit": "ml",
+        "direction": "2 1/2 oz Prosecco",
+        "quantity": "2 1/2",
+        "unit": "oz",
         "ingredient": "Prosecco"
       }
     ]
@@ -620,9 +620,9 @@
     "garnish": "Garnish with a mint sprig.",
     "ingredients": [
       {
-        "direction": "60 ml Bourbon Whiskey",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Bourbon Whiskey",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Bourbon Whiskey"
       },
       {
@@ -652,15 +652,15 @@
     "garnish": "Garnish with sprigs of mint and slice of lime.",
     "ingredients": [
       {
-        "direction": "45 ml White Cuban Ron",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz White Cuban Ron",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "White Cuban Ron"
       },
       {
-        "direction": "20 ml Fresh Lime Juice",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Fresh Lime Juice",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
@@ -690,21 +690,21 @@
     "garnish": "Garnish with a lime slice",
     "ingredients": [
       {
-        "direction": "45 ml Smirnoff Vodka",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Smirnoff Vodka",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Smirnoff Vodka"
       },
       {
-        "direction": "120 ml Ginger Beer",
-        "quantity": "120",
-        "unit": "ml",
+        "direction": "4 oz Ginger Beer",
+        "quantity": "4",
+        "unit": "oz",
         "ingredient": "Ginger Beer"
       },
       {
-        "direction": "10 ml Fresh lime juice",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Fresh lime juice",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Fresh lime juice"
       }
     ]
@@ -716,21 +716,21 @@
     "garnish": "Garnish with a slice of pineapple with a cocktail cherry.",
     "ingredients": [
       {
-        "direction": "50 ml White Rum",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz White Rum",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "White Rum"
       },
       {
-        "direction": "30 ml Coconut Cream",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Coconut Cream",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Coconut Cream"
       },
       {
-        "direction": "50 ml Fresh Pineapple Juice",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Fresh Pineapple Juice",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Fresh Pineapple Juice"
       }
     ]
@@ -742,21 +742,21 @@
     "garnish": "Few dashes of Amargo bitters on top as an aromatic garnish.",
     "ingredients": [
       {
-        "direction": "60 ml Pisco",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Pisco",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Pisco"
       },
       {
-        "direction": "30 ml Fresh Lemon Juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Fresh Lemon Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "20 ml Simple Syrup",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Simple Syrup",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Simple Syrup"
       },
       {
@@ -774,21 +774,21 @@
     "garnish": "Garnish with orange zest and cherry",
     "ingredients": [
       {
-        "direction": "40 ml Vodka",
-        "quantity": "40",
-        "unit": "ml",
+        "direction": "1 1/3 oz Vodka",
+        "quantity": "1 1/3",
+        "unit": "oz",
         "ingredient": "Vodka"
       },
       {
-        "direction": "120 ml Cranberry Juice",
-        "quantity": "120",
-        "unit": "ml",
+        "direction": "4 oz Cranberry Juice",
+        "quantity": "4",
+        "unit": "oz",
         "ingredient": "Cranberry Juice"
       },
       {
-        "direction": "30 ml Grapefruit Juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Grapefruit Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Grapefruit Juice"
       }
     ]
@@ -800,27 +800,27 @@
     "garnish": "Garnish with a half orange slice.",
     "ingredients": [
       {
-        "direction": "40 ml Vodka",
-        "quantity": "40",
-        "unit": "ml",
+        "direction": "1 1/3 oz Vodka",
+        "quantity": "1 1/3",
+        "unit": "oz",
         "ingredient": "Vodka"
       },
       {
-        "direction": "20 ml Peach Schnapps",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Peach Schnapps",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Peach Schnapps"
       },
       {
-        "direction": "40 ml Fresh Orange Juice",
-        "quantity": "40",
-        "unit": "ml",
+        "direction": "1 1/3 oz Fresh Orange Juice",
+        "quantity": "1 1/3",
+        "unit": "oz",
         "ingredient": "Fresh Orange Juice"
       },
       {
-        "direction": "40 ml Cranberry Juice",
-        "quantity": "40",
-        "unit": "ml",
+        "direction": "1 1/3 oz Cranberry Juice",
+        "quantity": "1 1/3",
+        "unit": "oz",
         "ingredient": "Cranberry Juice"
       }
     ]
@@ -832,45 +832,45 @@
     "garnish": "Garnish with pineapple and maraschino cherry",
     "ingredients": [
       {
-        "direction": "30 ml Gin",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Gin",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "15 ml Cherry liqueur",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Cherry liqueur",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Cherry liqueur"
       },
       {
-        "direction": "7.5 ml Cointreau",
-        "quantity": "7.5",
-        "unit": "ml",
+        "direction": "1/4 oz Cointreau",
+        "quantity": "1/4",
+        "unit": "oz",
         "ingredient": "Cointreau"
       },
       {
-        "direction": "7.5 ml DOM Bénédictine",
-        "quantity": "7.5",
-        "unit": "ml",
+        "direction": "1/4 oz DOM Bénédictine",
+        "quantity": "1/4",
+        "unit": "oz",
         "ingredient": "DOM Bénédictine"
       },
       {
-        "direction": "120 ml Fresh Pineapple Juice",
-        "quantity": "120",
-        "unit": "ml",
+        "direction": "4 oz Fresh Pineapple Juice",
+        "quantity": "4",
+        "unit": "oz",
         "ingredient": "Fresh Pineapple Juice"
       },
       {
-        "direction": "15 ml Fresh Lime Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lime Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
-        "direction": "10 ml Grenadine Syrup",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Grenadine Syrup",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Grenadine Syrup"
       },
       {
@@ -888,21 +888,21 @@
     "garnish": "Garnish with half orange slice or an orange zest",
     "ingredients": [
       {
-        "direction": "45 ml Tequila",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Tequila",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Tequila"
       },
       {
-        "direction": "90 ml Fresh Orange Juice",
-        "quantity": "90",
-        "unit": "ml",
+        "direction": "3 oz Fresh Orange Juice",
+        "quantity": "3",
+        "unit": "oz",
         "ingredient": "Fresh Orange Juice"
       },
       {
-        "direction": "15 ml Grenadine Syrup",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Grenadine Syrup",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Grenadine Syrup"
       }
     ]
@@ -914,21 +914,21 @@
     "garnish": "Lemon zest",
     "ingredients": [
       {
-        "direction": "45 ml Gin",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Gin",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "15 ml Vodka",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Vodka",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Vodka"
       },
       {
-        "direction": "7.5 ml Lillet Blanc",
-        "quantity": "7.5",
-        "unit": "ml",
+        "direction": "1/4 oz Lillet Blanc",
+        "quantity": "1/4",
+        "unit": "oz",
         "ingredient": "Lillet Blanc"
       }
     ]
@@ -940,39 +940,39 @@
     "garnish": "Garnish with mint leaves.",
     "ingredients": [
       {
-        "direction": "45 ml Jamaican dark rum",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Jamaican dark rum",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Jamaican dark rum"
       },
       {
-        "direction": "45 ml Gold Puerto Rican rum",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Gold Puerto Rican rum",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Gold Puerto Rican rum"
       },
       {
-        "direction": "30 ml Demerara Rum",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Demerara Rum",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Demerara Rum"
       },
       {
-        "direction": "20 ml Fresh lime juice",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Fresh lime juice",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Fresh lime juice"
       },
       {
-        "direction": "15 ml Falernum",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Falernum",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Falernum"
       },
       {
-        "direction": "15 ml Donn's Mix",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Donn's Mix",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Donn's Mix"
       },
       {
@@ -1002,21 +1002,21 @@
     "garnish": "Pineapple and Cherry, optional mint sprig for additional aroma.",
     "ingredients": [
       {
-        "direction": "45 ml Gold Rum",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Gold Rum",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Gold Rum"
       },
       {
-        "direction": "15 ml Galliano",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Galliano",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Galliano"
       },
       {
-        "direction": "60 ml Fresh Pineapple Juice",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Fresh Pineapple Juice",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Fresh Pineapple Juice"
       },
       {
@@ -1040,9 +1040,9 @@
     "garnish": "Optionally garnish with a lemon or orange zest.",
     "ingredients": [
       {
-        "direction": "52.5 ml Dry Gin",
-        "quantity": "52.5",
-        "unit": "ml",
+        "direction": "1 3/4 oz Dry Gin",
+        "quantity": "1 3/4",
+        "unit": "oz",
         "ingredient": "Dry Gin"
       },
       {
@@ -1052,15 +1052,15 @@
         "ingredient": "Honey Syrup"
       },
       {
-        "direction": "22.5 ml Fresh Lemon Juice",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Lemon Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "22.5 ml Fresh Orange Juice",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Orange Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Orange Juice"
       }
     ]
@@ -1072,27 +1072,27 @@
     "garnish": "Garnish optionally with a lemon slice and blackberries.",
     "ingredients": [
       {
-        "direction": "50 ml Gin",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Gin",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "25 ml Fresh Lemon Juice",
-        "quantity": "25",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Lemon Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "12.5 ml Sugar Syrup",
-        "quantity": "12.5",
-        "unit": "ml",
+        "direction": "1/2 oz Sugar Syrup",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Sugar Syrup"
       },
       {
-        "direction": "15 ml Crème de Mûre",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Crème de Mûre",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Crème de Mûre"
       }
     ]
@@ -1104,27 +1104,27 @@
     "garnish": "Lime wedge.",
     "ingredients": [
       {
-        "direction": "60 ml Cuban Aguardiente",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Cuban Aguardiente",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Cuban Aguardiente"
       },
       {
-        "direction": "15 ml Fresh Lime Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lime Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
-        "direction": "15 ml Raw Honey",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Raw Honey",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Raw Honey"
       },
       {
-        "direction": "50 ml Water",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Water",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Water"
       }
     ]
@@ -1136,15 +1136,15 @@
     "garnish": "Garnish with a lime wedge or slice.",
     "ingredients": [
       {
-        "direction": "60 ml Goslings Rum",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Goslings Rum",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Goslings Rum"
       },
       {
-        "direction": "100 ml Ginger Beer",
-        "quantity": "100",
-        "unit": "ml",
+        "direction": "3 1/3 oz Ginger Beer",
+        "quantity": "3 1/3",
+        "unit": "oz",
         "ingredient": "Ginger Beer"
       }
     ]
@@ -1155,21 +1155,21 @@
     "method": "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "50 ml Vodka",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Vodka",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Vodka"
       },
       {
-        "direction": "30 ml Kahlúa",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Kahlúa",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Kahlúa"
       },
       {
-        "direction": "10 ml Sugar Syrup",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Sugar Syrup",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Sugar Syrup"
       },
       {
@@ -1186,9 +1186,9 @@
     "method": "Pour the Fernet Branca into a double old fashioned glass with ice, fill the glass up with Cola. Gently stir.",
     "ingredients": [
       {
-        "direction": "50 ml Fernet Branca",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Fernet Branca",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Fernet Branca"
       },
       {
@@ -1206,21 +1206,21 @@
     "garnish": "Squeeze oil from lemon peel onto the drink.",
     "ingredients": [
       {
-        "direction": "45 ml Vodka",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Vodka",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Vodka"
       },
       {
-        "direction": "15 ml Raspberry Liqueur",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Raspberry Liqueur",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Raspberry Liqueur"
       },
       {
-        "direction": "15 ml Fresh Pineapple Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Pineapple Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Pineapple Juice"
       }
     ]
@@ -1231,21 +1231,21 @@
     "method": "Pour all ingredients into the shaker. Shake vigorously with ice. Strain into a chilled cocktail glass, or “on the rocks” in a traditional clay or terracotta mug.",
     "ingredients": [
       {
-        "direction": "30 ml Espadin Mezcal",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Espadin Mezcal",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Espadin Mezcal"
       },
       {
-        "direction": "15 ml Jamaica Overproof White Rum",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Jamaica Overproof White Rum",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Jamaica Overproof White Rum"
       },
       {
-        "direction": "15 ml Falernum",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Falernum",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Falernum"
       },
       {
@@ -1255,15 +1255,15 @@
         "ingredient": "Maraschino Luxardo"
       },
       {
-        "direction": "22.5 ml Fresh Lime Juice",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Lime Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
-        "direction": "15 ml Simple Syrup",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Simple Syrup",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Simple Syrup"
       },
       {
@@ -1282,21 +1282,21 @@
     "garnish": "Garnish with sugar rim around the glass.",
     "ingredients": [
       {
-        "direction": "30 ml Vodka Citron",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Vodka Citron",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Vodka Citron"
       },
       {
-        "direction": "20 ml Triple Sec",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Triple Sec",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Triple Sec"
       },
       {
-        "direction": "15 ml Fresh Lemon Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lemon Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       }
     ]
@@ -1307,27 +1307,27 @@
     "method": "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "22.5 ml Mezcal",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Mezcal",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Mezcal"
       },
       {
-        "direction": "22.5 ml Yellow Chartreuse",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Yellow Chartreuse",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Yellow Chartreuse"
       },
       {
-        "direction": "22.5 ml Aperol",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Aperol",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Aperol"
       },
       {
-        "direction": "22.5 ml Fresh Lime Juice",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Lime Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       }
     ]
@@ -1339,21 +1339,21 @@
     "garnish": "Garnish with lemon or orange zest with cherry.",
     "ingredients": [
       {
-        "direction": "60 ml Rye Whiskey or Bourbon",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Rye Whiskey or Bourbon",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Rye Whiskey or Bourbon"
       },
       {
-        "direction": "22.5 ml Simple syrup",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Simple syrup",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Simple syrup"
       },
       {
-        "direction": "30 ml Fresh lemon juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Fresh lemon juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Fresh lemon juice"
       },
       {
@@ -1363,9 +1363,9 @@
         "ingredient": "Egg White"
       },
       {
-        "direction": "15 ml Red wine (Shiraz or Malbech)",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Red wine",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Red wine",
         "note": "Shiraz or Malbech"
       }
@@ -1384,21 +1384,21 @@
         "ingredient": "Mint Leaves"
       },
       {
-        "direction": "45 ml Aged Rum",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Aged Rum",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Aged Rum"
       },
       {
-        "direction": "22.5 ml Fresh Lime Juice",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Lime Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
-        "direction": "30 ml Simple Syrup",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Simple Syrup",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Simple Syrup"
       },
       {
@@ -1408,9 +1408,9 @@
         "ingredient": "Angostura Bitters"
       },
       {
-        "direction": "60 ml Brut Champagne or Prosecco",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Brut Champagne or Prosecco",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Brut Champagne or Prosecco"
       }
     ]
@@ -1422,15 +1422,15 @@
     "garnish": "Garnish with a slice of lime.",
     "ingredients": [
       {
-        "direction": "50 ml 100% Agave Tequila",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz 100% Agave Tequila",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "100% Agave Tequila"
       },
       {
-        "direction": "5 ml Fresh lime",
-        "quantity": "5",
-        "unit": "ml",
+        "direction": "1/8 oz Fresh lime",
+        "quantity": "1/8",
+        "unit": "oz",
         "ingredient": "Fresh lime"
       },
       {
@@ -1440,9 +1440,9 @@
         "ingredient": "Salt"
       },
       {
-        "direction": "100 ml Pink Grapefruit Soda",
-        "quantity": "100",
-        "unit": "ml",
+        "direction": "3 1/3 oz Pink Grapefruit Soda",
+        "quantity": "3 1/3",
+        "unit": "oz",
         "ingredient": "Pink Grapefruit Soda"
       }
     ]
@@ -1453,27 +1453,27 @@
     "method": "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "30 ml Bourbon Whiskey",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Bourbon Whiskey",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Bourbon Whiskey"
       },
       {
-        "direction": "30 ml Amaro Nonino",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Amaro Nonino",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Amaro Nonino"
       },
       {
-        "direction": "30 ml Aperol",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Aperol",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Aperol"
       },
       {
-        "direction": "30 ml Fresh Lemon Juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Fresh Lemon Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       }
     ]
@@ -1485,27 +1485,27 @@
     "garnish": "Garnish with candied ginger.",
     "ingredients": [
       {
-        "direction": "60 ml Blended Scotch Whisky",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Blended Scotch Whisky",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Blended Scotch Whisky"
       },
       {
-        "direction": "7.5 ml Lagavulin 16 y Whisky",
-        "quantity": "7.5",
-        "unit": "ml",
+        "direction": "1/4 oz Lagavulin 16 y Whisky",
+        "quantity": "1/4",
+        "unit": "oz",
         "ingredient": "Lagavulin 16 y Whisky"
       },
       {
-        "direction": "22.5 ml Fresh Lemon Juice",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Lemon Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "22.5 ml Honey Syrup",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Honey Syrup",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Honey Syrup"
       },
       {
@@ -1523,27 +1523,27 @@
     "garnish": "Garnish with blackberries and optionally a lemon slice as well.",
     "ingredients": [
       {
-        "direction": "25 ml Vodka",
-        "quantity": "25",
-        "unit": "ml",
+        "direction": "3/4 oz Vodka",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Vodka"
       },
       {
-        "direction": "25 ml Fresh Lemon Juice",
-        "quantity": "25",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Lemon Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "15 ml Crème de Cassis",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Crème de Cassis",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Crème de Cassis"
       },
       {
-        "direction": "10 ml Sugar syrup",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Sugar syrup",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Sugar syrup"
       },
       {
@@ -1561,21 +1561,21 @@
     "garnish": "Garnish with mint springs.",
     "ingredients": [
       {
-        "direction": "60 ml London Dry Gin",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz London Dry Gin",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "London Dry Gin"
       },
       {
-        "direction": "30 ml Fresh Lemon Juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Fresh Lemon Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "15 ml Simple Syrup",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Simple Syrup",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Simple Syrup"
       },
       {
@@ -1600,27 +1600,27 @@
     "garnish": "Garnish with a red chili pepper",
     "ingredients": [
       {
-        "direction": "50 ml Vodka Vanilla",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Vodka Vanilla",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Vodka Vanilla"
       },
       {
-        "direction": "15 ml Elderflower Cordial",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Elderflower Cordial",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Elderflower Cordial"
       },
       {
-        "direction": "15 ml Fresh Lime Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lime Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
-        "direction": "10 ml Monin Honey Syrup",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Monin Honey Syrup",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Monin Honey Syrup"
       },
       {
@@ -1638,15 +1638,15 @@
     "garnish": "Garnish with a slice of orange.",
     "ingredients": [
       {
-        "direction": "90 ml Prosecco",
-        "quantity": "90",
-        "unit": "ml",
+        "direction": "3 oz Prosecco",
+        "quantity": "3",
+        "unit": "oz",
         "ingredient": "Prosecco"
       },
       {
-        "direction": "60 ml Aperol",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Aperol",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Aperol"
       },
       {
@@ -1664,21 +1664,21 @@
     "garnish": "Garnish with mint springs and optionally an orange slice as well.",
     "ingredients": [
       {
-        "direction": "30 ml Cognac or Brandy",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Cognac or Brandy",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Cognac or Brandy"
       },
       {
-        "direction": "30 ml Gin",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Gin",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "15 ml Fresh Lime Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lime Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
@@ -1702,21 +1702,21 @@
     "garnish": "Garnish with a slice of orange.",
     "ingredients": [
       {
-        "direction": "50 ml Irish Whiskey",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Irish Whiskey",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Irish Whiskey"
       },
       {
-        "direction": "25 ml Sweet Red Vermouth",
-        "quantity": "25",
-        "unit": "ml",
+        "direction": "3/4 oz Sweet Red Vermouth",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Sweet Red Vermouth"
       },
       {
-        "direction": "15 ml Green Chartreuse",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Green Chartreuse",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Green Chartreuse"
       },
       {
@@ -1734,22 +1734,22 @@
     "garnish": "Garnish with a lime slice.",
     "ingredients": [
       {
-        "direction": "60 ml Tequila Agave 100% Reposado",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Tequila Agave 100% Reposado",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Tequila Agave 100% Reposado"
       },
       {
-        "direction": "30 ml Fresh Lime Juice (Persiano)",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Fresh Lime Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice",
         "note": "Persiano"
       },
       {
-        "direction": "30 ml Agave Syrup (1/2 Water + 1/2 Agave Nectar)",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Agave Syrup",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Agave Syrup",
         "note": "1/2 Water + 1/2 Agave Nectar"
       }
@@ -1761,27 +1761,27 @@
     "method": "Pour all ingredients into a cocktail shaker, shake well with ice, strain into a chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "45 ml Angostura Bitters",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Angostura Bitters",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Angostura Bitters"
       },
       {
-        "direction": "30 ml Orgeat Syrup",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Orgeat Syrup",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Orgeat Syrup"
       },
       {
-        "direction": "22.5 ml Fresh Lemon Juice",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Lemon Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "15 ml Rye Whisky",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Rye Whisky",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Rye Whisky"
       }
     ]
@@ -1793,34 +1793,34 @@
     "garnish": "Garnish with lemon zest and white grapes.",
     "ingredients": [
       {
-        "direction": "45 ml White Smooth Grappa",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz White Smooth Grappa",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "White Smooth Grappa"
       },
       {
-        "direction": "22.5 ml Fresh lemon Juice",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh lemon Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh lemon Juice"
       },
       {
-        "direction": "15 ml Honey mix (replace water with chamomile)",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Honey mix",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Honey mix",
         "note": "replace water with chamomile"
       },
       {
-        "direction": "15 ml Chamomile cordial",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Chamomile cordial",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Chamomile cordial"
       },
       {
-        "direction": "10 ml Egg White (Optional)",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Egg White",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Egg White",
         "note": "Optional"
       }
@@ -1832,27 +1832,27 @@
     "method": "Pour all ingredients into a cocktail shaker, shake well with ice, strain into chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "30 ml White rum",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz White rum",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "White rum"
       },
       {
-        "direction": "15 ml Galliano",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Galliano",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Galliano"
       },
       {
-        "direction": "15 ml Triple Sec",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Triple Sec",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Triple Sec"
       },
       {
-        "direction": "15 ml Fresh Lime Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lime Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       }
     ]
@@ -1864,22 +1864,22 @@
     "garnish": "Sprinkle fresh ground nutmeg on top.",
     "ingredients": [
       {
-        "direction": "30 ml Cognac",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Cognac",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Cognac"
       },
       {
-        "direction": "30 ml Crème de Cacao (Brown)",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Crème de Cacao",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Crème de Cacao",
         "note": "Brown"
       },
       {
-        "direction": "30 ml Fresh Cream",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Fresh Cream",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Fresh Cream"
       }
     ]
@@ -1891,15 +1891,15 @@
     "garnish": "Garnish with half orange slice and a lemon zest.",
     "ingredients": [
       {
-        "direction": "30 ml Bitter Campari",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Bitter Campari",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Bitter Campari"
       },
       {
-        "direction": "30 ml Sweet Red Vermouth",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Sweet Red Vermouth",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Sweet Red Vermouth"
       },
       {
@@ -1916,21 +1916,21 @@
     "method": "Pour all ingredients into cocktail shaker filled with ice cubes. Shake and strain into a chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "30 ml Gin",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Gin",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "30 ml Apricot Brandy",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Apricot Brandy",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Apricot Brandy"
       },
       {
-        "direction": "30 ml Calvados",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Calvados",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Calvados"
       }
     ]
@@ -1942,21 +1942,21 @@
     "garnish": "Optional Maraschino Cherry.",
     "ingredients": [
       {
-        "direction": "45 ml Gin",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Gin",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "15 ml Maraschino Luxardo",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Maraschino Luxardo",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Maraschino Luxardo"
       },
       {
-        "direction": "15 ml Fresh Lemon Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lemon Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
@@ -1973,27 +1973,27 @@
     "method": "Add all ingredients into a cocktail shaker. Shake with ice and strain into a chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "30 ml White Rum",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz White Rum",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "White Rum"
       },
       {
-        "direction": "30 ml Cognac",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Cognac",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Cognac"
       },
       {
-        "direction": "30 ml Triple Sec",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Triple Sec",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Triple Sec"
       },
       {
-        "direction": "20 ml Fresh Lemon Juice",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Fresh Lemon Juice",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       }
     ]
@@ -2005,21 +2005,21 @@
     "garnish": "Garnish with orange zest, optionally a lemon zest.",
     "ingredients": [
       {
-        "direction": "45 ml Bourbon or Rye Whiskey",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Bourbon or Rye Whiskey",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Bourbon or Rye Whiskey"
       },
       {
-        "direction": "30 ml Bitter Campari",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Bitter Campari",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Bitter Campari"
       },
       {
-        "direction": "30 ml Sweet Red Vermouth",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Sweet Red Vermouth",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Sweet Red Vermouth"
       }
     ]
@@ -2031,15 +2031,15 @@
     "garnish": "Rub a slice of orange (or lemon) around the rim of the glass and dip it in pulverized white sugar, so that the sugar will adhere to the edge of the glass. Carefully curling place the orange/lemon peel around the inside of the glass.",
     "ingredients": [
       {
-        "direction": "52.5 ml Brandy",
-        "quantity": "52.5",
-        "unit": "ml",
+        "direction": "1 3/4 oz Brandy",
+        "quantity": "1 3/4",
+        "unit": "oz",
         "ingredient": "Brandy"
       },
       {
-        "direction": "7.5 ml Maraschino Luxardo",
-        "quantity": "7.5",
-        "unit": "ml",
+        "direction": "1/4 oz Maraschino Luxardo",
+        "quantity": "1/4",
+        "unit": "oz",
         "ingredient": "Maraschino Luxardo"
       },
       {
@@ -2049,9 +2049,9 @@
         "ingredient": "Curacao"
       },
       {
-        "direction": "15 ml Fresh Lemon Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lemon Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
@@ -2075,21 +2075,21 @@
     "garnish": "Garnish with lemon zest and a maraschino cherry.",
     "ingredients": [
       {
-        "direction": "40 ml Old Tom Gin",
-        "quantity": "40",
-        "unit": "ml",
+        "direction": "1 1/3 oz Old Tom Gin",
+        "quantity": "1 1/3",
+        "unit": "oz",
         "ingredient": "Old Tom Gin"
       },
       {
-        "direction": "10 ml Maraschino Luxardo",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Maraschino Luxardo",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Maraschino Luxardo"
       },
       {
-        "direction": "10 ml Fresh Lemon Juice",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Fresh Lemon Juice",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
@@ -2107,21 +2107,21 @@
     "garnish": "Fresh raspberries.",
     "ingredients": [
       {
-        "direction": "45 ml Gin",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Gin",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "15 ml Raspberry Syrup",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Raspberry Syrup",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Raspberry Syrup"
       },
       {
-        "direction": "15 ml Fresh Lemon Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lemon Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
@@ -2138,15 +2138,15 @@
     "method": "In a cocktail shaker add all ingredients. Stir well to dissolve the sugar. Add ice and shake. Strain into chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "60 ml White Cuban Ron",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz White Cuban Ron",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "White Cuban Ron"
       },
       {
-        "direction": "20 ml Fresh Lime Juice",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Fresh Lime Juice",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
@@ -2164,15 +2164,15 @@
     "garnish": "Squeeze oil from lemon peel onto the drink, or garnish with green olives if requested.",
     "ingredients": [
       {
-        "direction": "60 ml Gin",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Gin",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "10 ml Dry Vermouth",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Dry Vermouth",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Dry Vermouth"
       }
     ]
@@ -2184,21 +2184,21 @@
     "garnish": "Garnish with a lemon slice, optional lemon zest.",
     "ingredients": [
       {
-        "direction": "45 ml Gin",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Gin",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "30 ml Fresh Lemon Juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Fresh Lemon Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "10 ml Simple Syrup",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Simple Syrup",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Simple Syrup"
       },
       {
@@ -2216,21 +2216,21 @@
     "garnish": "Orange zest.",
     "ingredients": [
       {
-        "direction": "45 ml London Dry Gin",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz London Dry Gin",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "London Dry Gin"
       },
       {
-        "direction": "45 ml Sweet Red Vermouth",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Sweet Red Vermouth",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Sweet Red Vermouth"
       },
       {
-        "direction": "7.5 ml Fernet Branca",
-        "quantity": "7.5",
-        "unit": "ml",
+        "direction": "1/4 oz Fernet Branca",
+        "quantity": "1/4",
+        "unit": "oz",
         "ingredient": "Fernet Branca"
       }
     ]
@@ -2242,27 +2242,27 @@
     "garnish": "Garnish with a lemon slice and maraschino cherry.",
     "ingredients": [
       {
-        "direction": "45 ml Gin",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Gin",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "30 ml Fresh Lemon Juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Fresh Lemon Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "15 ml Simple Syrup",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Simple Syrup",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Simple Syrup"
       },
       {
-        "direction": "60 ml Soda Water",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Soda Water",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Soda Water"
       }
     ]
@@ -2273,27 +2273,27 @@
     "method": "Add all ingredients into a cocktail shaker. Shake with ice and strain into a chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "22.5 ml Gin",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Gin",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "22.5 ml Green Chartreuse",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Green Chartreuse",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Green Chartreuse"
       },
       {
-        "direction": "22.5 ml Maraschino Luxardo",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Maraschino Luxardo",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Maraschino Luxardo"
       },
       {
-        "direction": "22.5 ml Fresh Lime Juice",
-        "quantity": "22.5",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Lime Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       }
     ]
@@ -2305,15 +2305,15 @@
     "garnish": "Garnish with a cocktail cherry.",
     "ingredients": [
       {
-        "direction": "50 ml Rye Whiskey",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Rye Whiskey",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Rye Whiskey"
       },
       {
-        "direction": "20 ml Sweet Red Vermouth",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Sweet Red Vermouth",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Sweet Red Vermouth"
       },
       {
@@ -2331,15 +2331,15 @@
     "garnish": "Lemon zest.",
     "ingredients": [
       {
-        "direction": "45 ml London Dry Gin",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz London Dry Gin",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "London Dry Gin"
       },
       {
-        "direction": "45 ml Sweet Red Vermouth",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Sweet Red Vermouth",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Sweet Red Vermouth"
       },
       {
@@ -2362,27 +2362,27 @@
     "method": "Pour all ingredients into a cocktail shaker, shake well with ice, strain into a chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "45 ml White Rum",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz White Rum",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "White Rum"
       },
       {
-        "direction": "45 ml Fresh Pineapple Juice",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Fresh Pineapple Juice",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Fresh Pineapple Juice"
       },
       {
-        "direction": "7.5 ml Maraschino Luxardo",
-        "quantity": "7.5",
-        "unit": "ml",
+        "direction": "1/4 oz Maraschino Luxardo",
+        "quantity": "1/4",
+        "unit": "oz",
         "ingredient": "Maraschino Luxardo"
       },
       {
-        "direction": "5 ml Grenadine Syrup",
-        "quantity": "5",
-        "unit": "ml",
+        "direction": "1/8 oz Grenadine Syrup",
+        "quantity": "1/8",
+        "unit": "oz",
         "ingredient": "Grenadine Syrup"
       }
     ]
@@ -2393,15 +2393,15 @@
     "method": "Pour all ingredients into a cocktail shaker, shake well with ice, strain into a chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "45 ml Dry Gin",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Dry Gin",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Dry Gin"
       },
       {
-        "direction": "45 ml Fresh Orange Juice",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Fresh Orange Juice",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Fresh Orange Juice"
       },
       {
@@ -2425,21 +2425,21 @@
     "garnish": "Garnish with a half orange slice.",
     "ingredients": [
       {
-        "direction": "30 ml Gin",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Gin",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "30 ml Bitter Campari",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Bitter Campari",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Bitter Campari"
       },
       {
-        "direction": "30 ml Sweet Red Vermouth",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Sweet Red Vermouth",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Sweet Red Vermouth"
       }
     ]
@@ -2451,9 +2451,9 @@
     "garnish": "Garnish with an orange slice or zest, and a cocktail cherry.",
     "ingredients": [
       {
-        "direction": "45 ml Bourbon or Rye Whiskey",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Bourbon or Rye Whiskey",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Bourbon or Rye Whiskey"
       },
       {
@@ -2482,21 +2482,21 @@
     "method": "Pour all ingredients into cocktail shaker, shake well with ice, strain into chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "30 ml Gin",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Gin",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "20 ml Apricot Brandy",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Apricot Brandy",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Apricot Brandy"
       },
       {
-        "direction": "15 ml Fresh Orange Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Orange Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Orange Juice"
       }
     ]
@@ -2508,21 +2508,21 @@
     "garnish": "Garnish with orange zest.",
     "ingredients": [
       {
-        "direction": "45 ml Jamaican Rum",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Jamaican Rum",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Jamaican Rum"
       },
       {
-        "direction": "15 ml Lime Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Lime Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Lime Juice"
       },
       {
-        "direction": "30 ml Sugar Cane Juice",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Sugar Cane Juice",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Sugar Cane Juice"
       }
     ]
@@ -2534,21 +2534,21 @@
     "garnish": "Sprinkle with fresh ground nutmeg.",
     "ingredients": [
       {
-        "direction": "15 ml Brandy",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Brandy",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Brandy"
       },
       {
-        "direction": "45 ml Red Tawny Port Wine",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Red Tawny Port Wine",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Red Tawny Port Wine"
       },
       {
-        "direction": "10 ml Egg Yolk",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Egg Yolk",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Egg Yolk"
       }
     ]
@@ -2559,39 +2559,39 @@
     "method": "Pour all ingredients except soda water in a cocktail shaker with ice, Shake for two minutes, double strain in a glass, pour the drink back in the shaker, and hard shake without ice for one minute. Strain into a highball glass, top up with soda. NOTE: The drink was invented by Henry Ramos in 1888, at his bar Meyer's Table d'Hôtel Internationale in New Orleans. The Ramos Fizz was originally shaken for 12 minutes by a crew of 30 bartenders who passed the shaker from one to another.",
     "ingredients": [
       {
-        "direction": "45 ml Gin",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Gin",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "15 ml Fresh Lime Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lime Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lime Juice"
       },
       {
-        "direction": "15 ml Fresh Lemon Juice",
-        "quantity": "15",
-        "unit": "ml",
+        "direction": "1/2 oz Fresh Lemon Juice",
+        "quantity": "1/2",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "30 ml Sugar Syrup",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Sugar Syrup",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Sugar Syrup"
       },
       {
-        "direction": "60 ml Cream",
-        "quantity": "60",
-        "unit": "ml",
+        "direction": "2 oz Cream",
+        "quantity": "2",
+        "unit": "oz",
         "ingredient": "Cream"
       },
       {
-        "direction": "30 ml Egg white",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Egg white",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Egg white"
       },
       {
@@ -2621,15 +2621,15 @@
     "garnish": "Garnish with lemon zest.",
     "ingredients": [
       {
-        "direction": "45 ml Scotch Whisky",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Scotch Whisky",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Scotch Whisky"
       },
       {
-        "direction": "25 ml Drambuie",
-        "quantity": "25",
-        "unit": "ml",
+        "direction": "3/4 oz Drambuie",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Drambuie"
       }
     ]
@@ -2641,15 +2641,15 @@
     "garnish": "Garnish with lemon zest.",
     "ingredients": [
       {
-        "direction": "50 ml Cognac",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Cognac",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Cognac"
       },
       {
-        "direction": "10 ml Absinthe",
-        "quantity": "10",
-        "unit": "ml",
+        "direction": "1/3 oz Absinthe",
+        "quantity": "1/3",
+        "unit": "oz",
         "ingredient": "Absinthe"
       },
       {
@@ -2672,21 +2672,21 @@
     "method": "Pour all ingredients into a cocktail shaker, shake well with ice, strain into a chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "50 ml Cognac",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Cognac",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Cognac"
       },
       {
-        "direction": "20 ml Triple Sec",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Triple Sec",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Triple Sec"
       },
       {
-        "direction": "20 ml Fresh Lemon Juice",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Fresh Lemon Juice",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       }
     ]
@@ -2698,15 +2698,15 @@
     "garnish": "Optional mint leave.",
     "ingredients": [
       {
-        "direction": "50 ml Cognac",
-        "quantity": "50",
-        "unit": "ml",
+        "direction": "1 2/3 oz Cognac",
+        "quantity": "1 2/3",
+        "unit": "oz",
         "ingredient": "Cognac"
       },
       {
-        "direction": "20 ml White Crème de Menthe",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz White Crème de Menthe",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "White Crème de Menthe"
       }
     ]
@@ -2718,15 +2718,15 @@
     "garnish": "Garnish with cherry and lemon zest",
     "ingredients": [
       {
-        "direction": "30 ml Old Tom Gin",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Old Tom Gin",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Old Tom Gin"
       },
       {
-        "direction": "30 ml Dry Vermouth",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Dry Vermouth",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Dry Vermouth"
       },
       {
@@ -2756,21 +2756,21 @@
     "garnish": "Garnish with orange zest and maraschino cherry.",
     "ingredients": [
       {
-        "direction": "30 ml Rye Whiskey",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Rye Whiskey",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Rye Whiskey"
       },
       {
-        "direction": "30 ml Cognac",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Cognac",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Cognac"
       },
       {
-        "direction": "30 ml Sweet Vermouth",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Sweet Vermouth",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Sweet Vermouth"
       },
       {
@@ -2794,27 +2794,27 @@
     "garnish": "Garnish with a half orange slice and maraschino cherry, optionally use orange zest.",
     "ingredients": [
       {
-        "direction": "45 ml Bourbon Whiskey",
-        "quantity": "45",
-        "unit": "ml",
+        "direction": "1 1/2 oz Bourbon Whiskey",
+        "quantity": "1 1/2",
+        "unit": "oz",
         "ingredient": "Bourbon Whiskey"
       },
       {
-        "direction": "25 ml Fresh Lemon Juice",
-        "quantity": "25",
-        "unit": "ml",
+        "direction": "3/4 oz Fresh Lemon Juice",
+        "quantity": "3/4",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       },
       {
-        "direction": "20 ml Sugar Syrup",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Sugar Syrup",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Sugar Syrup"
       },
       {
-        "direction": "20 ml Egg White (Optional)",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Egg White",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Egg White",
         "note": "Optional"
       }
@@ -2826,21 +2826,21 @@
     "method": "Pour all ingredients into a cocktail shaker, shake well with ice, strain into a chilled cocktail glass.",
     "ingredients": [
       {
-        "direction": "40 ml Gin",
-        "quantity": "40",
-        "unit": "ml",
+        "direction": "1 1/3 oz Gin",
+        "quantity": "1 1/3",
+        "unit": "oz",
         "ingredient": "Gin"
       },
       {
-        "direction": "30 ml Triple Sec",
-        "quantity": "30",
-        "unit": "ml",
+        "direction": "1 oz Triple Sec",
+        "quantity": "1",
+        "unit": "oz",
         "ingredient": "Triple Sec"
       },
       {
-        "direction": "20 ml Fresh Lemon Juice",
-        "quantity": "20",
-        "unit": "ml",
+        "direction": "2/3 oz Fresh Lemon Juice",
+        "quantity": "2/3",
+        "unit": "oz",
         "ingredient": "Fresh Lemon Juice"
       }
     ]
