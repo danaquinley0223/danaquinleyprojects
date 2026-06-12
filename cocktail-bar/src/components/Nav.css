@@ -13,6 +13,34 @@
   border-bottom: 1px solid var(--border-subtle);
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-home {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition), background var(--transition);
+}
+
+.nav-home:hover {
+  color: var(--gold);
+  background: var(--bg-elevated);
+}
+
+.nav-home-arrow {
+  font-size: 16px;
+}
+
 .nav-brand {
   display: flex;
   align-items: center;
@@ -86,6 +114,12 @@
   }
   .nav-brand-name {
     display: none;
+  }
+  .nav-home-text {
+    display: none;
+  }
+  .nav-left {
+    gap: 8px;
   }
   .nav-link {
     padding: 8px 10px;

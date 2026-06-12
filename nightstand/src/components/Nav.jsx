@@ -16,10 +16,16 @@ export default function Nav() {
 
   return (
     <nav className="nav">
-      <NavLink to="/" end className="nav-brand">
-        <span className="nav-brand-icon">&#128218;</span>
-        <span className="nav-brand-name">Nightstand</span>
-      </NavLink>
+      <div className="nav-left">
+        <a className="nav-home" href="/" aria-label="Back to all projects">
+          <span className="nav-home-arrow">&#8592;</span>
+          <span className="nav-home-text">Projects</span>
+        </a>
+        <NavLink to="/" end className="nav-brand">
+          <span className="nav-brand-icon">&#128218;</span>
+          <span className="nav-brand-name">Nightstand</span>
+        </NavLink>
+      </div>
       <div className="nav-links">
         {LINKS.map(l => (
           <NavLink

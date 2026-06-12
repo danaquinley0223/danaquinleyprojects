@@ -13,6 +13,26 @@
   flex-wrap: wrap;
 }
 
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-home {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+.nav-home:hover { color: var(--amber-light); background: var(--bg-elevated); }
+.nav-home-arrow { font-size: 16px; }
+
 .nav-brand {
   display: flex;
   align-items: center;
@@ -60,3 +80,8 @@
   color: var(--text-secondary);
 }
 .nav-link.active .nav-badge { background: var(--amber); color: #20160a; }
+
+@media (max-width: 560px) {
+  .nav-home-text { display: none; }
+  .nav-left { gap: 8px; }
+}
