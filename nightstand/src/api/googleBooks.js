@@ -1,8 +1,16 @@
 // Google Books API — browser-callable, no key required for basic volume search.
 const BASE = 'https://www.googleapis.com/books/v1/volumes'
 
-async function get(query) {
+const sleep = (ms) => new Promise(r => setTimeout(r, ms))
+
+async function get(query, attempt = 0) {
   const res = await fetch(`${BASE}?${query}`)
+  // One quick retry on rate limiting, then give up — Open Library is the
+  // primary source, so a throttled Google call just means slightly less data.
+  if (res.status === 429 && attempt < 1) {
+    await sleep(600)
+    return get(query, attempt + 1)
+  }
   if (!res.ok) throw new Error(`Google Books ${res.status}`)
   return res.json()
 }
