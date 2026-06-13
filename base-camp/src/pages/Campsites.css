@@ -28,14 +28,7 @@
 }
 .site-name:focus { outline: none; border-bottom: 1px solid var(--ember); }
 
-.site-row { display: flex; gap: 10px; align-items: center; }
-.site-drive { font-size: 12px; color: var(--text-muted); white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; }
-.site-drive input {
-  width: 52px; background: var(--bg-elevated); border: 1px solid var(--border-default);
-  border-radius: var(--radius-sm); padding: 5px 7px; font-size: 12px; color: var(--text-primary);
-}
-
-.site-types, .site-flags { display: flex; flex-wrap: wrap; gap: 5px; }
+.site-flags { display: flex; flex-wrap: wrap; gap: 5px; }
 .mini-chip {
   padding: 4px 9px; border-radius: 14px; font-size: 11px;
   background: var(--bg-elevated); color: var(--text-secondary);
@@ -44,18 +37,21 @@
 .mini-chip:hover { color: var(--text-primary); }
 .mini-chip.on { background: var(--pine-dim); color: var(--pine); border-color: rgba(111,174,106,0.4); }
 
-.site-reserve { display: flex; align-items: center; gap: 8px; }
+.site-link-row { display: flex; align-items: center; gap: 8px; }
 .site-url {
   flex: 1; background: var(--bg-elevated); border: 1px solid var(--border-default);
   border-radius: var(--radius-sm); padding: 6px 9px; font-size: 12px; color: var(--text-secondary);
 }
 .site-url:focus { outline: none; border-color: var(--ember); }
-.site-reserve-link {
+.site-link-btn {
   flex-shrink: 0; width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
-  border-radius: var(--radius-sm); background: var(--ember-dim); color: var(--ember-light);
-  border: 1px solid var(--border-accent); font-size: 14px; transition: var(--transition);
+  border-radius: var(--radius-sm); font-size: 14px; transition: var(--transition);
+  border: 1px solid var(--border-accent);
 }
-.site-reserve-link:hover { background: var(--ember); color: #1a1208; }
+.site-link-btn.res { background: var(--ember-dim); color: var(--ember-light); }
+.site-link-btn.res:hover { background: var(--ember); color: #1a1208; }
+.site-link-btn.map { background: var(--sky-dim); color: var(--sky); border-color: rgba(107,176,196,0.4); }
+.site-link-btn.map:hover { background: var(--sky); color: #0e1117; }
 
 .site-bottom { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .site-stars button { font-size: 16px; color: var(--text-muted); transition: var(--transition); }

@@ -115,7 +115,10 @@ export default function TripSetup() {
 
       <section className="panel setup-block">
         <h2 className="setup-h">Campsite</h2>
-        <select className="select" value={trip.campsiteId || ''} onChange={e => updateThisTrip(t => ({ ...t, campsiteId: e.target.value || null }))}>
+        <select className="select" value={trip.campsiteId || ''} onChange={e => {
+          const site = campsites.find(s => s.id === e.target.value)
+          updateThisTrip(t => ({ ...t, campsiteId: e.target.value || null, place: site ? site.name : t.place }))
+        }}>
           <option value="">— none chosen —</option>
           {campsites.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
         </select>

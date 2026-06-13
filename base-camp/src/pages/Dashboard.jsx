@@ -1,28 +1,29 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useCamp } from '../context/CampDataContext'
 import { uid } from '../utils/seed'
 import './Dashboard.css'
 
 export default function Dashboard() {
-  const { trips, mutate, setCurrentTrip } = useCamp()
+  const { trips, campsites, mutate, setCurrentTrip } = useCamp()
   const navigate = useNavigate()
   const [name, setName] = useState('')
-  const [place, setPlace] = useState('')
+  const [placeId, setPlaceId] = useState('')
 
   const createTrip = (e) => {
     e.preventDefault()
-    if (!name.trim() || !place.trim()) return
+    const site = campsites.find(s => s.id === placeId)
+    if (!name.trim() || !site) return
     const id = uid('trip')
     const trip = {
-      id, name: name.trim(), place: place.trim(),
+      id, name: name.trim(), place: site.name, campsiteId: site.id,
       days: [], crews: [], meals: [], extras: [],
       packing: { personal: [], communal: [] },
-      shoppingChecked: {}, campsiteId: null, createdAt: Date.now(),
+      shoppingChecked: {}, createdAt: Date.now(),
     }
     mutate(d => ({ ...d, trips: [...(d.trips || []), trip] }))
     setCurrentTrip(id)
-    setName(''); setPlace('')
+    setName(''); setPlaceId('')
     navigate(`/trip/${id}`)
   }
 
@@ -42,9 +43,15 @@ export default function Dashboard() {
 
       <form className="dash-create panel" onSubmit={createTrip}>
         <input className="input" placeholder="Trip name (e.g. Manresa May 2026)" value={name} onChange={e => setName(e.target.value)} required />
-        <input className="input" placeholder="Place (e.g. Manresa Campground)" value={place} onChange={e => setPlace(e.target.value)} required />
-        <button className="btn" type="submit" disabled={!name.trim() || !place.trim()}>Start a trip</button>
+        <select className="input" value={placeId} onChange={e => setPlaceId(e.target.value)} required disabled={!campsites.length}>
+          <option value="">{campsites.length ? 'Pick a campsite…' : 'No campsites yet'}</option>
+          {campsites.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
+        </select>
+        <button className="btn" type="submit" disabled={!name.trim() || !placeId}>Start a trip</button>
       </form>
+      {campsites.length === 0 && (
+        <p className="dash-hint">Add a spot under <Link to="/campsites">Campsites</Link> first to choose a place.</p>
+      )}
 
       {trips.length === 0 ? (
         <p className="dash-empty">No trips yet — start one above.</p>

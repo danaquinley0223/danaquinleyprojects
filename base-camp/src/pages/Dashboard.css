@@ -3,6 +3,9 @@
 }
 .dash-create .input { flex: 1; min-width: 180px; width: auto; }
 
+.dash-hint { color: var(--text-secondary); font-size: 13px; margin: -14px 0 24px; }
+.dash-hint a { color: var(--ember); }
+
 .dash-empty { color: var(--text-secondary); text-align: center; padding: 40px; }
 
 .dash-grid {
