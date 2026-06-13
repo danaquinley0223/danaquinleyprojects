@@ -1,8 +1,9 @@
 .crews-add {
   display: flex; gap: 10px; align-items: flex-end; margin-bottom: 22px; flex-wrap: wrap;
 }
-.crews-add .input { flex: 1; min-width: 180px; width: auto; }
-.crews-add-size { width: 110px; }
+.crews-add > .input { flex: 1; min-width: 180px; width: auto; }
+.crews-add-size { width: 92px; flex-shrink: 0; }
+.crews-add-size .input { width: 100%; }
 
 .crews-list { display: flex; flex-direction: column; gap: 8px; }
 .crews-row {

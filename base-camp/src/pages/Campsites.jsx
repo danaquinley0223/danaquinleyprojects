@@ -9,7 +9,6 @@ const FLAGS = [['dogFriendly', '🐾 Dog'], ['water', '💧 Water'], ['toilets',
 export default function Campsites() {
   const { campsites, updateCollection } = useCamp()
   const [name, setName] = useState('')
-  const [region, setRegion] = useState('')
   const [filters, setFilters] = useState({ type: '', noRes: false, dogFriendly: false, water: false, maxDrive: 0 })
   const [pick, setPick] = useState(null)
 
@@ -17,11 +16,11 @@ export default function Campsites() {
     e.preventDefault()
     if (!name.trim()) return
     updateCollection('campsites', list => [...list, {
-      id: uid('site'), name: name.trim(), region: region.trim(), driveMins: 0, type: 'tent',
+      id: uid('site'), name: name.trim(), driveMins: 0, type: 'tent',
       reservation: false, dogFriendly: false, water: false, toilets: false,
       season: '', beenThere: false, rating: 0, notes: '', url: '',
     }])
-    setName(''); setRegion('')
+    setName('')
   }
   const patch = (id, p) => updateCollection('campsites', list => list.map(s => s.id === id ? { ...s, ...p } : s))
   const remove = (id) => { if (confirm('Remove this campsite?')) updateCollection('campsites', list => list.filter(s => s.id !== id)) }
@@ -50,7 +49,6 @@ export default function Campsites() {
 
       <form className="sites-add panel" onSubmit={add}>
         <input className="input" placeholder="Campground name" value={name} onChange={e => setName(e.target.value)} />
-        <input className="input" placeholder="Region (optional)" value={region} onChange={e => setRegion(e.target.value)} />
         <button className="btn" type="submit">Add spot</button>
       </form>
 
@@ -75,8 +73,7 @@ export default function Campsites() {
                 <button className="lib-x" onClick={() => remove(s.id)} aria-label="Remove">✕</button>
               </div>
               <div className="site-row">
-                <input className="site-region" placeholder="region" value={s.region} onChange={e => patch(s.id, { region: e.target.value })} />
-                <span className="site-drive">
+                <span className="site-drive">Drive
                   <input type="number" min="0" value={s.driveMins || ''} placeholder="0" onChange={e => patch(s.id, { driveMins: Number(e.target.value) || 0 })} /> min
                 </span>
               </div>
@@ -90,6 +87,10 @@ export default function Campsites() {
                 {FLAGS.map(([k, l]) => (
                   <button key={k} className={`mini-chip${s[k] ? ' on' : ''}`} onClick={() => patch(s.id, { [k]: !s[k] })}>{l}</button>
                 ))}
+              </div>
+              <div className="site-reserve">
+                <input className="site-url" placeholder="Reservation link (optional)" value={s.url || ''} onChange={e => patch(s.id, { url: e.target.value })} />
+                {s.url && <a className="site-reserve-link" href={s.url} target="_blank" rel="noopener" title="Make a reservation">↗</a>}
               </div>
               <div className="site-bottom">
                 <div className="site-stars">

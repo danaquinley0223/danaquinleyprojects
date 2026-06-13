@@ -12,7 +12,7 @@ export default function Dashboard() {
 
   const createTrip = (e) => {
     e.preventDefault()
-    if (!name.trim()) return
+    if (!name.trim() || !place.trim()) return
     const id = uid('trip')
     const trip = {
       id, name: name.trim(), place: place.trim(),
@@ -41,9 +41,9 @@ export default function Dashboard() {
       </div>
 
       <form className="dash-create panel" onSubmit={createTrip}>
-        <input className="input" placeholder="Trip name (e.g. Manresa May 2026)" value={name} onChange={e => setName(e.target.value)} />
-        <input className="input" placeholder="Place (optional)" value={place} onChange={e => setPlace(e.target.value)} />
-        <button className="btn" type="submit">Start a trip</button>
+        <input className="input" placeholder="Trip name (e.g. Manresa May 2026)" value={name} onChange={e => setName(e.target.value)} required />
+        <input className="input" placeholder="Place (e.g. Manresa Campground)" value={place} onChange={e => setPlace(e.target.value)} required />
+        <button className="btn" type="submit" disabled={!name.trim() || !place.trim()}>Start a trip</button>
       </form>
 
       {trips.length === 0 ? (
