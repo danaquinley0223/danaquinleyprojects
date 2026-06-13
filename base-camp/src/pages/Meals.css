@@ -1,0 +1,43 @@
+.meals-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  margin-bottom: 22px; flex-wrap: wrap;
+}
+.meals-bar-tally { flex: 1; min-width: 240px; }
+
+.day-block { margin-bottom: 26px; }
+.day-title {
+  font-size: 19px; margin-bottom: 12px; padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-subtle); color: var(--ember-light);
+}
+
+.slot-block { margin-bottom: 14px; }
+.slot-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.slot-label {
+  font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text-muted); font-weight: 600;
+}
+.slot-add {
+  padding: 6px 10px; font-size: 13px;
+  background: var(--bg-elevated); border: 1px solid var(--border-default);
+  border-radius: var(--radius-md); color: var(--text-secondary); cursor: pointer;
+}
+.slot-add:focus { outline: none; border-color: var(--ember); }
+
+.meal-card {
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md); padding: 14px; margin-bottom: 10px;
+}
+.meal-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.meal-name { font-size: 16px; }
+.meal-card-actions { display: flex; align-items: center; gap: 12px; }
+.meal-recipe { font-size: 12px; color: var(--sky); }
+.meal-x { color: var(--text-muted); font-size: 13px; transition: var(--transition); }
+.meal-x:hover { color: var(--clay); }
+
+.comp-list { display: flex; flex-direction: column; gap: 6px; }
+
+/* role tag tints */
+.tag.role-protein { background: var(--clay-dim); color: var(--clay); }
+.tag.role-starch { background: var(--ember-dim); color: var(--ember-light); }
+.tag.role-veg { background: var(--pine-dim); color: var(--pine); }
+.tag.role-eggsdairy { background: var(--sky-dim); color: var(--sky); }

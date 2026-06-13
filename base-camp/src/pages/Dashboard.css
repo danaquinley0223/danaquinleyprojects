@@ -1,0 +1,34 @@
+.dash-create {
+  display: flex; gap: 10px; margin-bottom: 26px; flex-wrap: wrap; align-items: center;
+}
+.dash-create .input { flex: 1; min-width: 180px; width: auto; }
+
+.dash-empty { color: var(--text-secondary); text-align: center; padding: 40px; }
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.trip-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.trip-card:hover { border-color: var(--border-accent); transform: translateY(-3px); }
+
+.trip-card-x {
+  position: absolute; top: 12px; right: 12px;
+  color: var(--text-muted); font-size: 13px; padding: 4px;
+  transition: var(--transition);
+}
+.trip-card-x:hover { color: var(--clay); }
+
+.trip-card-name { font-size: 18px; margin-bottom: 4px; padding-right: 18px; }
+.trip-card-place { color: var(--text-secondary); font-size: 13px; margin-bottom: 12px; }
+.trip-card-meta { display: flex; flex-wrap: wrap; gap: 6px; }

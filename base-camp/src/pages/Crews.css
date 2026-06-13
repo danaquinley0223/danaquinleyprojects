@@ -1,0 +1,24 @@
+.crews-add {
+  display: flex; gap: 10px; align-items: flex-end; margin-bottom: 22px; flex-wrap: wrap;
+}
+.crews-add .input { flex: 1; min-width: 180px; width: auto; }
+.crews-add-size { width: 110px; }
+
+.crews-list { display: flex; flex-direction: column; gap: 8px; }
+.crews-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px; background: var(--bg-card);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-md);
+}
+.crews-name {
+  flex: 1; background: transparent; border: none; font-size: 15px; font-weight: 500;
+  color: var(--text-primary); padding: 4px 0;
+}
+.crews-name:focus { outline: none; border-bottom: 1px solid var(--ember); }
+.crews-size { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--text-secondary); }
+.crews-size input {
+  width: 56px; padding: 5px 8px; background: var(--bg-elevated);
+  border: 1px solid var(--border-default); border-radius: var(--radius-sm); color: var(--text-primary);
+}
+.crews-x { color: var(--text-muted); font-size: 13px; padding: 4px; transition: var(--transition); }
+.crews-x:hover { color: var(--clay); }

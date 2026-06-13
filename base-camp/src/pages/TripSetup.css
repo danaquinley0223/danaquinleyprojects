@@ -1,0 +1,41 @@
+.setup { display: flex; flex-direction: column; gap: 16px; }
+.setup-block { display: flex; flex-direction: column; gap: 12px; }
+.setup-h {
+  font-size: 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.setup-count { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: var(--ember-light); }
+.setup-hint { font-size: 12px; color: var(--text-muted); }
+
+.setup-dates { display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-end; }
+.setup-dates .input { width: auto; }
+
+.stepper { display: flex; align-items: center; gap: 10px; }
+.stepper-val { font-family: 'Bitter', serif; font-size: 18px; min-width: 24px; text-align: center; }
+
+.setup-daychips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.crew-rows { display: flex; flex-direction: column; gap: 6px; }
+.crew-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 12px; border-radius: var(--radius-md);
+  background: var(--bg-elevated); border: 1px solid transparent; flex-wrap: wrap;
+}
+.crew-row.on { border-color: var(--border-accent); }
+.crew-check { display: flex; align-items: center; gap: 9px; font-size: 14px; cursor: pointer; }
+.crew-check input { accent-color: var(--ember); width: 16px; height: 16px; }
+.crew-counts { display: flex; gap: 14px; }
+.crew-counts span { font-size: 12px; color: var(--text-secondary); display: inline-flex; align-items: center; gap: 6px; }
+.crew-counts input {
+  width: 52px; padding: 5px 8px; background: var(--bg-card);
+  border: 1px solid var(--border-default); border-radius: var(--radius-sm); color: var(--text-primary); font-size: 13px;
+}
+
+.extra-chips, .filter-chip { }
+.extra-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.filter-chip {
+  padding: 6px 12px; border-radius: 20px; font-size: 13px;
+  background: var(--bg-elevated); color: var(--text-secondary);
+  border: 1px solid var(--border-subtle); transition: var(--transition);
+}
+.filter-chip:hover { color: var(--text-primary); border-color: var(--border-default); }
+.filter-chip.on { background: var(--ember-dim); color: var(--ember-light); border-color: var(--border-accent); }

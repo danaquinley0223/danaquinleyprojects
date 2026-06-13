@@ -60,10 +60,30 @@ export default {
       return json({ ok: true, id })
     }
 
-    // ── SPA fallback for cocktail-bar ───────────────────────────────────────
-    if (url.pathname.startsWith('/cocktail-bar/') && !url.pathname.match(/\.[a-zA-Z0-9]+$/)) {
+    // ── Base Camp shared state (GET) ────────────────────────────────────────
+    if (url.pathname === '/api/camp/state' && request.method === 'GET') {
+      const stored = await env.VOTES.get('camp:state')
+      return json(stored ? JSON.parse(stored) : {})
+    }
+
+    // ── Base Camp shared state (POST, last-write-wins with a rev guard) ──────
+    if (url.pathname === '/api/camp/state' && request.method === 'POST') {
+      const incoming = await request.json()
+      const stored = JSON.parse(await env.VOTES.get('camp:state') || 'null')
+      if (stored && incoming.rev != null && incoming.rev < (stored.rev || 0)) {
+        return json({ conflict: true, state: stored })   // someone saved newer
+      }
+      const rev = (stored?.rev || 0) + 1
+      const doc = { ...incoming, rev, updatedAt: Date.now() }
+      await env.VOTES.put('camp:state', JSON.stringify(doc))
+      return json({ ok: true, rev })
+    }
+
+    // ── SPA fallback for the React apps ─────────────────────────────────────
+    const spa = url.pathname.match(/^\/(cocktail-bar|nightstand|base-camp)\//)
+    if (spa && !url.pathname.match(/\.[a-zA-Z0-9]+$/)) {
       const rewritten = new URL(request.url)
-      rewritten.pathname = '/cocktail-bar/index.html'
+      rewritten.pathname = `/${spa[1]}/index.html`
       return env.ASSETS.fetch(new Request(rewritten.toString(), request))
     }
 

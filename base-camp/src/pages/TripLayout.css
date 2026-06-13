@@ -1,0 +1,15 @@
+.trip-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.trip-title { font-size: clamp(24px, 4vw, 32px); }
+.trip-place { color: var(--text-secondary); font-size: 14px; margin-top: 2px; }
+
+.trip-tabs {
+  display: flex; gap: 4px; margin: 18px 0 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.trip-tab {
+  padding: 9px 16px; font-size: 14px; font-weight: 500;
+  color: var(--text-secondary); border-bottom: 2px solid transparent;
+  margin-bottom: -1px; transition: var(--transition);
+}
+.trip-tab:hover { color: var(--text-primary); }
+.trip-tab.active { color: var(--ember-light); border-bottom-color: var(--ember); }

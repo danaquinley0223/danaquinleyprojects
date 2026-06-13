@@ -4,5 +4,7 @@ cocktail-bar/node_modules
 cocktail-bar/dist
 nightstand/node_modules
 nightstand/dist
+base-camp/node_modules
+base-camp/dist
 *.zip
 .DS_Store

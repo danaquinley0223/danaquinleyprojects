@@ -55,6 +55,17 @@ run('npm run build', {
 })
 cpSync(join(nightstandDir, 'dist'), join(DIST, 'nightstand'), { recursive: true })
 
+console.log('Building base-camp')
+const baseCampDir = join(ROOT, 'base-camp')
+if (!existsSync(join(baseCampDir, 'node_modules'))) {
+  run('npm install', { cwd: baseCampDir })
+}
+run('npm run build', {
+  cwd: baseCampDir,
+  env: { ...process.env, BASE_PATH: '/base-camp/' },
+})
+cpSync(join(baseCampDir, 'dist'), join(DIST, 'base-camp'), { recursive: true })
+
 console.log('Copying Cloudflare Pages config files')
 const publicDir = join(ROOT, 'public')
 if (existsSync(publicDir)) {
