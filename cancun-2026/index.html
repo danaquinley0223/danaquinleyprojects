@@ -408,7 +408,7 @@
   </a>
   <div class="hero-fx">
     <div class="hero-fx-label">💱 Currency Converter</div>
-    <div class="hero-fx-rate">$1 USD = 17.44 MXN</div>
+    <div class="hero-fx-rate">$1 USD = 17.26 MXN</div>
     <div class="hero-fx-inputs">
       <div class="fx-input-wrap"><span class="fx-currency-label">USD $</span><input id="conv-usd" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('usd')"></div>
       <div style="font-family:'Courier New',monospace;font-size:13px;color:var(--teal-mid);">⇄</div>
@@ -568,7 +568,7 @@
 
 <script>
 const TRIP_START=new Date('2026-06-19T05:55:00');
-const FX_RATE=17.44;
+const FX_RATE=17.26;
 const FEEDBACK_EMAIL='danaquinley0223@gmail.com';
 const FEEDBACK_PHONE='+12093803694';
 
@@ -752,7 +752,7 @@ function toggleRes(id){const saved=JSON.parse(localStorage.getItem('cancun-res')
 
 // ── Packing ───────────────────────────────────────────────────────────────────
 const BASE_PACKING={
-  'Every day (resort)':['Sunscreen (reef-safe!)','Sunglasses','Hat / cap','Reusable water bottle','Room key / wristband','Phone + charger','Light layers for AC','Cash (pesos or USD — $1 ≈ 17.44 MXN)'],
+  'Every day (resort)':['Sunscreen (reef-safe!)','Sunglasses','Hat / cap','Reusable water bottle','Room key / wristband','Phone + charger','Light layers for AC','Cash (pesos or USD — $1 ≈ 17.26 MXN)'],
   'Park days':['Water shoes','GoPro + mounts','Waterproof phone case','Quick-dry clothes','Extra swimsuit','Dry bag','Reef-safe sunscreen (reapply!)','Snacks if not all-inclusive'],
   'Xenotes (Mon Jun 22)':['Closed-toe water shoes','Snorkel mask (optional)','Light rash guard','Hydrate — no alcohol served'],
   'Xel-Há (Wed Jun 24)':['Wetsuit top (optional)','Underwater camera or GoPro','Fins (provided)','Reef-safe sunscreen only'],
@@ -829,7 +829,7 @@ function buildResort(){
   document.getElementById('resort-container').innerHTML=`
     <div class="info-strip"><div style="font-size:20px;color:rgba(255,255,255,0.7)">🏨</div><div class="info-strip-text"><strong>Xcaret Arte</strong> — adults-only all-inclusive. Food, drinks, shows, beach all included. Tip in cash.</div></div>
     <div class="fx-bar">
-      <div style="display:flex;align-items:center;gap:14px"><div class="fx-icon">💱</div><div><div class="fx-rate">$1 USD = ${rate.toFixed(2)} MXN</div><div class="fx-sub">Mid-market rate · Jun 9, 2026 · converter on the home screen</div></div></div>
+      <div style="display:flex;align-items:center;gap:14px"><div class="fx-icon">💱</div><div><div class="fx-rate">$1 USD = ${rate.toFixed(2)} MXN</div><div class="fx-sub">Mid-market rate · Jun 12, 2026 · converter on the home screen</div></div></div>
       <div class="fx-pills" style="margin-top:10px;"><div class="fx-pill">$1 tip = <span>~${rate.toFixed(0)} MXN</span></div><div class="fx-pill">$5 = <span>~${(rate*5).toFixed(0)} MXN</span></div><div class="fx-pill">$20 = <span>~${(rate*20).toFixed(0)} MXN</span></div><div class="fx-pill">$50 = <span>~${(rate*50).toFixed(0)} MXN</span></div><div class="fx-pill">$100 = <span>~${(rate*100).toFixed(0)} MXN</span></div></div>
     </div>
     <div class="day-card" style="margin-bottom:16px"><div class="section-label">Restaurants</div><div style="padding:4px 0 12px;">${[{n:'Mercado San Juan',i:'Buffet, casual, open longest hours'},{n:'Cayuco',i:'Buffet option, good for groups'},{n:'Cantina',i:'Mexican, lively atmosphere'},{n:'Tah-Xido',i:'Teppanyaki · Asian fusion — book at check-in!'},{n:'Encanta',i:'8-course fine dining — book at check-in!'},{n:'Arenal',i:'Thu dinner · reserve ahead'}].map(r=>`<div class="tip-row" style="padding:9px 16px;"><div class="tip-bullet">›</div><div><strong>${r.n}</strong> — ${r.i}</div></div>`).join('')}</div></div>
