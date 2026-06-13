@@ -29,6 +29,11 @@
   width: 52px; padding: 5px 8px; background: var(--bg-card);
   border: 1px solid var(--border-default); border-radius: var(--radius-sm); color: var(--text-primary); font-size: 13px;
 }
+.crew-counts .crew-site { width: 64px; }
+
+.extra-add { display: flex; gap: 8px; max-width: 440px; }
+.extra-add .input { flex: 1; }
+.chip-x { opacity: 0.6; font-size: 11px; }
 
 .extra-chips, .filter-chip { }
 .extra-chips { display: flex; flex-wrap: wrap; gap: 7px; }

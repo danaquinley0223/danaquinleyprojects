@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useOutletContext } from 'react-router-dom'
 import { useCamp } from '../context/CampDataContext'
 import { uid, SEED_EXTRAS, roleWeight } from '../utils/seed'
@@ -13,6 +14,7 @@ function dayLabel(startDate, i) {
 export default function TripSetup() {
   const { trip, updateThisTrip } = useOutletContext()
   const { households, campsites } = useCamp()
+  const [extraInput, setExtraInput] = useState('')
 
   const attending = new Set(trip.crews.map(c => c.householdId))
   const totalAdults = trip.crews.reduce((s, c) => s + (c.adults || 0), 0)
@@ -29,6 +31,9 @@ export default function TripSetup() {
   const setCount = (hhId, field, val) => updateThisTrip(t => ({
     ...t, crews: t.crews.map(c => c.householdId === hhId ? { ...c, [field]: Math.max(0, val) } : c),
   }))
+  const setSite = (hhId, val) => updateThisTrip(t => ({
+    ...t, crews: t.crews.map(c => c.householdId === hhId ? { ...c, siteNumber: val } : c),
+  }))
 
   const addDay = () => updateThisTrip(t => ({ ...t, days: [...t.days, { id: uid('day') }] }))
   const removeDay = () => updateThisTrip(t => ({ ...t, days: t.days.slice(0, -1) }))
@@ -43,6 +48,17 @@ export default function TripSetup() {
                   : [...t.extras, { id: uid('ex'), ...ex, weight: roleWeight(ex.role), assignedCrewId: null, locked: false, recurring: true }],
     }
   })
+  const seedExtraNames = new Set(SEED_EXTRAS.map(e => e.name))
+  const customExtras = trip.extras.filter(e => !seedExtraNames.has(e.name))
+  const addCustomExtra = (name) => {
+    if (!name.trim()) return
+    updateThisTrip(t => ({
+      ...t,
+      extras: [...t.extras, { id: uid('ex'), name: name.trim(), role: 'Other', qty: '', baseServes: 7, weight: roleWeight('Other'), assignedCrewId: null, locked: false, recurring: true }],
+    }))
+    setExtraInput('')
+  }
+  const removeExtra = (id) => updateThisTrip(t => ({ ...t, extras: t.extras.filter(e => e.id !== id) }))
 
   return (
     <div className="setup">
@@ -87,6 +103,7 @@ export default function TripSetup() {
                   <div className="crew-counts">
                     <span>Adults <input type="number" min="0" value={crew.adults} onChange={e => setCount(hh.id, 'adults', Number(e.target.value))} /></span>
                     <span>Kids <input type="number" min="0" value={crew.kids} onChange={e => setCount(hh.id, 'kids', Number(e.target.value))} /></span>
+                    <span>Site # <input className="crew-site" type="text" placeholder="—" value={crew.siteNumber || ''} onChange={e => setSite(hh.id, e.target.value)} /></span>
                   </div>
                 )}
               </div>
@@ -113,7 +130,16 @@ export default function TripSetup() {
               {extraOn(ex.name) ? '✓ ' : ''}{ex.name}
             </button>
           ))}
+          {customExtras.map(ex => (
+            <button key={ex.id} className="filter-chip on" onClick={() => removeExtra(ex.id)} title="Remove">
+              ✓ {ex.name} <span className="chip-x">✕</span>
+            </button>
+          ))}
         </div>
+        <form className="extra-add" onSubmit={e => { e.preventDefault(); addCustomExtra(extraInput) }}>
+          <input className="input" placeholder="Add an extra (e.g. Hot chocolate, foil, ice)" value={extraInput} onChange={e => setExtraInput(e.target.value)} />
+          <button className="btn btn-sm" type="submit">Add</button>
+        </form>
         <p className="setup-hint">These get divided across crews along with the meals.</p>
       </section>
     </div>

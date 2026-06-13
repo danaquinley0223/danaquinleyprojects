@@ -18,8 +18,35 @@ export default function Library() {
     updateCollection('library', list => list.map(m => m.id === id ? { ...m, components: fn(m.components || []) } : m))
   }
 
-  const order = { breakfast: 0, dinner: 1 }
-  const sorted = [...library].sort((a, b) => (order[a.slot] ?? 2) - (order[b.slot] ?? 2) || a.name.localeCompare(b.name))
+  const SLOT_GROUPS = [['breakfast', 'Breakfast'], ['lunch', 'Lunch'], ['dinner', 'Dinner']]
+
+  const renderCard = (meal) => (
+    <div className="lib-card" key={meal.id}>
+      <div className="lib-card-head">
+        <input className="lib-name" value={meal.name} onChange={e => patchMeal(meal.id, { name: e.target.value })} />
+        <select className="lib-slot" value={meal.slot || 'dinner'} onChange={e => patchMeal(meal.id, { slot: e.target.value })}>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+        <button className="lib-x" onClick={() => removeMeal(meal.id)} aria-label="Delete meal">✕</button>
+      </div>
+      <input className="lib-recipe" placeholder="Recipe URL (optional)" value={meal.recipeUrl || ''} onChange={e => patchMeal(meal.id, { recipeUrl: e.target.value })} />
+      <div className="lib-comps">
+        {(meal.components || []).map((c, ci) => (
+          <div className="lib-comp" key={c.id || ci}>
+            <input className="lib-comp-name" placeholder="Ingredient / component" value={c.name} onChange={e => patchComp(meal.id, ci, { name: e.target.value })} />
+            <select value={c.role} onChange={e => patchComp(meal.id, ci, { role: e.target.value })}>
+              {ROLES.map(r => <option key={r} value={r}>{r}</option>)}
+            </select>
+            <input className="lib-comp-qty" placeholder="qty" value={c.qty || ''} onChange={e => patchComp(meal.id, ci, { qty: e.target.value })} />
+            <button className="lib-x" onClick={() => removeComp(meal.id, ci)} aria-label="Remove">✕</button>
+          </div>
+        ))}
+        <button className="lib-add-comp" onClick={() => addComp(meal.id)}>+ item</button>
+      </div>
+    </div>
+  )
 
   return (
     <div className="library">
@@ -31,34 +58,18 @@ export default function Library() {
         <button className="btn" onClick={addMeal}>+ New meal</button>
       </div>
 
-      <div className="lib-list">
-        {sorted.map(meal => (
-          <div className="lib-card" key={meal.id}>
-            <div className="lib-card-head">
-              <input className="lib-name" value={meal.name} onChange={e => patchMeal(meal.id, { name: e.target.value })} />
-              <select className="lib-slot" value={meal.slot || 'dinner'} onChange={e => patchMeal(meal.id, { slot: e.target.value })}>
-                <option value="breakfast">Breakfast</option>
-                <option value="dinner">Dinner</option>
-              </select>
-              <button className="lib-x" onClick={() => removeMeal(meal.id)} aria-label="Delete meal">✕</button>
-            </div>
-            <input className="lib-recipe" placeholder="Recipe URL (optional)" value={meal.recipeUrl || ''} onChange={e => patchMeal(meal.id, { recipeUrl: e.target.value })} />
-            <div className="lib-comps">
-              {(meal.components || []).map((c, ci) => (
-                <div className="lib-comp" key={c.id || ci}>
-                  <input className="lib-comp-name" placeholder="Ingredient / component" value={c.name} onChange={e => patchComp(meal.id, ci, { name: e.target.value })} />
-                  <select value={c.role} onChange={e => patchComp(meal.id, ci, { role: e.target.value })}>
-                    {ROLES.map(r => <option key={r} value={r}>{r}</option>)}
-                  </select>
-                  <input className="lib-comp-qty" placeholder="qty" value={c.qty || ''} onChange={e => patchComp(meal.id, ci, { qty: e.target.value })} />
-                  <button className="lib-x" onClick={() => removeComp(meal.id, ci)} aria-label="Remove">✕</button>
-                </div>
-              ))}
-              <button className="lib-add-comp" onClick={() => addComp(meal.id)}>+ item</button>
-            </div>
-          </div>
-        ))}
-      </div>
+      {SLOT_GROUPS.map(([slot, label]) => {
+        const meals = library.filter(m => (m.slot || 'dinner') === slot)
+          .sort((a, b) => a.name.localeCompare(b.name))
+        return (
+          <section className="lib-group" key={slot}>
+            <h2 className="lib-group-title">{label}</h2>
+            {meals.length === 0
+              ? <p className="lib-group-empty">No {label.toLowerCase()} meals yet.</p>
+              : <div className="lib-list">{meals.map(renderCard)}</div>}
+          </section>
+        )
+      })}
     </div>
   )
 }

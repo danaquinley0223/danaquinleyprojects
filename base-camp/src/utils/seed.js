@@ -111,6 +111,24 @@ export const SEED_LIBRARY = [
     ],
   },
   {
+    id: 'lib-sandwiches', name: 'Sandwich Bar', slot: 'lunch',
+    components: [
+      c('Bread / rolls', 'Bread'),
+      c('Deli meats & cheese', 'Protein'),
+      c('Lettuce, tomato, condiments', 'Pantry/Condiments'),
+      c('Chips', 'Salad/Side'),
+    ],
+  },
+  {
+    id: 'lib-quesadillas', name: 'Quesadillas', slot: 'lunch',
+    components: [
+      c('Tortillas', 'Bread'),
+      c('Cheese', 'Eggs/Dairy'),
+      c('Chicken or beans', 'Protein'),
+      c('Salsa & sour cream', 'Pantry/Condiments'),
+    ],
+  },
+  {
     id: 'lib-scramble', name: 'Camp Breakfast Scramble', slot: 'breakfast',
     components: [
       c('Soyrizo', 'Protein'),

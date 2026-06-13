@@ -1,5 +1,12 @@
 .lib-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 
+.lib-group { margin-bottom: 26px; }
+.lib-group-title {
+  font-size: 18px; color: var(--ember-light); margin-bottom: 12px;
+  padding-bottom: 6px; border-bottom: 1px solid var(--border-subtle);
+}
+.lib-group-empty { font-size: 13px; color: var(--text-muted); }
+
 .lib-list { display: flex; flex-direction: column; gap: 14px; }
 .lib-card {
   background: var(--bg-card); border: 1px solid var(--border-subtle);

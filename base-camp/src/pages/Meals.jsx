@@ -6,7 +6,7 @@ import CrewTally from '../components/CrewTally'
 import ComponentRow from '../components/ComponentRow'
 import './Meals.css'
 
-const SLOTS = [['breakfast', 'Breakfast'], ['dinner', 'Dinner']]
+const SLOTS = [['breakfast', 'Breakfast'], ['lunch', 'Lunch'], ['dinner', 'Dinner']]
 
 function dayLabel(startDate, i) {
   if (!startDate) return `Day ${i + 1}`
@@ -74,7 +74,7 @@ export default function Meals() {
           <h2 className="day-title">{dayLabel(trip.startDate, i)}</h2>
           {SLOTS.map(([slot, label]) => {
             const meals = trip.meals.filter(m => m.day === day.id && m.slot === slot)
-            const libForSlot = library.filter(l => !l.slot || l.slot === slot)
+            const libForSlot = library.filter(l => (l.slot || 'dinner') === slot)
             return (
               <div className="slot-block" key={slot}>
                 <div className="slot-head">
@@ -84,6 +84,9 @@ export default function Meals() {
                     {libForSlot.map(l => <option key={l.id} value={l.id}>{l.name}</option>)}
                   </select>
                 </div>
+                {slot === 'lunch' && meals.length === 0 && (
+                  <div className="byol">🥪 BYOL — Bring Your Own Lunch <span>add a lunch above to override</span></div>
+                )}
                 {meals.map(meal => (
                   <div className="meal-card" key={meal.id}>
                     <div className="meal-card-head">

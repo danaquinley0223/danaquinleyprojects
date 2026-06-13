@@ -34,6 +34,14 @@
 .meal-x { color: var(--text-muted); font-size: 13px; transition: var(--transition); }
 .meal-x:hover { color: var(--clay); }
 
+.byol {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 14px; border-radius: var(--radius-md);
+  background: var(--bg-card); border: 1px dashed var(--border-default);
+  font-size: 14px; color: var(--text-secondary);
+}
+.byol span { font-size: 12px; color: var(--text-muted); }
+
 .comp-list { display: flex; flex-direction: column; gap: 6px; }
 
 /* role tag tints */
