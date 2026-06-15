@@ -22,14 +22,16 @@ export default {
 
     // ── GET /api/votes ─────────────────────────────────────────────────────
     if (url.pathname === '/api/votes' && request.method === 'GET') {
-      const [tuesday, drink, customDrinks] = await Promise.all([
+      const [tuesday, drink, kevin, customDrinks] = await Promise.all([
         env.VOTES.get('tuesday_votes'),
         env.VOTES.get('drink_votes'),
+        env.VOTES.get('kevin_votes'),
         env.VOTES.get('custom_drinks'),
       ])
       return json({
         tuesday: JSON.parse(tuesday || '{}'),
         drink: JSON.parse(drink || '{}'),
+        kevin: JSON.parse(kevin || '{}'),
         customDrinks: JSON.parse(customDrinks || '[]'),
       })
     }

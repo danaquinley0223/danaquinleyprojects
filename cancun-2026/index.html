@@ -110,6 +110,19 @@
   .hero-fx-label { font-family:'Courier New',monospace; font-size:10px; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase; margin-bottom:4px; }
   .hero-fx-rate { font-family:'Courier New',monospace; font-size:18px; font-weight:700; color:#FFFFFF; margin-bottom:10px; }
   .hero-fx-inputs { display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:center; }
+  .hero-vote { position:relative; background:rgba(255,255,255,0.07); border:0.5px solid rgba(255,255,255,0.15); border-radius:10px; padding:10px 14px; margin:0 0 8px; text-align:left; }
+  .hero-vote-label { font-family:'Courier New',monospace; font-size:10px; font-weight:700; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+  .hero-vote-who { display:flex; gap:5px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+  .hero-vote-who-label { font-family:'Courier New',monospace; font-size:9px; color:rgba(255,255,255,0.4); }
+  .hero-vote-who-btn { width:26px; height:26px; border-radius:50%; border:1px solid rgba(255,255,255,0.22); background:rgba(255,255,255,0.06); color:#fff; font-family:'Courier New',monospace; font-size:8px; font-weight:700; cursor:pointer; transition:all 0.15s; }
+  .hero-vote-who-btn:hover { background:rgba(255,255,255,0.14); }
+  .hero-vote-opts { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .hero-vote-opt { cursor:pointer; padding:8px 6px; text-align:center; border-radius:8px; border:1.5px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.04); transition:all 0.15s; }
+  .hero-vote-opt:hover { background:rgba(255,255,255,0.09); }
+  .hero-vote-opt.voted { border-color:var(--teal-mid); background:rgba(43,168,152,0.2); }
+  .hero-vote-opt-emoji { font-size:22px; line-height:1; }
+  .hero-vote-opt-label { font-family:'Courier New',monospace; font-size:12px; font-weight:700; color:#fff; margin-top:3px; }
+  .hero-vote-opt-desc { font-family:'Courier New',monospace; font-size:8px; color:rgba(255,255,255,0.45); margin-top:2px; }
 
   .nav { background:var(--white); border-bottom:0.5px solid var(--border); display:flex; overflow-x:auto; scrollbar-width:none; position:sticky; top:0; z-index:100; }
   .nav::-webkit-scrollbar { display:none; }
@@ -169,6 +182,7 @@
   .tag-dinner { background:var(--coral-light); color:var(--coral); }
   .tag-night { background:rgba(28,43,53,0.08); color:var(--night-mid); }
   .tag-optional { background:#FFF8E1; color:#8B6914; }
+  .tag-flight { background:#E6F1FB; color:#185FA5; }
   /* park name link — on light bg */
   .park-name-link { color:var(--teal); text-decoration:none; border-bottom:1.5px dashed var(--teal-mid); }
   .park-name-link:hover { color:var(--teal-mid); }
@@ -415,6 +429,7 @@
       <div class="fx-input-wrap"><span class="fx-currency-label">MXN $</span><input id="conv-mxn" class="fx-input" type="number" min="0" placeholder="0" oninput="convertFrom('mxn')"></div>
     </div>
   </div>
+  <div id="hero-kevin-vote"></div>
   <div class="hero-dates">✈ Jun 19 &nbsp;—&nbsp; Jun 26, 2026</div>
 </div>
 
@@ -635,7 +650,9 @@ function renderStaticWeather(){
 // ── Itinerary ─────────────────────────────────────────────────────────────────
 const DAYS=[
   {date:'Jun 19',dayName:'Friday',label:'Arrival Day',color:'#E3F5F2',textColor:'#1A7A6E',events:[
-    {time:'3–5pm',icon:'✈️',name:'Arrive to Cancún',note:'Walk around hotel, check in, grab lunch or coffee'},
+    {time:'4:00am',icon:'🛫',name:'Arrive at SMF Airport',note:'2 hrs before flight — check bags + security',tag:'flight'},
+    {time:'5:55am',icon:'✈️',name:'Flight SMF → CUN',note:'WN3773 via Denver · lands 3:25pm. See Flights tab for seats',tag:'flight'},
+    {time:'3:25pm',icon:'🛬',name:'Arrive to Cancún',note:'Check in, walk around hotel, grab lunch or coffee'},
     {time:'6–11pm',icon:'🍽️',name:'Dinner @ Buffet',note:'Options: Mercado San Juan, Cayuco, or Cantina',tag:'dinner'},
     {time:'8pm–4am',icon:'🎶',name:'El Deseo Speakeasy / Club',note:'First night out — pace yourselves 😉',tag:'night',video:{url:'https://www.youtube.com/watch?v=GGjO5YevKgE',label:'🎬 Watch this before tonight 🤫'}},
   ]},
@@ -670,12 +687,13 @@ const DAYS=[
   ]},
   {date:'Jun 26',dayName:'Friday',label:'Departure',color:'#1C2B35',textColor:'#FFFFFF',events:[
     {time:'By 12pm',icon:'🧳',name:'Check out of hotel',note:"Pack the night before — you'll be tired!"},
-    {time:'3:25pm',icon:'✈️',name:'Flight home (WN1018)',note:'Allow 2+ hrs to airport'},
+    {time:'1:25pm',icon:'🛫',name:'Arrive at CUN Airport',note:'2 hrs before flight — check bags, customs + security',tag:'flight'},
+    {time:'3:25pm',icon:'✈️',name:'Flight CUN → SMF (WN1018)',note:'Via Denver · lands 9:50pm. See Flights tab for seats',tag:'flight'},
   ]},
 ];
 
 function buildDays(){
-  const container=document.getElementById('days-container'),tagMap={park:'Park',dinner:'Dinner',night:'Late night',optional:'Optional'};
+  const container=document.getElementById('days-container'),tagMap={park:'Park',dinner:'Dinner',night:'Late night',optional:'Optional',flight:'Flight'};
   DAYS.forEach((day,i)=>{
     const card=document.createElement('div');card.className='day-card';card.id='day-'+i;
     const tags=[...new Set(day.events.map(e=>e.tag).filter(Boolean))];
@@ -959,7 +977,7 @@ function renderPersonPicker(containerId){
 }
 
 // ── Shared votes (KV) ─────────────────────────────────────────────────────────
-let sharedVotes={tuesday:{},drink:{},customDrinks:[]};
+let sharedVotes={tuesday:{},drink:{},kevin:{},customDrinks:[]};
 
 async function fetchSharedVotes(){
   try{
@@ -994,6 +1012,36 @@ function refreshAllVotes(){
   renderPersonPicker('tuesday-who');
   renderDrinkVote();
   buildVoteCard();
+  renderKevinVote();
+}
+
+// ── Kevin FaceTime vote (hero) ────────────────────────────────────────────────
+const KEVIN_OPTIONS=[
+  {id:'yes',emoji:'📞',label:'Yes!',desc:"he's missing out"},
+  {id:'no',emoji:'😏',label:'Nah',desc:'his loss 😤'},
+];
+function voteKevin(id){
+  if(!getMe())return;
+  postVote('kevin',id);
+}
+function renderKevinVote(){
+  const el=document.getElementById('hero-kevin-vote');
+  if(!el)return;
+  const me=getMe();
+  const myVote=me&&sharedVotes.kevin?sharedVotes.kevin[me]:null;
+  const whoRow=me?'':`<div class="hero-vote-who"><span class="hero-vote-who-label">tap your initials to vote:</span>${PEOPLE.map(p=>`<button class="hero-vote-who-btn" onclick="setMe('${p.id}')">${p.id}</button>`).join('')}</div>`;
+  el.innerHTML=`<div class="hero-vote">
+    <div class="hero-vote-label">📞 Should we FaceTime Kevin?</div>
+    ${whoRow}
+    <div class="hero-vote-opts">
+      ${KEVIN_OPTIONS.map(o=>`<div class="hero-vote-opt${myVote===o.id?' voted':''}" onclick="voteKevin('${o.id}')">
+        <div class="hero-vote-opt-emoji">${o.emoji}</div>
+        <div class="hero-vote-opt-label">${o.label}</div>
+        <div class="hero-vote-opt-desc">${o.desc}</div>
+        <div class="voter-row" style="margin-top:4px;">${voterPips('kevin',o.id)}</div>
+      </div>`).join('')}
+    </div>
+  </div>`;
 }
 function voterPips(type,optionId){
   return PEOPLE.filter(p=>sharedVotes[type]&&sharedVotes[type][p.id]===optionId)
@@ -1209,7 +1257,7 @@ function applyTheme(t){
   if(btn)btn.textContent=THEME_LABEL[t];
 }
 
-buildHeroDeco();buildCountdown();buildDays();buildVoteCard();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();buildDrinks();updateTimes();fetchSharedVotes();
+buildHeroDeco();buildCountdown();buildDays();buildVoteCard();renderKevinVote();buildReservations();buildPacking();buildTips();buildResort();buildDepartChecklist();buildSeatMaps();fetchWeather();buildDrinks();updateTimes();fetchSharedVotes();
 applyTheme(localStorage.getItem('cancun-theme')||'light');
 </script>
 </body>
