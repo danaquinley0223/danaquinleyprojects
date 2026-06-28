@@ -989,11 +989,16 @@ function renderPersonPicker(containerId){
 let sharedVotes={tuesday:{},drink:{},kevin:{},customDrinks:[]};
 
 async function fetchSharedVotes(){
+  // Don't clobber a half-typed custom drink nomination on a background refresh
+  const input=document.getElementById('custom-drink-input');
+  if(input&&(document.activeElement===input||input.value.trim()))return;
   try{
     const r=await fetch('/api/votes');
     if(r.ok){sharedVotes=await r.json();refreshAllVotes();}
   }catch(e){}
 }
+// Keep votes (and the Drink of the Trip winner) live-synced across devices
+setInterval(fetchSharedVotes,20000);
 async function postVote(type,choice){
   const me=getMe();
   if(!me)return;
