@@ -398,25 +398,25 @@
 
 <div class="hero">
   <div class="hero-deco" id="hero-deco"></div>
-  <div class="hero-eyebrow">Xcaret Arte · Cancún, Mexico</div>
+  <div class="hero-eyebrow">Xcaret Arte · Cancún · June 2026 ✓</div>
   <div class="hero-title">Cancún <em>Trip 2.0</em> Hub</div>
   <div class="hero-sub">8 days · 7 nights · Full Squad (Minus Kevin 😑)</div>
   <div class="countdown-strip" id="countdown-strip"></div>
   <div class="cd-msg" id="cd-msg"></div>
   <div class="time-strip" id="time-strip"></div>
+  <a class="app-banner" href="https://www.icloud.com/sharedalbum/#B2XJqstnBJEFjos" target="_blank">
+    <div class="app-icon purple">📸</div>
+    <div class="app-text">
+      <div class="app-title">Shared Trip Album — Relive it</div>
+      <div class="app-sub">Add &amp; view everyone's photos and videos 💛</div>
+    </div>
+    <div class="app-arrow">↗</div>
+  </a>
   <a class="app-banner" href="https://apps.apple.com/us/app/hoteles-xcaret/id1474819420" target="_blank">
     <div class="app-icon">🏨</div>
     <div class="app-text">
       <div class="app-title">Hoteles Xcaret — Official App</div>
-      <div class="app-sub">Download on the App Store · reservations, maps, schedules</div>
-    </div>
-    <div class="app-arrow">↗</div>
-  </a>
-  <a class="app-banner" href="https://www.icloud.com/sharedalbum/#B2XJqstnBJEFjos" target="_blank">
-    <div class="app-icon purple">📸</div>
-    <div class="app-text">
-      <div class="app-title">Shared Trip Album</div>
-      <div class="app-sub">View &amp; join — add your own photos and videos</div>
+      <div class="app-sub">For next time · reservations, maps, schedules</div>
     </div>
     <div class="app-arrow">↗</div>
   </a>
@@ -430,7 +430,7 @@
     </div>
   </div>
   <div id="hero-kevin-vote"></div>
-  <div class="hero-dates">✈ Jun 19 &nbsp;—&nbsp; Jun 26, 2026</div>
+  <div class="hero-dates">✓ Jun 19 &nbsp;—&nbsp; Jun 26, 2026 · trip complete</div>
 </div>
 
 <div class="nav">
@@ -583,6 +583,7 @@
 
 <script>
 const TRIP_START=new Date('2026-06-19T05:55:00');
+const TRIP_END=new Date('2026-06-26T23:59:00');
 const FX_RATE=17.26;
 const FEEDBACK_EMAIL='danaquinley0223@gmail.com';
 const FEEDBACK_PHONE='+12093803694';
@@ -591,6 +592,14 @@ const FEEDBACK_PHONE='+12093803694';
 function buildCountdown(){
   const now=new Date(),diff=TRIP_START-now;
   const strip=document.getElementById('countdown-strip'),msg=document.getElementById('cd-msg');
+  // ── After the trip ──────────────────────────────────────────────────────────
+  if(now>TRIP_END){
+    const daysSince=Math.floor((now-TRIP_END)/86400000);
+    strip.innerHTML='<div class="cd-block" style="min-width:auto;padding:14px 24px;"><div class="cd-num" style="font-size:22px;white-space:nowrap;">🌴 That’s a wrap! 🍋</div><div class="cd-label">Cancún Trip 2.0 · Complete</div></div>';
+    msg.innerHTML=`8 days of sun, cenotes &amp; lemon drops — thanks for an unforgettable trip 💛<br>${daysSince} day${daysSince===1?'':'s'} since we got home · relive it in the shared album below`;
+    return;
+  }
+  // ── During the trip ─────────────────────────────────────────────────────────
   if(diff<=0){strip.innerHTML='<div class="cd-block"><div class="cd-num" style="font-size:20px">🌴</div><div class="cd-label">Enjoy!</div></div>';msg.textContent="you're there — have the best time";return;}
   const days=Math.floor(diff/86400000),hrs=Math.floor((diff%86400000)/3600000),mins=Math.floor((diff%3600000)/60000),secs=Math.floor((diff%60000)/1000);
   strip.innerHTML=`<div class="cd-block"><div class="cd-num" id="cd-d">${days}</div><div class="cd-label">Days</div></div><div class="cd-block"><div class="cd-num" id="cd-h">${String(hrs).padStart(2,'0')}</div><div class="cd-label">Hrs</div></div><div class="cd-block"><div class="cd-num" id="cd-m">${String(mins).padStart(2,'0')}</div><div class="cd-label">Min</div></div><div class="cd-block"><div class="cd-num" id="cd-s">${String(secs).padStart(2,'0')}</div><div class="cd-label">Sec</div></div>`;
@@ -1127,7 +1136,22 @@ function renderDrinkVote(){
   const me=getMe();
   const myVote=me&&sharedVotes.drink?sharedVotes.drink[me]:null;
   const allOptions=[...DRINK_VOTE_OPTIONS,...(sharedVotes.customDrinks||[])];
-  el.innerHTML=`
+  // ── Tally results ──
+  const tally={};
+  Object.values(sharedVotes.drink||{}).forEach(id=>{tally[id]=(tally[id]||0)+1;});
+  const totalVotes=Object.keys(sharedVotes.drink||{}).length;
+  let resultsHtml='';
+  if(totalVotes>0){
+    const max=Math.max(...Object.values(tally));
+    const winners=allOptions.filter(o=>tally[o.id]===max);
+    const tie=winners.length>1;
+    resultsHtml=`<div style="margin:0 16px 12px;padding:12px 14px;border-radius:10px;background:var(--teal-light);border:1px solid var(--teal-mid);text-align:center;">
+      <div style="font-family:'Courier New',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);">🏆 Official Drink of Trip 2.0</div>
+      <div style="font-size:17px;font-weight:700;color:var(--teal);margin-top:4px;">${winners.map(w=>`${w.icon} ${w.name}`).join(' & ')}</div>
+      <div style="font-family:'Courier New',monospace;font-size:10px;color:var(--teal);opacity:0.8;margin-top:3px;">${tie?'it’s a tie!':`${max} of ${totalVotes} votes`}</div>
+    </div>`;
+  }
+  el.innerHTML=resultsHtml+`
     <div class="drink-vote-grid">
       ${allOptions.map(o=>`
         <div class="drink-vote-opt${myVote===o.id?' voted':''}" onclick="voteForDrink('${o.id}')">
@@ -1157,7 +1181,7 @@ function buildDrinks(){
       <div class="trophy-emoji">🍋🏆🍋</div>
       <div class="trophy-title">Official Drink · Cancún Trip 1.0</div>
       <div class="trophy-name">The Lemon Drop</div>
-      <div class="trophy-sub">Vodka · Triple Sec · Fresh Lemon · Sugar Rim<br>The drink that started it all. Can it defend its title?</div>
+      <div class="trophy-sub">Vodka · Triple Sec · Fresh Lemon · Sugar Rim<br>The drink that started it all. Did it defend its title? See the results below 👇</div>
     </div>
     <div class="day-card" style="margin-bottom:16px;overflow:hidden;">
       <div style="background:var(--night);padding:12px 16px;">
